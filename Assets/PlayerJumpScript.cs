@@ -7,6 +7,7 @@ public class PlayerJumpScript : MonoBehaviour {
 
     public bool grounded = true;
     public float jumpPower = 8;
+    public GameObject jumpshadow;
 
     public Vector3 gravity = new Vector3(0, -9.81f * 1.5f, 0);
 
@@ -32,6 +33,7 @@ public class PlayerJumpScript : MonoBehaviour {
         Physics.Raycast(ray, out hitinfo);
 
         //Debug.Log(GetComponent<Rigidbody>().velocity);
+        jumpshadow.transform.position = hitinfo.point;
 
         if (Mathf.Abs(transform.position.y - hitinfo.point.y) < 1.01f)
         {
