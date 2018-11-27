@@ -2947,7 +2947,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh34004
+  m_Name: pb_Mesh38520
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -7252,6 +7252,7 @@ GameObject:
   - component: {fileID: 813010180}
   - component: {fileID: 813010179}
   - component: {fileID: 813010178}
+  - component: {fileID: 813010181}
   m_Layer: 0
   m_Name: ExitCollider
   m_TagString: Untagged
@@ -7282,8 +7283,8 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 813010176}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -7331,6 +7332,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 813010176}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &813010181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 813010176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 931b7bfcaf2a8624294f709a57adfa40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: Main
 --- !u!43 &829843032
 Mesh:
   m_ObjectHideFlags: 0
@@ -8773,7 +8786,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh33062
+  m_Name: pb_Mesh38338
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -17071,7 +17084,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh33074
+  m_Name: pb_Mesh38350
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -19081,6 +19094,23 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!1 &1882669106 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1533696520464902, guid: b1f6e00c3cb4f2749bea666d10988be4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1492084575}
+--- !u!114 &1882669107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1882669106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa1d73af04074db4296c572d49ef2209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: Main
 --- !u!43 &1895285215
 Mesh:
   m_ObjectHideFlags: 0
@@ -20934,7 +20964,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh33412
+  m_Name: pb_Mesh38404
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2

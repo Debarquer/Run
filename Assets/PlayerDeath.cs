@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public string nextScene;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 
@@ -13,7 +15,8 @@ public class PlayerDeath : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(GameObject.FindWithTag("Player"));
+            //Destroy(GameObject.FindWithTag("Player"));
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene, UnityEngine.SceneManagement.LoadSceneMode.Single);
         }
     }
     // Update is called once per frame
