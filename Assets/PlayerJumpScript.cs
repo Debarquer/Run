@@ -33,7 +33,7 @@ public class PlayerJumpScript : MonoBehaviour {
 
         Debug.Log(GetComponent<Rigidbody>().velocity);
 
-        if (Mathf.Abs(transform.position.y - hitinfo.point.y) < 0.51f)
+        if (Mathf.Abs(transform.position.y - hitinfo.point.y) < 1.01f)
         {
             grounded = true;
             //GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0, GetComponent<Rigidbody>().velocity.z);
