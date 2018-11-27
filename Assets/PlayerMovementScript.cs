@@ -13,7 +13,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	
 
 	void FixedUpdate () {
-        AddForceMovement();
+        VelocityMovement();
     }
 
     void VelocityMovement()
