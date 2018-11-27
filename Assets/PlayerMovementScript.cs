@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovementScript : MonoBehaviour {
     public float speed = 6;
+    public float snapSpeed = 0.5f;
 
     void Start () {
 
@@ -17,6 +18,10 @@ public class PlayerMovementScript : MonoBehaviour {
 
         direction.Normalize();
         transform.Translate(direction* Time.deltaTime *speed);
+        if (direction == Vector3.zero) {
+            Vector3 snapTarget = new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z));
+            transform.position = Vector3.Lerp(transform.position, snapTarget, snapSpeed);
+        }
 
     }
 }
