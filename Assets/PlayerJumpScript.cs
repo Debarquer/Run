@@ -31,7 +31,7 @@ public class PlayerJumpScript : MonoBehaviour {
         RaycastHit hitinfo;
         Physics.Raycast(ray, out hitinfo);
 
-        Debug.Log(GetComponent<Rigidbody>().velocity);
+        //Debug.Log(GetComponent<Rigidbody>().velocity);
 
         if (Mathf.Abs(transform.position.y - hitinfo.point.y) < 1.01f)
         {

@@ -5618,6 +5618,23 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!1 &749810305 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1878373181551402, guid: c004e9b1d125b9b43a8ed1d2875cc4b2,
+    type: 2}
+  m_PrefabInternal: {fileID: 606698999}
+--- !u!114 &749810306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 749810305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: cc52d6b395009cb4e898c3727c07fe9e, type: 2}
 --- !u!43 &763836049
 Mesh:
   m_ObjectHideFlags: 0
