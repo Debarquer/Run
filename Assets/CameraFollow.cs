@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour {
      playerObj = GameObject.Find("Player");
     }
 
-    void FixedUpdate()
+    void LateUpdate()
     {
         transform.position = playerObj.transform.position + offset;
     }
