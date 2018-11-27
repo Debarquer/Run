@@ -5,33 +5,37 @@ using UnityEngine;
 public class PlayerMovementScript : MonoBehaviour {
     public float speed;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    void Start () {
+
+    }
 	
-	// Update is called once per frame
+
 	void Update () {
+        // https://answers.unity.com/questions/1190224/how-can-i-normalize-2d-vectors.html
 
-        if (Input.GetKey(KeyCode.W)) {
-            Debug.Log("test");
-            transform.Translate((Vector3.forward * Time.deltaTime ).normalized *speed);
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate((-Vector3.forward * Time.deltaTime ).normalized*speed);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate((Vector3.right * Time.deltaTime).normalized*speed);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate((Vector3.left*Time.deltaTime).normalized*speed);
-        }
+        Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
-        
+        direction.Normalize();
+        transform.Translate(direction* Time.deltaTime *speed);
 
-        
-	}
+    }
 }
+/*  if (Input.GetKey(KeyCode.W)) {
+     Debug.Log("test");
+     transform.Translate((Vector3.forward * Time.deltaTime ).normalized *speed);
+ }
+ if (Input.GetKey(KeyCode.S))
+ {
+     transform.Translate((-Vector3.forward * Time.deltaTime ).normalized*speed);
+ }
+ if (Input.GetKey(KeyCode.D))
+ {
+     transform.Translate((Vector3.right * Time.deltaTime).normalized*speed);
+ }
+ if (Input.GetKey(KeyCode.A))
+ {
+     transform.Translate((Vector3.left*Time.deltaTime).normalized*speed);
+ }
+ */
+
+
