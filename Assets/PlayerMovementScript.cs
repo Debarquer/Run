@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,10 +20,14 @@ public class PlayerMovementScript : MonoBehaviour {
         direction.Normalize();
         transform.Translate(direction* Time.deltaTime *speed);
         if (direction == Vector3.zero) {
-            Vector3 snapTarget = new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z));
-            transform.position = Vector3.Lerp(transform.position, snapTarget, snapSpeed);
+            //SnapPosition();
         }
 
+    }
+
+    private void SnapPosition() {
+        Vector3 snapTarget = new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z));
+        transform.position = Vector3.Lerp(transform.position, snapTarget, snapSpeed);
     }
 }
 /*  if (Input.GetKey(KeyCode.W)) {
