@@ -6,6 +6,10 @@ using UnityEngine;
 public class PlayerMovementScript : MonoBehaviour {
     public float speed = 6;
     public float snapSpeed = 0.5f;
+    Vector3 currentVelocity;
+    Vector3 lastPosition;
+    public float tick;
+    float nextTick = 0;
 
     void Start () {
 
@@ -50,6 +54,21 @@ public class PlayerMovementScript : MonoBehaviour {
             //SnapPosition();
         }
 
+    }
+    void Update()
+        
+    {
+        if (nextTick > tick)
+        {
+            nextTick -= tick;
+            if (GetComponent<Rigidbody>().velocity == Vector3.zero)
+
+            {
+                Debug.Log("Test");
+            }
+
+        }
+        nextTick += Time.deltaTime;
     }
 }
 
