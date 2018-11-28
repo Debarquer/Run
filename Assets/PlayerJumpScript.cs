@@ -10,16 +10,18 @@ public class PlayerJumpScript : MonoBehaviour {
     public GameObject jumpshadow;
 
     public Vector3 gravity = new Vector3(0, -9.81f * 1.5f, 0);
+    public Vector3 velocity;
 
 	// Use this for initialization
 	void Start () {
         GetComponent<Rigidbody>().useGravity = false;
-
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButton("Jump"))
+        velocity = GetComponent<Rigidbody>().velocity;
+
+        if (Input.GetButtonDown("Jump"))
         {
             if (grounded)
             {
@@ -32,10 +34,34 @@ public class PlayerJumpScript : MonoBehaviour {
         RaycastHit hitinfo;
         Physics.Raycast(ray, out hitinfo);
 
+        if (hitinfo.collider.isTrigger)
+        {
+            return;
+        }
+
+        Ray rayA = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
+        RaycastHit hitinfoA;
+        Physics.Raycast(rayA, out hitinfoA);
+
+        Ray rayB = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z - 0.49f), Vector3.down);
+        RaycastHit hitinfoB;
+        Physics.Raycast(rayB, out hitinfoB);
+
+        Ray rayC = new Ray(new Vector3(transform.position.x - 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
+        RaycastHit hitinfoC;
+        Physics.Raycast(rayC, out hitinfoC);
+
+        Ray rayD = new Ray(new Vector3(transform.position.x - 0.49f, transform.position.y, transform.position.z - 0.49f), Vector3.down);
+        RaycastHit hitinfoD;
+        Physics.Raycast(rayD, out hitinfoD);
+
         //Debug.Log(GetComponent<Rigidbody>().velocity);
         jumpshadow.transform.position = hitinfo.point;
 
-        if (Mathf.Abs(transform.position.y - hitinfo.point.y) < 1.01f)
+        if (Mathf.Abs(transform.position.y - hitinfoA.point.y) < 1.01f || 
+            Mathf.Abs(transform.position.y - hitinfoB.point.y) < 1.01f || 
+            Mathf.Abs(transform.position.y - hitinfoC.point.y) < 1.01f ||
+            Mathf.Abs(transform.position.y - hitinfoD.point.y) < 1.01f)
         {
             grounded = true;
             //GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0, GetComponent<Rigidbody>().velocity.z);
@@ -48,7 +74,6 @@ public class PlayerJumpScript : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if(!grounded)
-            GetComponent<Rigidbody>().AddForce(gravity);
+         GetComponent<Rigidbody>().AddForce(gravity);
     }
 }
