@@ -3,20 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovementScript : MonoBehaviour {
+public class PlayerMovementScript : MonoBehaviour
+{
     public float speed = 6;
     public float snapSpeed = 0.5f;
     Vector3 currentVelocity;
     Vector3 lastPosition;
-    public float tick;
-    float nextTick = 0;
 
-    void Start () {
+
+
+    void Start()
+    {
 
     }
-	
 
-	void FixedUpdate () {
+
+    void FixedUpdate()
+    {
         VelocityMovement();
     }
 
@@ -36,7 +39,8 @@ public class PlayerMovementScript : MonoBehaviour {
         GetComponent<Rigidbody>().AddForce(direction, ForceMode.Impulse);
     }
 
-    private void SnapPosition() {
+    private void SnapPosition()
+    {
         Vector3 snapTarget = new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z));
         transform.position = Vector3.Lerp(transform.position, snapTarget, snapSpeed);
     }
@@ -55,22 +59,8 @@ public class PlayerMovementScript : MonoBehaviour {
         }
 
     }
-    void Update()
-        
-    {
-        if (nextTick > tick)
-        {
-            nextTick -= tick;
-            if (GetComponent<Rigidbody>().velocity == Vector3.zero)
-
-            {
-                Debug.Log("Test");
-            }
-
-        }
-        nextTick += Time.deltaTime;
-    }
 }
+
 
 /*  if (Input.GetKey(KeyCode.W)) {
      Debug.Log("test");
