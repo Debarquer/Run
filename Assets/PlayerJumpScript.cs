@@ -18,9 +18,10 @@ public class PlayerJumpScript : MonoBehaviour {
 	void Start () {
         GetComponent<Rigidbody>().useGravity = false;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         velocity = GetComponent<Rigidbody>().velocity;
 
         if (Input.GetButtonDown("Jump"))
@@ -28,7 +29,7 @@ public class PlayerJumpScript : MonoBehaviour {
             if (grounded)
             {
                 //GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, 1.0f, 0.0f) * 2f, ForceMode.Impulse);
-                GetComponent<Rigidbody>().velocity = new Vector3(0.0f, jumpPower, 0.0f);
+                velocity = new Vector3(0.0f, jumpPower, 0.0f);
             }
         }
 
@@ -60,8 +61,8 @@ public class PlayerJumpScript : MonoBehaviour {
         //Debug.Log(GetComponent<Rigidbody>().velocity);
         jumpshadow.transform.position = hitinfo.point;
 
-        if (Mathf.Abs(transform.position.y - hitinfoA.point.y) < 1.01f || 
-            Mathf.Abs(transform.position.y - hitinfoB.point.y) < 1.01f || 
+        if (Mathf.Abs(transform.position.y - hitinfoA.point.y) < 1.01f ||
+            Mathf.Abs(transform.position.y - hitinfoB.point.y) < 1.01f ||
             Mathf.Abs(transform.position.y - hitinfoC.point.y) < 1.01f ||
             Mathf.Abs(transform.position.y - hitinfoD.point.y) < 1.01f)
         {
@@ -73,7 +74,7 @@ public class PlayerJumpScript : MonoBehaviour {
             grounded = false;
         }
 
-        if(velocity.x > maxVeloctity.x)
+        if (velocity.x > maxVeloctity.x)
         {
             velocity.x = maxVeloctity.x;
         }
@@ -99,6 +100,8 @@ public class PlayerJumpScript : MonoBehaviour {
         {
             velocity.z = minVelocity.z;
         }
+
+        GetComponent<Rigidbody>().velocity = velocity;
     }
 
     private void FixedUpdate()
