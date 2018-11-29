@@ -33,14 +33,18 @@ public class PlayerJumpScript : MonoBehaviour {
             }
         }
 
-        Ray ray = new Ray(transform.position, Vector3.down);
+        Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y - 0.501f, transform.position.z), Vector3.down);
         RaycastHit hitinfo;
         Physics.Raycast(ray, out hitinfo);
 
+        if (hitinfo.collider == null) {
+            return;
+        }
         if (hitinfo.collider.isTrigger)
         {
             return;
         }
+
 
         Ray rayA = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
         RaycastHit hitinfoA;
