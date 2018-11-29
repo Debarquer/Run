@@ -35,6 +35,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1702283439096974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4367557284798046}
+  - component: {fileID: 65848635355140388}
+  m_Layer: 0
+  m_Name: Bouncer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4367557284798046
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702283439096974}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4455974619691604}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4455974619691604
 Transform:
   m_ObjectHideFlags: 1
@@ -42,9 +71,10 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1169837051626100}
   m_LocalRotation: {x: -0, y: 0.004866619, z: -0, w: -0.9999882}
-  m_LocalPosition: {x: -6.0601807, y: 1.635, z: -3.427288}
+  m_LocalPosition: {x: -8.06, y: 5.64, z: -34.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4367557284798046}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -360.558, z: 0}
@@ -117,6 +147,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65848635355140388
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702283439096974}
+  m_Material: {fileID: 13400000, guid: dcbb2b39bbfdcc1449bac05217558831, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.99, y: 1e-10, z: 0.99}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95442035800679926
 Animator:
   serializedVersion: 3
@@ -185,6 +227,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 1
-  jumpPower: 8
+  jumpPower: 12
   jumpshadow: {fileID: 0}
-  gravity: {x: 0, y: -14.715, z: 0}
+  gravity: {x: 0, y: -30, z: 0}
+  velocity: {x: 0, y: -0.000009536743, z: 0}
+  maxVeloctity: {x: 0, y: 25, z: 0}
+  minVelocity: {x: 0, y: -15, z: 0}
