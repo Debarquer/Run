@@ -9204,10 +9204,6 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2033651642}
-    - target: {fileID: 1263132479145876, guid: 69c0670e809ae0e4fbdda835b34b6a3d, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69c0670e809ae0e4fbdda835b34b6a3d, type: 2}
   m_IsPrefabAsset: 0

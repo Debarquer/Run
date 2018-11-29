@@ -29,7 +29,7 @@ public class PlayerJumpScript : MonoBehaviour {
             if (grounded)
             {
                 //GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, 1.0f, 0.0f) * 2f, ForceMode.Impulse);
-                velocity = new Vector3(0.0f, jumpPower, 0.0f);
+                velocity = new Vector3(velocity.x, jumpPower, velocity.z);
             }
         }
 
