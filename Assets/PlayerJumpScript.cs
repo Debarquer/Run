@@ -11,6 +11,8 @@ public class PlayerJumpScript : MonoBehaviour {
 
     public Vector3 gravity = new Vector3(0, -9.81f * 1.5f, 0);
     public Vector3 velocity;
+    public Vector3 maxVeloctity;
+    public Vector3 minVelocity;
 
 	// Use this for initialization
 	void Start () {
@@ -69,6 +71,33 @@ public class PlayerJumpScript : MonoBehaviour {
         else
         {
             grounded = false;
+        }
+
+        if(velocity.x > maxVeloctity.x)
+        {
+            velocity.x = maxVeloctity.x;
+        }
+        if (velocity.x < minVelocity.x)
+        {
+            velocity.x = minVelocity.x;
+        }
+
+        if (velocity.y > maxVeloctity.y)
+        {
+            velocity.y = maxVeloctity.y;
+        }
+        if (velocity.y < minVelocity.y)
+        {
+            velocity.y = minVelocity.y;
+        }
+
+        if (velocity.z > maxVeloctity.z)
+        {
+            velocity.z = maxVeloctity.z;
+        }
+        if (velocity.z < minVelocity.z)
+        {
+            velocity.z = minVelocity.z;
         }
     }
 
