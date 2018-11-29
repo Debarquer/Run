@@ -1,0 +1,198 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Player : MonoBehaviour {
+
+    [Header("Stamina")]
+    public bool isRunning = false;
+
+    public float maxStamina;
+    public float stamina;
+
+    public Color maxStaminaColor;
+    public Color noStaminaColor;
+
+    MeshRenderer mr;
+
+    [Header("Jumping")]
+    public bool grounded = true;
+    public float jumpPower = 8;
+    public GameObject jumpshadow;
+
+    public Vector3 gravity = new Vector3(0, -9.81f * 1.5f, 0);
+    public Vector3 maxVelocity;
+    public Vector3 minVelocity;
+
+    [Header("Walking")]
+    public float speed = 6;
+    public Vector3 velocity;
+
+    [Header("On death")]
+    public string nextScene;
+
+    // Use this for initialization
+    void Start () {
+        GetComponent<Rigidbody>().useGravity = false;
+        mr = GetComponent<MeshRenderer>();
+    }
+
+    // Update is called once per frame
+    void Update () {
+        Stamina();
+
+        Jump();
+	}
+
+    private void FixedUpdate()
+    {
+        FixedJump();
+
+        FixedMovement();
+    }
+
+    void Stamina()
+    {
+        if (isRunning)
+        {
+            stamina -= Time.deltaTime;
+            if (stamina <= 0)
+                stamina = 0;
+        }
+        else
+        {
+            stamina += Time.deltaTime;
+            if (stamina >= maxStamina)
+                stamina = maxStamina;
+        }
+
+        mr.material.color = Color.Lerp(maxStaminaColor, noStaminaColor, stamina / maxStamina);
+    }
+
+    void Jump()
+    {
+        velocity = GetComponent<Rigidbody>().velocity;
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (grounded)
+            {
+                //GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, 1.0f, 0.0f) * 2f, ForceMode.Impulse);
+                velocity = new Vector3(velocity.x, jumpPower, velocity.z);
+            }
+        }
+
+        Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y - 0.501f, transform.position.z), Vector3.down);
+        RaycastHit hitinfo;
+        Physics.Raycast(ray, out hitinfo);
+
+        if (hitinfo.collider == null)
+        {
+            return;
+        }
+        if (hitinfo.collider.isTrigger)
+        {
+            return;
+        }
+
+
+        Ray rayA = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
+        RaycastHit hitinfoA;
+        Physics.Raycast(rayA, out hitinfoA);
+
+        Ray rayB = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z - 0.49f), Vector3.down);
+        RaycastHit hitinfoB;
+        Physics.Raycast(rayB, out hitinfoB);
+
+        Ray rayC = new Ray(new Vector3(transform.position.x - 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
+        RaycastHit hitinfoC;
+        Physics.Raycast(rayC, out hitinfoC);
+
+        Ray rayD = new Ray(new Vector3(transform.position.x - 0.49f, transform.position.y, transform.position.z - 0.49f), Vector3.down);
+        RaycastHit hitinfoD;
+        Physics.Raycast(rayD, out hitinfoD);
+
+        //Debug.Log(GetComponent<Rigidbody>().velocity);
+        jumpshadow.transform.position = hitinfo.point;
+        jumpshadow.transform.rotation = transform.rotation;
+
+        if (Mathf.Abs(transform.position.y - hitinfoA.point.y) < 1.01f ||
+            Mathf.Abs(transform.position.y - hitinfoB.point.y) < 1.01f ||
+            Mathf.Abs(transform.position.y - hitinfoC.point.y) < 1.01f ||
+            Mathf.Abs(transform.position.y - hitinfoD.point.y) < 1.01f)
+        {
+            grounded = true;
+            //GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0, GetComponent<Rigidbody>().velocity.z);
+        }
+        else
+        {
+            grounded = false;
+        }
+
+        if (velocity.x > maxVelocity.x)
+        {
+            velocity.x = maxVelocity.x;
+        }
+        if (velocity.x < minVelocity.x)
+        {
+            velocity.x = minVelocity.x;
+        }
+
+        if (velocity.y > maxVelocity.y)
+        {
+            velocity.y = maxVelocity.y;
+        }
+        if (velocity.y < minVelocity.y)
+        {
+            velocity.y = minVelocity.y;
+        }
+
+        if (velocity.z > maxVelocity.z)
+        {
+            velocity.z = maxVelocity.z;
+        }
+        if (velocity.z < minVelocity.z)
+        {
+            velocity.z = minVelocity.z;
+        }
+
+        GetComponent<Rigidbody>().velocity = velocity;
+    }
+
+    void FixedJump()
+    {
+        GetComponent<Rigidbody>().AddForce(gravity);
+    }
+
+    void FixedMovement()
+    {
+        AddForceMovement();
+
+        velocity = GetComponent<Rigidbody>().velocity;
+        if (velocity != Vector3.zero)
+        {
+            isRunning = true;
+        }
+        else
+        {
+            isRunning = false;
+        }
+    }
+
+    void AddForceMovement()
+    {
+        Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+
+        direction.Normalize();
+        GetComponent<Rigidbody>().AddForce(direction * speed * Time.deltaTime, ForceMode.Impulse);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            //Destroy(GameObject.FindWithTag("Player"));
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene, UnityEngine.SceneManagement.LoadSceneMode.Single);
+        }
+    }
+}

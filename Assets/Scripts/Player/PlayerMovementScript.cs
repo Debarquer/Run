@@ -3,16 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerStamina))]
 public class PlayerMovementScript : MonoBehaviour
 {
     public float speed = 6;
     public float snapSpeed = 0.5f;
-    Vector3 currentVelocity;
+    public Vector3 currentVelocity;
     Vector3 lastPosition;
 
     void FixedUpdate()
     {
         AddForceMovement();
+
+        currentVelocity = GetComponent<Rigidbody>().velocity;
+        if (currentVelocity != Vector3.zero)
+        {
+            GetComponent<PlayerStamina>().isRunning = true;
+        }
+        else
+        {
+            GetComponent<PlayerStamina>().isRunning = false;
+        }
     }
 
     //void VelocityMovement()
