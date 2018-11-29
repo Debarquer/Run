@@ -64,6 +64,7 @@ public class PlayerJumpScript : MonoBehaviour {
 
         //Debug.Log(GetComponent<Rigidbody>().velocity);
         jumpshadow.transform.position = hitinfo.point;
+        jumpshadow.transform.rotation = transform.rotation;
 
         if (Mathf.Abs(transform.position.y - hitinfoA.point.y) < 1.01f ||
             Mathf.Abs(transform.position.y - hitinfoB.point.y) < 1.01f ||
