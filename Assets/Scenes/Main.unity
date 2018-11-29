@@ -7661,6 +7661,11 @@ Prefab:
       propertyPath: offset.z
       value: -19
       objectReference: {fileID: 0}
+    - target: {fileID: 20993834387522220, guid: c004e9b1d125b9b43a8ed1d2875cc4b2,
+        type: 2}
+      propertyPath: orthographic size
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c004e9b1d125b9b43a8ed1d2875cc4b2, type: 2}
   m_IsPrefabAsset: 0
@@ -18878,6 +18883,26 @@ Prefab:
       propertyPath: jumpshadow
       value: 
       objectReference: {fileID: 2121303600}
+    - target: {fileID: 114692779524982090, guid: b1f6e00c3cb4f2749bea666d10988be4,
+        type: 2}
+      propertyPath: jumpPower
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114692779524982090, guid: b1f6e00c3cb4f2749bea666d10988be4,
+        type: 2}
+      propertyPath: gravity.y
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114692779524982090, guid: b1f6e00c3cb4f2749bea666d10988be4,
+        type: 2}
+      propertyPath: maxVeloctity.y
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114692779524982090, guid: b1f6e00c3cb4f2749bea666d10988be4,
+        type: 2}
+      propertyPath: minVelocity.y
+      value: -10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1f6e00c3cb4f2749bea666d10988be4, type: 2}
   m_IsPrefabAsset: 0
