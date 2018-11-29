@@ -384,7 +384,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.9, y: 0.9, z: 0.9}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95291022430711390
 Animator:
@@ -725,10 +725,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 1
-  jumpPower: 8
-  jumpshadow: {fileID: 0}
-  gravity: {x: 0, y: -14.715, z: 0}
+  jumpPower: 12
+  jumpshadow: {fileID: 1002090341664902, guid: 147688b5c3bf4d744964f4d5351ddca6, type: 2}
+  gravity: {x: 0, y: -30, z: 0}
   velocity: {x: 0, y: 0, z: 0}
+  maxVeloctity: {x: 0, y: 25, z: 0}
+  minVelocity: {x: 0, y: -15, z: 0}
 --- !u!114 &114452618772809280
 MonoBehaviour:
   m_ObjectHideFlags: 1
