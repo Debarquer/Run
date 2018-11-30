@@ -10,6 +10,9 @@ public class Player : MonoBehaviour {
     public float maxStamina;
     public float stamina;
 
+    public float staminaGainSpeed = 1f;
+    public float staminaDecaySpeed = 1f;
+
     public Color maxStaminaColor;
     public Color noStaminaColor;
 
@@ -18,31 +21,69 @@ public class Player : MonoBehaviour {
     [Header("Jumping")]
     public bool grounded = true;
     public float jumpPower = 8;
-    public GameObject jumpshadow;
 
     public Vector3 gravity = new Vector3(0, -9.81f * 1.5f, 0);
     public Vector3 maxVelocity;
     public Vector3 minVelocity;
 
     [Header("Walking")]
+    public bool sprinting = false;
+    public float speedMod = 2f;
     public float speed = 6;
     public Vector3 velocity;
+    public Vector3 scriptVelocty;
 
     [Header("On death")]
     public string nextScene;
+
+    Vector3 lastPosition;
 
     // Use this for initialization
     void Start () {
         GetComponent<Rigidbody>().useGravity = false;
         mr = GetComponent<MeshRenderer>();
+
+        lastPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update () {
+        CheckPlayerInput();
+
         Stamina();
 
         Jump();
 	}
+
+    private void CheckPlayerInput()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            StartSprint();
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            EndSprint();
+        }
+    }
+
+    private void StartSprint()
+    {
+        if (!sprinting)
+        {
+            sprinting = true;
+            speed *= speedMod;
+        }
+    }
+
+    private void EndSprint()
+    {
+        if (sprinting)
+        {
+            sprinting = false;
+            speed /= speedMod;
+        }
+    }
 
     private void FixedUpdate()
     {
@@ -53,20 +94,24 @@ public class Player : MonoBehaviour {
 
     void Stamina()
     {
-        if (isRunning)
+        if (sprinting)
         {
-            stamina -= Time.deltaTime;
+            stamina -= staminaDecaySpeed * Time.deltaTime;
             if (stamina <= 0)
+            {
                 stamina = 0;
+                EndSprint();
+            }
+                
         }
         else
         {
-            stamina += Time.deltaTime;
+            stamina += staminaGainSpeed * Time.deltaTime;
             if (stamina >= maxStamina)
                 stamina = maxStamina;
         }
 
-        mr.material.color = Color.Lerp(maxStaminaColor, noStaminaColor, stamina / maxStamina);
+        mr.material.color = Color.Lerp(noStaminaColor, maxStaminaColor, stamina / maxStamina);
     }
 
     void Jump()
@@ -111,10 +156,6 @@ public class Player : MonoBehaviour {
         Ray rayD = new Ray(new Vector3(transform.position.x - 0.49f, transform.position.y, transform.position.z - 0.49f), Vector3.down);
         RaycastHit hitinfoD;
         Physics.Raycast(rayD, out hitinfoD);
-
-        //Debug.Log(GetComponent<Rigidbody>().velocity);
-        jumpshadow.transform.position = hitinfo.point;
-        jumpshadow.transform.rotation = transform.rotation;
 
         if (Mathf.Abs(transform.position.y - hitinfoA.point.y) < 1.01f ||
             Mathf.Abs(transform.position.y - hitinfoB.point.y) < 1.01f ||
