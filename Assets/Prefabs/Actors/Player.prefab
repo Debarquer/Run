@@ -105,7 +105,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1169837051626100}
   m_LocalRotation: {x: -0, y: 0.004866619, z: -0, w: -0.9999882}
-  m_LocalPosition: {x: -12.64, y: 2.1, z: -36.31}
+  m_LocalPosition: {x: -8.1414175, y: 5.0049996, z: 22.503899}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4250549897080642}
@@ -128,7 +128,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -267,7 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRunning: 0
   maxStamina: 10
-  stamina: 0
+  stamina: 10
   maxStaminaColor: {r: 1, g: 1, b: 1, a: 0}
   noStaminaColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114322331992049840
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 300
   snapSpeed: 0.5
-  currentVelocity: {x: 0, y: 0, z: 0}
+  currentVelocity: {x: 0, y: -0.000009536743, z: 0}
 --- !u!114 &114654647026459674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -324,7 +324,7 @@ MonoBehaviour:
   jumpPower: 12
   jumpshadow: {fileID: 0}
   gravity: {x: 0, y: -30, z: 0}
-  velocity: {x: 0, y: -0.0000033178367, z: 0}
+  velocity: {x: 0, y: -0.000009536743, z: 0}
   maxVeloctity: {x: 0, y: 25, z: 0}
   minVelocity: {x: 0, y: -15, z: 0}
 --- !u!114 &114755152554109616
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRunning: 0
   maxStamina: 10
-  stamina: 0
+  stamina: 10
   maxStaminaColor: {r: 1, g: 1, b: 1, a: 0}
   noStaminaColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114776778771247446
@@ -367,11 +367,11 @@ Projector:
   m_Enabled: 1
   serializedVersion: 2
   m_NearClipPlane: 0.1
-  m_FarClipPlane: 10
+  m_FarClipPlane: 0.50499964
   m_FieldOfView: 60
   m_AspectRatio: 1
   m_Orthographic: 1
-  m_OrthographicSize: 1
+  m_OrthographicSize: 0.5
   m_Material: {fileID: 2100000, guid: e30ff3588e719f34bbf0c66f22d97487, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
