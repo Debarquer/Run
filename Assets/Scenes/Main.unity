@@ -22781,32 +22781,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
         type: 2}
-      propertyPath: maxStaminaColor.r
-      value: 0.9467213
-      objectReference: {fileID: 0}
-    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
-        type: 2}
-      propertyPath: maxStaminaColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
-        type: 2}
-      propertyPath: maxStaminaColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
-        type: 2}
-      propertyPath: staminaDecaySpeed
+      propertyPath: staminaStartRecoverMax
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
         type: 2}
-      propertyPath: staminaGainSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
-        type: 2}
-      propertyPath: stamina
+      propertyPath: staminaRecoverMax
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []

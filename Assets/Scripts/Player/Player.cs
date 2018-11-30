@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
     public float staminaDecaySpeed = 1f;
 
     public Color maxStaminaColor;
-    public Color noStaminaColor;
+    public Color noStaminaColor;    
 
     MeshRenderer mr;
 
@@ -94,6 +94,10 @@ public class Player : MonoBehaviour {
 
     void Stamina()
     {
+            //public float staminaStartRecoverMax = 1f;
+            //public float staminaStartRecover;
+            //public float staminaRecoverMax = 5f;
+            //public float staminaRecover;
         if (sprinting)
         {
             stamina -= staminaDecaySpeed * Time.deltaTime;
@@ -102,11 +106,11 @@ public class Player : MonoBehaviour {
                 stamina = 0;
                 EndSprint();
             }
-                
         }
         else
         {
             stamina += staminaGainSpeed * Time.deltaTime;
+
             if (stamina >= maxStamina)
                 stamina = maxStamina;
         }
