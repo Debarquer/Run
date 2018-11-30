@@ -291,16 +291,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isRunning: 0
   maxStamina: 10
-  stamina: 0
-  maxStaminaColor: {r: 1, g: 1, b: 1, a: 0}
+  stamina: 10
+  staminaGainSpeed: 0.5
+  staminaDecaySpeed: 2
+  maxStaminaColor: {r: 0.9467213, g: 1, b: 0, a: 0}
   noStaminaColor: {r: 0, g: 0, b: 0, a: 0}
   grounded: 1
   jumpPower: 12
   gravity: {x: 0, y: -30, z: 0}
   maxVelocity: {x: 0, y: 25, z: 0}
   minVelocity: {x: 0, y: -15, z: 0}
+  sprinting: 0
+  speedMod: 2
   speed: 300
   velocity: {x: 0, y: 0, z: 0}
+  scriptVelocty: {x: 0, y: 0, z: 0}
   nextScene: Main
 --- !u!119 &119111605247376802
 Projector:
