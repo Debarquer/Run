@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
     GameObject playerObj;
     public Vector3 offset;
-    
+    public float speed;
 
    void Start()
     {
@@ -14,6 +14,6 @@ public class CameraFollow : MonoBehaviour {
 
     void LateUpdate()
     {
-        transform.position = playerObj.transform.position + offset;
+        transform.position = Vector3.Lerp (transform.position, playerObj.transform.position + offset, speed * Time.deltaTime);
     }
 }
