@@ -8,6 +8,8 @@ public class MovingObject : MonoBehaviour {
     public Transform PositionB;
     public bool reverseDirection;
 
+    public float moveTimerMaxA = 2f;
+    public float moveTimerMaxB = 1f;
     public float moveTimer = 5f;
     public float moveCurr = 0f;
 
@@ -39,7 +41,16 @@ public class MovingObject : MonoBehaviour {
             {
                 stopCurr = 0;
                 moveCurr = 0;
-                reverseDirection = !reverseDirection;
+                if (reverseDirection)
+                {
+                    moveTimer = moveTimerMaxA;
+                    reverseDirection = false;
+                }
+                else
+                {
+                    moveTimer = moveTimerMaxB;
+                    reverseDirection = true;
+                }
             }
         }
         else
