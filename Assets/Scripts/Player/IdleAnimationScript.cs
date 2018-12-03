@@ -14,7 +14,6 @@ public class IdleAnimationScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (GetComponent<Rigidbody>().velocity == Vector3.zero)
-
         {
             if (nextTick > tick)
             {
@@ -30,7 +29,6 @@ public class IdleAnimationScript : MonoBehaviour {
         {
 
             nextTick = 0;
-
         }
     }
 }

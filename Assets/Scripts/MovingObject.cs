@@ -46,12 +46,10 @@ public class MovingObject : MonoBehaviour {
         {
             if (!reverseDirection)
             {
-                float frac = moveCurr / moveTimer;
                 transform.localPosition = Vector3.Lerp(PositionB.localPosition, PositionA.localPosition, (moveCurr % moveTimer) / moveTimer);
             }
             else
             {
-                float frac = moveCurr / moveTimer;
                 transform.localPosition = Vector3.Lerp(PositionA.localPosition, PositionB.localPosition, (moveCurr % moveTimer) / moveTimer);
             }
         }        
