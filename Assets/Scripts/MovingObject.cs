@@ -37,7 +37,16 @@ public class MovingObject : MonoBehaviour {
         if(moveCurr > moveTimer)
         {
             stopCurr += Time.deltaTime;
-            if(stopCurr > stopTimer)
+            if (reverseDirection)
+            {
+                transform.position = PositionB.position;
+            }
+            else
+            {
+                transform.position = PositionA.position;
+            }
+
+            if (stopCurr > stopTimer)
             {
                 stopCurr = 0;
                 moveCurr = 0;
