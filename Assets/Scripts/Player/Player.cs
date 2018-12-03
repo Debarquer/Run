@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
     public Vector3 minVelocity;
 
     [Header("Walking")]
+    public Vector3 friction;
     public bool sprinting = false;
     public float speedMod = 2f;
     public float speed = 6;
@@ -222,6 +223,12 @@ public class Player : MonoBehaviour {
         {
             isRunning = false;
         }
+
+        float x = GetComponent<Rigidbody>().velocity.x;
+        float z = GetComponent<Rigidbody>().velocity.z;
+        x /= friction.x;
+        z /= friction.z;
+        GetComponent<Rigidbody>().velocity = new Vector3(x, velocity.y, z);
     }
 
     void AddForceMovement()
