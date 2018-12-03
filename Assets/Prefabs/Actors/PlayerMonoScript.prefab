@@ -299,9 +299,9 @@ MonoBehaviour:
   grounded: 1
   jumpPower: 12
   gravity: {x: 0, y: -30, z: 0}
-  maxVelocity: {x: 0, y: 25, z: 0}
-  minVelocity: {x: 0, y: -15, z: 0}
-  friction: {x: 0, y: 0, z: 0}
+  maxVelocity: {x: 10, y: 25, z: 10}
+  minVelocity: {x: -10, y: -15, z: -10}
+  friction: {x: 10, y: 0, z: 10}
   sprinting: 0
   speedMod: 2
   speed: 300

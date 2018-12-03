@@ -47330,18 +47330,43 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
         type: 2}
-      propertyPath: staminaStartRecoverMax
-      value: 2
+      propertyPath: maxVelocity.x
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
         type: 2}
-      propertyPath: staminaRecoverMax
+      propertyPath: maxVelocity.z
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 23757882524950984, guid: 6061a9eccffbc874182d0085c5ee6ac9,
+    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
         type: 2}
-      propertyPath: m_CastShadows
-      value: 1
+      propertyPath: minVelocity.x
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
+        type: 2}
+      propertyPath: minVelocity.z
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
+        type: 2}
+      propertyPath: scriptVelocty.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
+        type: 2}
+      propertyPath: scriptVelocty.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
+        type: 2}
+      propertyPath: friction.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
+        type: 2}
+      propertyPath: friction.z
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6061a9eccffbc874182d0085c5ee6ac9, type: 2}
