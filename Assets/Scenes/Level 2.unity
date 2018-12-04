@@ -119,7 +119,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh6432
+  m_Name: pb_Mesh41774
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -43149,6 +43149,11 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114086252990524692, guid: 63496fdc56449564481bef4d8b2b749a,
+        type: 2}
+      propertyPath: nextScene
+      value: Exit Scene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63496fdc56449564481bef4d8b2b749a, type: 2}

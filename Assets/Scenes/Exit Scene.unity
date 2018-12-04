@@ -5821,7 +5821,7 @@ Prefab:
     - target: {fileID: 114810541857922900, guid: cde610648d5f26744ae07698002809da,
         type: 2}
       propertyPath: tick
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cde610648d5f26744ae07698002809da, type: 2}
