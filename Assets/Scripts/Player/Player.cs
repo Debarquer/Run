@@ -140,10 +140,10 @@ public class Player : MonoBehaviour {
         {
             return;
         }
-        if (hitinfo.collider.isTrigger)
-        {
-            return;
-        }
+        //if (hitinfo.collider.isTrigger)
+        //{
+        //    return;
+        //}
 
 
         Ray rayA = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
