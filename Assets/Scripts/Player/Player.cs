@@ -233,7 +233,7 @@ public class Player : MonoBehaviour {
 
     void AddForceMovement()
     {
-        Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal") + Input.GetAxisRaw("DPadHorizontal"), 0, Input.GetAxisRaw("Vertical") + Input.GetAxisRaw("DPadVertical"));
 
         direction.Normalize();
         GetComponent<Rigidbody>().AddForce(direction * speed * Time.deltaTime, ForceMode.Impulse);
