@@ -136,10 +136,10 @@ public class Player : MonoBehaviour {
         RaycastHit hitinfo;
         Physics.Raycast(ray, out hitinfo);
 
-        if (hitinfo.collider == null)
-        {
-            return;
-        }
+        //if (hitinfo.collider == null)
+        //{
+        //    return;
+        //}
         //if (hitinfo.collider.isTrigger)
         //{
         //    return;
