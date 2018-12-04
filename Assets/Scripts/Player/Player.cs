@@ -58,7 +58,7 @@ public class Player : MonoBehaviour {
 
     private void CheckPlayerInput()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if ((Input.GetButton("KeyboardSprint") || Input.GetAxisRaw("ControllerSprint") > 0.19f))
         {
             StartSprint();
         }
@@ -95,10 +95,10 @@ public class Player : MonoBehaviour {
 
     void Stamina()
     {
-            //public float staminaStartRecoverMax = 1f;
-            //public float staminaStartRecover;
-            //public float staminaRecoverMax = 5f;
-            //public float staminaRecover;
+        //public float staminaStartRecoverMax = 1f;
+        //public float staminaStartRecover;
+        //public float staminaRecoverMax = 5f;
+        //public float staminaRecover;
         if (sprinting)
         {
             stamina -= staminaDecaySpeed * Time.deltaTime;
