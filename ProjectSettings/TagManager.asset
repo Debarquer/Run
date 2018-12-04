@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Doorway
+  - Music
   layers:
   - Default
   - TransparentFX
