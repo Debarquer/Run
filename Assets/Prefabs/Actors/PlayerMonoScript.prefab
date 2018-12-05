@@ -88,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1683014187991138}
   m_LocalRotation: {x: -0, y: 0.004866619, z: -0, w: -0.9999882}
-  m_LocalPosition: {x: -8.03, y: 5.26, z: -37.8}
+  m_LocalPosition: {x: -8.03, y: 5.26, z: -38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4775954130222390}
@@ -290,23 +290,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRunning: 0
-  maxStamina: 2
+  maxStamina: 0.75
   stamina: 10
   staminaGainSpeed: 0.5
   staminaDecaySpeed: 2
   maxStaminaColor: {r: 0.9467213, g: 1, b: 0, a: 0}
   noStaminaColor: {r: 0, g: 0, b: 0, a: 0}
+  runningVelocity: {x: 0, y: 0, z: 0}
   grounded: 1
   jumpPower: 12
   gravity: {x: 0, y: -30, z: 0}
   maxVelocity: {x: 10, y: 25, z: 10}
   minVelocity: {x: -10, y: -15, z: -10}
   friction: {x: 10, y: 0, z: 10}
-  sprinting: 0
-  speedMod: 2
+  dashing: 0
+  dashSpeedMod: 2
   speed: 300
   velocity: {x: 0, y: 0, z: 0}
-  scriptVelocty: {x: 0, y: 0, z: 0}
   nextScene: Main
 --- !u!119 &119111605247376802
 Projector:
