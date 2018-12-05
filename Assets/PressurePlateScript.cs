@@ -33,10 +33,12 @@ public class PressurePlateScript : MonoBehaviour {
         if (hasBeenTriggered && MultiTrigger)
         {
             triggerTimer += Time.deltaTime;
-            if(triggerTimer > triggerTimerMax)
+           // plate.GetComponent<Renderer>().material = triggered;
+            if (triggerTimer > triggerTimerMax)
             {
                 triggerTimer = 0;
                 hasBeenTriggered = false;
+                plate.GetComponent<Renderer>().material = Default;
             }
         }
     }
@@ -78,7 +80,7 @@ public class PressurePlateScript : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            plate.GetComponent<Renderer>().material = Default;
+            
         }
     }
 }
