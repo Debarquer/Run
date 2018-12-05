@@ -85,7 +85,7 @@ public class Player : MonoBehaviour {
 
     private void StartSprint()
     {
-        if (!dashing)
+        if (!dashing && maxStamina - stamina < 0.1f)
         {
             dashing = true;
             //speed *= speedMod;

@@ -32,19 +32,19 @@ public class MovingObject : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         moveCurr += Time.deltaTime;
         if(moveCurr > moveTimer)
         {
             stopCurr += Time.deltaTime;
-            if (reverseDirection)
-            {
-                transform.position = PositionB.position;
-            }
-            else
-            {
-                transform.position = PositionA.position;
-            }
+            //if (reverseDirection)
+            //{
+            //    transform.position = PositionB.position;
+            //}
+            //else
+            //{
+            //    transform.position = PositionA.position;
+            //}
 
             if (stopCurr > stopTimer)
             {
@@ -64,13 +64,22 @@ public class MovingObject : MonoBehaviour {
         }
         else
         {
+            //calculate what speed is needed to traverse from a to b in the correct time
             if (!reverseDirection)
             {
-                transform.localPosition = Vector3.Lerp(PositionB.localPosition, PositionA.localPosition, (moveCurr % moveTimer) / moveTimer);
+                float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimerMaxA;
+
+                transform.Translate((PositionA.position - transform.position).normalized * Time.deltaTime * moveSpeed);
+
+                //transform.localPosition = Vector3.Lerp(PositionB.localPosition, PositionA.localPosition, (moveCurr % moveTimer) / moveTimer);
             }
             else
             {
-                transform.localPosition = Vector3.Lerp(PositionA.localPosition, PositionB.localPosition, (moveCurr % moveTimer) / moveTimer);
+                float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimerMaxB;
+
+                transform.Translate((PositionB.position - transform.position).normalized * Time.deltaTime * moveSpeed);
+
+                //transform.localPosition = Vector3.Lerp(PositionA.localPosition, PositionB.localPosition, (moveCurr % moveTimer) / moveTimer);
             }
         }        
     }
