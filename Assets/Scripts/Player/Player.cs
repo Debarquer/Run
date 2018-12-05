@@ -14,7 +14,9 @@ public class Player : MonoBehaviour {
     public float staminaDecaySpeed = 1f;
 
     public Color maxStaminaColor;
-    public Color noStaminaColor;    
+    public Color noStaminaColor;
+
+    public Vector3 runningVelocity = Vector3.zero;
 
     MeshRenderer mr;
 
@@ -28,11 +30,11 @@ public class Player : MonoBehaviour {
 
     [Header("Walking")]
     public Vector3 friction;
-    public bool sprinting = false;
-    public float speedMod = 2f;
+    public bool dashing = false;
+    public float dashSpeedMod = 2f;
     public float speed = 6;
     public Vector3 velocity;
-    public Vector3 scriptVelocty;
+    //public Vector3 scriptVelocty;
 
     [Header("On death")]
     public string nextScene;
@@ -53,8 +55,21 @@ public class Player : MonoBehaviour {
 
         Stamina();
 
-        Jump();
-	}
+        if (!dashing)
+        {
+            Jump();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        FixedMovement();
+
+        if (!dashing)
+        {
+            FixedJump();
+        }
+    }
 
     private void CheckPlayerInput()
     {
@@ -70,27 +85,24 @@ public class Player : MonoBehaviour {
 
     private void StartSprint()
     {
-        if (!sprinting)
+        if (!dashing)
         {
-            sprinting = true;
-            speed *= speedMod;
+            dashing = true;
+            //speed *= speedMod;
+            runningVelocity = GetComponent<Rigidbody>().velocity;
+            runningVelocity.y = 0;
+            runningVelocity *= dashSpeedMod;
         }
     }
 
     private void EndSprint()
     {
-        if (sprinting)
+        if (dashing)
         {
-            sprinting = false;
-            speed /= speedMod;
+            dashing = false;
+            //speed /= speedMod;
+            runningVelocity = Vector3.zero;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        FixedJump();
-
-        FixedMovement();
     }
 
     void Stamina()
@@ -99,7 +111,7 @@ public class Player : MonoBehaviour {
         //public float staminaStartRecover;
         //public float staminaRecoverMax = 5f;
         //public float staminaRecover;
-        if (sprinting)
+        if (dashing)
         {
             stamina -= staminaDecaySpeed * Time.deltaTime;
             if (stamina <= 0)
@@ -212,6 +224,15 @@ public class Player : MonoBehaviour {
 
     void FixedMovement()
     {
+        if (dashing)
+        {
+            //Vector3 newSpeed = new Vector3(velocity.x * dashSpeedMod,
+            //                               0,
+            //                               velocity.z * dashSpeedMod);
+            GetComponent<Rigidbody>().velocity = runningVelocity;
+            return;
+        }
+
         AddForceMovement();
 
         velocity = GetComponent<Rigidbody>().velocity;
@@ -226,8 +247,19 @@ public class Player : MonoBehaviour {
 
         float x = GetComponent<Rigidbody>().velocity.x;
         float z = GetComponent<Rigidbody>().velocity.z;
+
         x /= friction.x;
         z /= friction.z;
+
+        if(x < 0.1f)
+        {
+            x = 0;
+        }
+        if (z < 0.1f)
+        {
+            z = 0;
+        }
+
         GetComponent<Rigidbody>().velocity = new Vector3(x, velocity.y, z);
     }
 
