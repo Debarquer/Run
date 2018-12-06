@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour {
     public GameObject MainMenu;
@@ -20,6 +21,8 @@ public class MainMenuController : MonoBehaviour {
     {
         MainMenu.SetActive(false);
         Debug.Log("Play");
+        SceneManager.LoadScene("Main");
+        
     }
     public void Options()
     {
