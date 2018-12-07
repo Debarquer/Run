@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 64725787621770756}
   - component: {fileID: 114920843715854046}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Pusher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,11 +533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PositionA: {fileID: 4379917244186758}
   PositionB: {fileID: 4649430517965022}
-  reverseDirection: 0
-  moveTimerMaxA: 4
-  moveTimerMaxB: 0.5
-  moveTimer: 5
-  moveCurr: 0
-  stopTimer: 2
-  stopCurr: 0
-  speed: 0
+  RepeatOption: 0
+  isActive: 0
+  pressureplateScript: {fileID: 0}
+  movingObjectPatterns: []
