@@ -23,15 +23,19 @@ public class MovingObject : MonoBehaviour {
     public bool isActive = false;
     public PressurePlateScript pressureplateScript;
 
-    public int currentPattern = 0;
+    int currentPattern = 0;
     public MovingObjectPattern[] movingObjectPatterns;
 
     [System.Serializable]
     public class MovingObjectPattern
     {
+        [Tooltip("Amount of time to move from point B to point A. Common values between 0.5 and 2")]
         public float moveTimerMaxA;
+        [Tooltip("Amount of time to move from point A to point B. Common values between 0.5 and 2")]
         public float moveTimerMaxB;
+        [Tooltip("Amount of time to stop after reaching A.")]
         public float stopTimerA;
+        [Tooltip("Amount of time to stop after reaching B.")]
         public float stopTimerB;
     }
 
@@ -56,8 +60,7 @@ public class MovingObject : MonoBehaviour {
         else
         {
             pressurePlateActivateOption = false;
-            pressureplateScript.OnEnter += Activate;
-            isActive = false;
+            isActive = true;
         }
 
         StartMoving();
