@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour {
 
    void Start()
     {
-     playerObj = GameObject.FindGameObjectWithTag("Player");
+        playerObj = GameObject.FindGameObjectWithTag("Player");
     }
 
     void LateUpdate()

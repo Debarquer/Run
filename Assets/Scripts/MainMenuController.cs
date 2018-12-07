@@ -9,12 +9,14 @@ public class MainMenuController : MonoBehaviour {
     public GameObject ExtrasMenu;
     public GameObject AboutMenu;
     public GameObject ExitMenu;
+    MoveCamera main;
     private void Start()
     {
-        ExtrasMenu.SetActive(false);
-        OptionsMenu.SetActive(false);
-        AboutMenu.SetActive(false);
-        ExitMenu.SetActive(false);
+        //ExtrasMenu.SetActive(false);
+        //OptionsMenu.SetActive(false);
+        //AboutMenu.SetActive(false);
+        //ExitMenu.SetActive(false);
+        main = Camera.main.gameObject.GetComponent<MoveCamera>();
     }
 
     public void Play()
@@ -28,6 +30,7 @@ public class MainMenuController : MonoBehaviour {
     {
         MainMenu.SetActive (false);
         OptionsMenu.SetActive(true);
+        main.MoveToOptions();
 
         Debug.Log("Options");
     }
@@ -35,6 +38,7 @@ public class MainMenuController : MonoBehaviour {
     {
         MainMenu.SetActive(false);
         ExtrasMenu.SetActive(true);
+        main.MoveToExtras();
         Debug.Log("Extras");
     }
     public void About()
