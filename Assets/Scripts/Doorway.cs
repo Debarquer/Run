@@ -20,7 +20,7 @@ public class Doorway : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             targetRoom.SetActive(true);
-            //doorModel.SetActive(true);
+            doorModel.SetActive(true);
         }
     }
 }
