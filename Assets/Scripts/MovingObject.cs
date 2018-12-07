@@ -7,36 +7,64 @@ public class MovingObject : MonoBehaviour {
 
     public Transform PositionA;
     public Transform PositionB;
-    public bool reverseDirection;
+    bool reverseDirection;
 
-    public float moveTimerMaxA = 2f;
-    public float moveTimerMaxB = 1f;
-    public float moveTimer = 5f;
-    public float moveCurr = 0f;
+    //public float moveTimerMaxA = 2f;
+    //public float moveTimerMaxB = 1f;
+    float moveTimer = 5f;
+    float moveCurr = 0f;
 
-    public float stopTimer = 2f;
-    public float stopCurr;
+    float stopTimer = 2f;
+    float stopCurr;
 
-    public float speed = 0f;
-    public bool PressurePlateActivateOption;
+    float speed = 0f;
+    bool pressurePlateActivateOption;
     public bool RepeatOption;
     public bool isActive = false;
     public PressurePlateScript pressureplateScript;
 
+    public int currentPattern = 0;
+    public MovingObjectPattern[] movingObjectPatterns;
 
+    [System.Serializable]
+    public class MovingObjectPattern
+    {
+        public float moveTimerMaxA;
+        public float moveTimerMaxB;
+        public float stopTimerA;
+        public float stopTimerB;
+    }
 
 
     // Use this for initialization
     void Start () {
 
-        if (PressurePlateActivateOption)
+        if (movingObjectPatterns == null || movingObjectPatterns.Length < 1)
         {
+            Debug.Log("Moving object error: " + name + " has no pattern");
+            return;
+        }
+
+        currentPattern = 0;
+
+        if(pressureplateScript != null)
+        {
+            pressurePlateActivateOption = true;
             pressureplateScript.OnEnter += Activate;
             isActive = false;
         }
+        else
+        {
+            pressurePlateActivateOption = false;
+            pressureplateScript.OnEnter += Activate;
+            isActive = false;
+        }
+
         StartMoving();
-        
-	}
+
+        stopTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].stopTimerA;
+        moveTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].moveTimerMaxA;
+    }
 
     private void Activate()
     {
@@ -65,12 +93,18 @@ public class MovingObject : MonoBehaviour {
             return;
         }
 
+        if(movingObjectPatterns == null || movingObjectPatterns.Length < 1)
+        {
+            Debug.Log("Moving object error: " + name + " has no pattern");
+            return;
+        }
+
         if (RepeatOption == true) { 
+
             moveCurr += Time.deltaTime;
+
             if (moveCurr > moveTimer)
             {
-                stopCurr += Time.deltaTime;
-
                 if (reverseDirection)
                 {
                     transform.position = PositionB.position;
@@ -80,18 +114,24 @@ public class MovingObject : MonoBehaviour {
                     transform.position = PositionA.position;
                 }
 
-                    if (stopCurr > stopTimer)
+                stopCurr += Time.deltaTime;
+                if (stopCurr > stopTimer)
                 {
                     stopCurr = 0;
                     moveCurr = 0;
+
                     if (reverseDirection)
                     {
-                        moveTimer = moveTimerMaxA;
+                        stopTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].stopTimerA;
+                        moveTimer = movingObjectPatterns[currentPattern%movingObjectPatterns.Length].moveTimerMaxA;
                         reverseDirection = false;
+
+                        currentPattern++;
                     }
                     else
                     {
-                        moveTimer = moveTimerMaxB;
+                        stopTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].stopTimerB;
+                        moveTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].moveTimerMaxB;
                         reverseDirection = true;
                     }
                 }
@@ -101,7 +141,7 @@ public class MovingObject : MonoBehaviour {
                 //calculate what speed is needed to traverse from a to b in the correct time
                 if (!reverseDirection)
                 {
-                    float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimerMaxA;
+                    float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimer;
 
                     transform.Translate((PositionA.position - transform.position).normalized * Time.deltaTime * moveSpeed);
 
@@ -109,7 +149,7 @@ public class MovingObject : MonoBehaviour {
                 }
                 else
                 {
-                    float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimerMaxB;
+                    float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimer;
 
                     transform.Translate((PositionB.position - transform.position).normalized * Time.deltaTime * moveSpeed);
 
@@ -122,7 +162,7 @@ public class MovingObject : MonoBehaviour {
             //calculate what speed is needed to traverse from a to b in the correct time
             if (!reverseDirection)
             {
-                float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimerMaxA;
+                float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimer;
 
                 transform.Translate((PositionA.position - transform.position).normalized * Time.deltaTime * moveSpeed);
 
@@ -130,7 +170,7 @@ public class MovingObject : MonoBehaviour {
             }
             else
             {
-                float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimerMaxB;
+                float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimer;
 
                 transform.Translate((PositionB.position - transform.position).normalized * Time.deltaTime * moveSpeed);
 
