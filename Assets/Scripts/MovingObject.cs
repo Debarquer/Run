@@ -41,7 +41,7 @@ public class MovingObject : MonoBehaviour {
 
         if (movingObjectPatterns == null || movingObjectPatterns.Length < 1)
         {
-            Debug.Log("Moving object error: " + name + " has no pattern");
+            Debug.LogError("Moving object error: " + name + " has no pattern");
             return;
         }
 
@@ -95,7 +95,7 @@ public class MovingObject : MonoBehaviour {
 
         if(movingObjectPatterns == null || movingObjectPatterns.Length < 1)
         {
-            Debug.Log("Moving object error: " + name + " has no pattern");
+            Debug.LogError("Moving object error: " + name + " has no pattern");
             return;
         }
 
