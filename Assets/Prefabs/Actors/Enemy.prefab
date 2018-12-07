@@ -19,7 +19,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4941987958582790}
-  - component: {fileID: 135215690793820194}
   - component: {fileID: 114072932992248776}
   - component: {fileID: 195203634324085708}
   m_Layer: 0
@@ -39,9 +38,10 @@ GameObject:
   - component: {fileID: 4831949309613292}
   - component: {fileID: 33669107715788394}
   - component: {fileID: 23815136081065442}
+  - component: {fileID: 135289932161342496}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067605585847470}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: 5.5, z: -41.65}
+  m_LocalPosition: {x: -8, y: 5.5, z: -42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4831949309613292}
@@ -128,18 +128,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alignSpeed: 0.75
   moveSpeed: 5
---- !u!135 &135215690793820194
+--- !u!135 &135289932161342496
 SphereCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1067605585847470}
+  m_GameObject: {fileID: 1451861816837610}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195203634324085708
 NavMeshAgent:
   m_ObjectHideFlags: 1
