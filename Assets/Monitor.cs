@@ -12,7 +12,7 @@ public class Monitor : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        GetComponent<SpriteRenderer>().material = materials[id % materials.Length];
+        GetComponent<MeshRenderer>().material = materials[id % materials.Length];
     }
 	
 	// Update is called once per frame
