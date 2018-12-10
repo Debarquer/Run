@@ -6,10 +6,11 @@ public class Doorway : MonoBehaviour {
 
     public GameObject targetRoom;
     public GameObject doorModel;
+    public GameObject lightEffect;
 
 	// Use this for initialization
 	void Start () {
-        doorModel.SetActive(false);
+        //doorModel.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -20,7 +21,11 @@ public class Doorway : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             targetRoom.SetActive(true);
-            doorModel.SetActive(true);
+            if (lightEffect != null) {
+                lightEffect.SetActive(false);
+            }
+            //doorModel.SetActive(true);
+
         }
     }
 }
