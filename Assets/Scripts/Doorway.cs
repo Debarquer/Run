@@ -21,7 +21,9 @@ public class Doorway : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             targetRoom.SetActive(true);
-            lightEffect.SetActive(false);
+            if (lightEffect != null) {
+                lightEffect.SetActive(false);
+            }
             //doorModel.SetActive(true);
 
         }
