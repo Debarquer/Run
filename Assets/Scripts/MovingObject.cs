@@ -43,7 +43,7 @@ public class MovingObject : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        if (movingObjectPatterns == null || movingObjectPatterns.Length < 1)
+        if (RepeatOption == true && (movingObjectPatterns == null || movingObjectPatterns.Length < 1))
         {
             Debug.LogError("Moving object error: " + name + " has no pattern");
             return;
@@ -96,13 +96,13 @@ public class MovingObject : MonoBehaviour {
             return;
         }
 
-        if(movingObjectPatterns == null || movingObjectPatterns.Length < 1)
-        {
-            Debug.LogError("Moving object error: " + name + " has no pattern");
-            return;
-        }
+        if (RepeatOption == true) {
 
-        if (RepeatOption == true) { 
+            if (movingObjectPatterns == null || movingObjectPatterns.Length < 1)
+            {
+                Debug.LogError("Moving object error: " + name + " has no pattern");
+                return;
+            }
 
             moveCurr += Time.deltaTime;
 
