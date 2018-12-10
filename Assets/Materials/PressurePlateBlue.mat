@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: PressurePlateDefault
+  m_Name: PressurePlateBlue
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 1
@@ -72,5 +72,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0.2970171, b: 1, a: 1}
-    - _EmissionColor: {r: 0.21221925, g: 0.8100103, b: 1.39772, a: 1}
+    - _Color: {r: 0, g: 0.7563188, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0.98717654, b: 2.1185474, a: 1}
