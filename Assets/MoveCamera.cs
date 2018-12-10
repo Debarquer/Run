@@ -15,14 +15,15 @@ public class MoveCamera : MonoBehaviour {
     public void MoveToMainMenu()
     {
         //StartCoroutine(SetDestination(0));
-        transform.position = destinations[0].transform.position;
-        transform.rotation = destinations[0].transform.rotation;
+        //transform.position = destinations[0].transform.position;
+        //transform.rotation = destinations[0].transform.rotation;
 
     }
     public void MoveToOptions()
     {
-        transform.position = destinations[1].transform.position;
-        transform.rotation = destinations[1].transform.rotation;
+        StartCoroutine(SetDestination(1));
+        //transform.position = destinations[1].transform.position;
+        //transform.rotation = destinations[1].transform.rotation;
     }
     public void MoveToExtras()
     {
@@ -38,22 +39,19 @@ public class MoveCamera : MonoBehaviour {
 
     }
 
-    IEnumerator SetDestination(int i)
+    IEnumerator SetDestination(int index)
     {
         Vector3 startPos = transform.position;
         Quaternion startRot = transform.rotation;
-        float timeMax = Time.deltaTime + speed;
-        
 
-        while (Vector3.Distance(transform.position, destinations[i].transform.position) > 0.01f) {
-            Debug.Log(("SetDestination inside loop" + (timeMax - Time.deltaTime) / speed));
-            transform.position = Vector3.Lerp(startPos, destinations[i].transform.position, (timeMax - Time.deltaTime)/speed);
-            transform.rotation = Quaternion.Lerp(startRot, destinations[i].transform.rotation, (timeMax - Time.deltaTime) / speed);
-            yield return new WaitForSeconds(0.1f);
-            
+        for (float i = 0; i < 1; i += Time.deltaTime)
+        {
+            transform.position = Vector3.Lerp(startPos, destinations[index].transform.position, i);
+            transform.rotation = Quaternion.Lerp(startRot, destinations[index].transform.rotation, i);
+
+            yield return null;
         }
     }
-
 }
 
 //GameObject playerObj;
