@@ -14,7 +14,7 @@ public class MoveCamera : MonoBehaviour {
     }
     public void MoveToMainMenu()
     {
-        //StartCoroutine(SetDestination(0));
+        StartCoroutine(SetDestination(0));
         //transform.position = destinations[0].transform.position;
         //transform.rotation = destinations[0].transform.rotation;
 
@@ -27,12 +27,13 @@ public class MoveCamera : MonoBehaviour {
     }
     public void MoveToExtras()
     {
-        transform.position = destinations[2].transform.position;
-        transform.rotation = destinations[2].transform.rotation;
+        StartCoroutine(SetDestination(2));
+        //transform.position = destinations[2].transform.position;
+        //transform.rotation = destinations[2].transform.rotation;
     }
     public void MoveToAbout()
     {
-
+        StartCoroutine(SetDestination(3));
     }
     public void MoveToExit()
     {
