@@ -6,7 +6,12 @@ using UnityEngine;
 public class OptionsController : MonoBehaviour {
     public GameObject MainMenu;
     public GameObject OptionsMenu;
-public void Button1()
+    MoveCamera main;
+    private void Start()
+    {
+        main = Camera.main.gameObject.GetComponent<MoveCamera>();
+    }
+    public void Button1()
     {
 
     }
@@ -22,5 +27,7 @@ public void Button1()
     {
         MainMenu.SetActive(true);
         OptionsMenu.SetActive(false);
+        main.MoveToMainMenu();
+        
     }
 }

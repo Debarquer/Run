@@ -53,6 +53,12 @@ public class MainMenuController : MonoBehaviour {
         ExitMenu.SetActive(true);
         Debug.Log("Exit");
     }
+    public void Back()
+    {
+        MainMenu.SetActive(true);
+        main.MoveToMainMenu();
+
+    }
 
 
 }
