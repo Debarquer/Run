@@ -10,7 +10,7 @@ public class PressurePlateScript : MonoBehaviour {
     float triggerTimer = 0;
 
     public Material triggered;
-    public Material Default;
+    public Material unTriggered;
     GameObject plate;
 
     public delegate void PressurePlateEnterDelegate();
@@ -38,7 +38,7 @@ public class PressurePlateScript : MonoBehaviour {
             {
                 triggerTimer = 0;
                 hasBeenTriggered = false;
-                plate.GetComponent<Renderer>().material = Default;
+                transform.parent.GetComponentInChildren<MeshRenderer>().material = unTriggered;
             }
         }
     }
@@ -67,9 +67,7 @@ public class PressurePlateScript : MonoBehaviour {
 
             if (other.tag == "Player")
             {
-
-                plate = GameObject.FindGameObjectWithTag("Plate");
-                plate.GetComponent<Renderer>().material = triggered;
+                transform.parent.GetComponentInChildren<MeshRenderer>().material = triggered;
 
             }
 
