@@ -7,12 +7,16 @@ public class MovingObject : MonoBehaviour {
 
     public Transform PositionA;
     public Transform PositionB;
-    bool reverseDirection;
+    [Tooltip("Cannot be modified in the inspector.")]
+    public bool reverseDirection;
 
     //public float moveTimerMaxA = 2f;
     //public float moveTimerMaxB = 1f;
-    float moveTimer = 5f;
-    float moveCurr = 0f;
+
+    [Tooltip("Cannot be modified in the inspector.")]
+    public float moveTimer = 5f;
+    [Tooltip("Cannot be modified in the inspector.")]
+    public float moveCurr = 0f;
 
     float stopTimer = 2f;
     float stopCurr;

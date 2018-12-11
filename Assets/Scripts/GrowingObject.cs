@@ -22,6 +22,8 @@ public class GrowingObject : MonoBehaviour {
 
     public float growthSizeIntervall = 1;
 
+    public bool isTriggered = false;
+
 	// Use this for initialization
 	void Start () {
         intervallScale = transform.localScale;
@@ -43,11 +45,14 @@ public class GrowingObject : MonoBehaviour {
                 return;
             }
         }
-        
-        if( transform.localScale.x < endScaleX ||
+
+        if (isTriggered)
+        {
+            if (transform.localScale.x < endScaleX ||
             transform.localScale.y < endScaleY ||
             transform.localScale.z < endScaleZ)
-        notACoRoutine();
+                notACoRoutine();
+        }
     }
 
     public void notACoRoutine()
