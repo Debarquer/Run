@@ -65,11 +65,7 @@ public class PressurePlateScript : MonoBehaviour {
 
             Debug.Log("Help I am triggered");
 
-            if (other.tag == "Player")
-            {
-                transform.parent.GetComponentInChildren<MeshRenderer>().material = triggered;
-
-            }
+            transform.parent.GetComponentInChildren<MeshRenderer>().material = triggered;
 
             OnEnter();
         }
