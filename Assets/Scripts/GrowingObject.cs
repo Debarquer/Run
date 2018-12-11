@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,16 +17,29 @@ public class GrowingObject : MonoBehaviour {
     Vector3 startPos;
     Vector3 intervallScale;
 
-    bool hasPaused = false;
+    public bool hasPaused = false;
     public float pauseTimerMax = 2f;
     float pauseTimerCurr = 0;
 
     public float growthSizeIntervall = 1;
 
+    public bool isTriggered = false;
+    public PressurePlateScript pressurePlateScript;
+
 	// Use this for initialization
 	void Start () {
         intervallScale = transform.localScale;
         startPos = transform.position - new Vector3((transform.localScale.x-1)/2,(transform.localScale.y-1)/2, (transform.localScale.z-1)/2);
+
+        if (pressurePlateScript != null)
+        {
+            pressurePlateScript.OnEnter += Activate;
+            isTriggered = false;
+        }
+        else
+        {
+            isTriggered = true;
+        }
     }
 
     // Update is called once per frame
@@ -43,11 +57,19 @@ public class GrowingObject : MonoBehaviour {
                 return;
             }
         }
-        
-        if( transform.localScale.x < endScaleX ||
+
+        if (isTriggered)
+        {
+            if (transform.localScale.x < endScaleX ||
             transform.localScale.y < endScaleY ||
             transform.localScale.z < endScaleZ)
-        notACoRoutine();
+                notACoRoutine();
+        }
+    }
+
+    private void Activate()
+    {
+        isTriggered = true;
     }
 
     public void notACoRoutine()

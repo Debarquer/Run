@@ -1284,7 +1284,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-523382
+  m_Name: pb_Mesh-1103790
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -18973,7 +18973,7 @@ Prefab:
     - target: {fileID: 114920843715854046, guid: 7ae5295e79743074080e0c97578b3484,
         type: 2}
       propertyPath: RepeatOption
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114920843715854046, guid: 7ae5295e79743074080e0c97578b3484,
         type: 2}
