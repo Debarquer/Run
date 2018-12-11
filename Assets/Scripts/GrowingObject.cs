@@ -37,7 +37,13 @@ public class GrowingObject : MonoBehaviour {
         if(pressurePlateScript != null)
         {
             pressurePlateScript.OnEnter += Activate;
+            isTriggered = false;
         }
+        else
+        {
+            isTriggered = true;
+        }
+
         if (!hasPaused)
         {
             pauseTimerCurr += Time.deltaTime;
