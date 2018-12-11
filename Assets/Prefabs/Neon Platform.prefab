@@ -845,7 +845,7 @@ MonoBehaviour:
   MultiTrigger: 0
   triggerTimerMax: 1
   triggered: {fileID: 2100000, guid: ed30ab72002fde542a1adf404bfe86ba, type: 2}
-  Default: {fileID: 2100000, guid: c7115f2634f5f314a95ad4f7c77ab6c7, type: 2}
+  unTriggered: {fileID: 0}
 --- !u!114 &114566144577229532
 MonoBehaviour:
   m_ObjectHideFlags: 1
