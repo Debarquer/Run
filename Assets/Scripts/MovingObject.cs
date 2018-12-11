@@ -96,7 +96,8 @@ public class MovingObject : MonoBehaviour {
             return;
         }
 
-        if (RepeatOption == true) {
+        if (RepeatOption == true)
+        {
 
             if (movingObjectPatterns == null || movingObjectPatterns.Length < 1)
             {
@@ -126,7 +127,7 @@ public class MovingObject : MonoBehaviour {
                     if (reverseDirection)
                     {
                         stopTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].stopTimerA;
-                        moveTimer = movingObjectPatterns[currentPattern%movingObjectPatterns.Length].moveTimerMaxA;
+                        moveTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].moveTimerMaxA;
                         reverseDirection = false;
 
                         currentPattern++;
@@ -162,22 +163,31 @@ public class MovingObject : MonoBehaviour {
         }
         else
         {
-            //calculate what speed is needed to traverse from a to b in the correct time
-            if (!reverseDirection)
+            if (moveCurr < moveTimer)
             {
-                float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimer;
+                moveCurr += Time.deltaTime;
 
-                transform.Translate((PositionA.position - transform.position).normalized * Time.deltaTime * moveSpeed);
+                //calculate what speed is needed to traverse from a to b in the correct time
+                if (!reverseDirection)
+                {
+                    float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimer;
 
-                //transform.localPosition = Vector3.Lerp(PositionB.localPosition, PositionA.localPosition, (moveCurr % moveTimer) / moveTimer);
+                    transform.Translate((PositionA.position - transform.position).normalized * Time.deltaTime * moveSpeed);
+
+                    //transform.localPosition = Vector3.Lerp(PositionB.localPosition, PositionA.localPosition, (moveCurr % moveTimer) / moveTimer);
+                }
+                else
+                {
+                    float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimer;
+
+                    transform.Translate((PositionB.position - transform.position).normalized * Time.deltaTime * moveSpeed);
+
+                    //transform.localPosition = Vector3.Lerp(PositionA.localPosition, PositionB.localPosition, (moveCurr % moveTimer) / moveTimer);
+                }
             }
             else
             {
-                float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimer;
-
-                transform.Translate((PositionB.position - transform.position).normalized * Time.deltaTime * moveSpeed);
-
-                //transform.localPosition = Vector3.Lerp(PositionA.localPosition, PositionB.localPosition, (moveCurr % moveTimer) / moveTimer);
+                transform.position = PositionA.position;
             }
         }        
     }
