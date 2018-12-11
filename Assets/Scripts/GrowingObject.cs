@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +24,7 @@ public class GrowingObject : MonoBehaviour {
     public float growthSizeIntervall = 1;
 
     public bool isTriggered = false;
+    public PressurePlateScript pressurePlateScript;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +34,10 @@ public class GrowingObject : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        if(pressurePlateScript != null)
+        {
+            pressurePlateScript.OnEnter += Activate;
+        }
         if (!hasPaused)
         {
             pauseTimerCurr += Time.deltaTime;
@@ -53,6 +59,11 @@ public class GrowingObject : MonoBehaviour {
             transform.localScale.z < endScaleZ)
                 notACoRoutine();
         }
+    }
+
+    private void Activate()
+    {
+        isTriggered = true;
     }
 
     public void notACoRoutine()
