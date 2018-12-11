@@ -17,7 +17,7 @@ public class GrowingObject : MonoBehaviour {
     Vector3 startPos;
     Vector3 intervallScale;
 
-    bool hasPaused = false;
+    public bool hasPaused = false;
     public float pauseTimerMax = 2f;
     float pauseTimerCurr = 0;
 
@@ -30,11 +30,8 @@ public class GrowingObject : MonoBehaviour {
 	void Start () {
         intervallScale = transform.localScale;
         startPos = transform.position - new Vector3((transform.localScale.x-1)/2,(transform.localScale.y-1)/2, (transform.localScale.z-1)/2);
-    }
 
-    // Update is called once per frame
-    void Update () {
-        if(pressurePlateScript != null)
+        if (pressurePlateScript != null)
         {
             pressurePlateScript.OnEnter += Activate;
             isTriggered = false;
@@ -43,7 +40,10 @@ public class GrowingObject : MonoBehaviour {
         {
             isTriggered = true;
         }
+    }
 
+    // Update is called once per frame
+    void Update () {
         if (!hasPaused)
         {
             pauseTimerCurr += Time.deltaTime;

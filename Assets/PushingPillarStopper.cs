@@ -9,8 +9,7 @@ public class PushingPillarStopper : MonoBehaviour {
         MovingObject mo = collision.gameObject.GetComponent<MovingObject>();
         if(mo != null)
         {
-            //mo.moveCurr = mo.moveTimer;
-            //mo.reverseDirection = true;
+            mo.enabled = false;
         }
     }
 }
