@@ -6,6 +6,8 @@ public class FallingCubeTriggerScript : MonoBehaviour {
     public GameObject[] thoseAboutToFall;
     public bool ApplyForce;
     public bool TriggerOnce;
+    [SerializeField] bool sprayRight;
+    [SerializeField] bool sprayLeft;
 
    
     private void OnTriggerEnter(Collider other)
@@ -20,8 +22,17 @@ public class FallingCubeTriggerScript : MonoBehaviour {
                     rb.AddComponent<Rigidbody>();
                     if (ApplyForce)
                     {
-                        rb.GetComponent<Rigidbody>().AddForce(transform.up * 650);
-                        rb.GetComponent<Rigidbody>().AddForce(transform.right * 20);
+                        Rigidbody rigidbody = rb.GetComponent<Rigidbody>();
+                        rigidbody.AddForce(transform.up * 650);
+                        if (sprayRight)
+                        {
+                        rigidbody.AddForce(transform.right * 100);
+                        }
+                        if (sprayLeft)
+                        {
+                        rigidbody.AddForce(transform.forward * 100);
+                        }
+                        rigidbody.mass = 4;
                     }
 
                 }
