@@ -47,22 +47,19 @@ public class MovingObject : MonoBehaviour {
     // Use this for initialization
     void Start () {
 
-        if (RepeatOption == true && (movingObjectPatterns == null || movingObjectPatterns.Length < 1))
-        {
+        if (RepeatOption == true && (movingObjectPatterns == null || movingObjectPatterns.Length < 1)){
             Debug.LogError("Moving object error: " + name + " has no pattern");
             return;
         }
 
         currentPattern = 0;
 
-        if(pressureplateScript != null)
-        {
+        if(pressureplateScript != null){
             pressurePlateActivateOption = true;
             pressureplateScript.OnEnter += Activate;
             isActive = false;
         }
-        else
-        {
+        else {
             pressurePlateActivateOption = false;
             isActive = true;
         }
@@ -81,12 +78,10 @@ public class MovingObject : MonoBehaviour {
     void StartMoving()
     {
         speed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimer;
-        if (!reverseDirection)
-        {
+        if (!reverseDirection){
             transform.position = PositionB.transform.position;
         }
-        else
-        {
+        else{
             transform.position = PositionA.transform.position;
         }
 
@@ -95,68 +90,56 @@ public class MovingObject : MonoBehaviour {
     // Update is called once per frame
 
     void FixedUpdate () {
-        if (!isActive)
-        {
+        if (!isActive){
             return;
         }
 
-        if (RepeatOption == true)
-        {
+        if (RepeatOption == true){
 
-            if (movingObjectPatterns == null || movingObjectPatterns.Length < 1)
-            {
+            if (movingObjectPatterns == null || movingObjectPatterns.Length < 1){
                 Debug.LogError("Moving object error: " + name + " has no pattern");
                 return;
             }
 
             moveCurr += Time.deltaTime;
 
-            if (moveCurr > moveTimer)
-            {
-                if (reverseDirection)
-                {
+            if (moveCurr > moveTimer){
+                if (reverseDirection){
                     transform.position = PositionB.position;
                 }
-                else
-                {
+                else {
                     transform.position = PositionA.position;
                 }
 
                 stopCurr += Time.deltaTime;
-                if (stopCurr > stopTimer)
-                {
+                if (stopCurr > stopTimer){
                     stopCurr = 0;
                     moveCurr = 0;
 
-                    if (reverseDirection)
-                    {
+                    if (reverseDirection){
                         stopTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].stopTimerA;
                         moveTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].moveTimerMaxA;
                         reverseDirection = false;
 
                         currentPattern++;
                     }
-                    else
-                    {
+                    else {
                         stopTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].stopTimerB;
                         moveTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].moveTimerMaxB;
                         reverseDirection = true;
                     }
                 }
             }
-            else
-            {
+            else{
                 //calculate what speed is needed to traverse from a to b in the correct time
-                if (!reverseDirection)
-                {
+                if (!reverseDirection){
                     float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimer;
 
                     transform.Translate((PositionA.position - transform.position).normalized * Time.deltaTime * moveSpeed);
 
                     //transform.localPosition = Vector3.Lerp(PositionB.localPosition, PositionA.localPosition, (moveCurr % moveTimer) / moveTimer);
                 }
-                else
-                {
+                else{
                     float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimer;
 
                     transform.Translate((PositionB.position - transform.position).normalized * Time.deltaTime * moveSpeed);
@@ -172,16 +155,14 @@ public class MovingObject : MonoBehaviour {
                 moveCurr += Time.deltaTime;
 
                 //calculate what speed is needed to traverse from a to b in the correct time
-                if (!reverseDirection)
-                {
+                if (!reverseDirection){
                     float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimer;
 
                     transform.Translate((PositionA.position - transform.position).normalized * Time.deltaTime * moveSpeed);
 
                     //transform.localPosition = Vector3.Lerp(PositionB.localPosition, PositionA.localPosition, (moveCurr % moveTimer) / moveTimer);
                 }
-                else
-                {
+                else{
                     float moveSpeed = Vector3.Distance(PositionA.position, PositionB.position) / moveTimer;
 
                     transform.Translate((PositionB.position - transform.position).normalized * Time.deltaTime * moveSpeed);
@@ -189,8 +170,7 @@ public class MovingObject : MonoBehaviour {
                     //transform.localPosition = Vector3.Lerp(PositionA.localPosition, PositionB.localPosition, (moveCurr % moveTimer) / moveTimer);
                 }
             }
-            else
-            {
+            else{
                 transform.position = PositionA.position;
             }
         }        

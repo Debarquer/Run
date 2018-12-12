@@ -279,4 +279,13 @@ public class Player : MonoBehaviour {
             UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene, UnityEngine.SceneManagement.LoadSceneMode.Single);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.parent.name == "PushingPillar")
+        {
+            Debug.Log("Collided with pillar");
+            GetComponent<Rigidbody>().AddForce(collision.transform.right * 100, ForceMode.Impulse);
+        }
+    }
 }
