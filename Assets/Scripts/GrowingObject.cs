@@ -12,7 +12,7 @@ public class GrowingObject : MonoBehaviour {
     public float endScaleZ = 1f;
 
     public float growthTimeMax = 1f;
-    float growthTimeCurr = 0;
+    public float growthTimeCurr = 0;
 
     Vector3 startPos;
     Vector3 intervallScale;
@@ -28,6 +28,7 @@ public class GrowingObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
         intervallScale = transform.localScale;
         startPos = transform.position - new Vector3((transform.localScale.x-1)/2,(transform.localScale.y-1)/2, (transform.localScale.z-1)/2);
 
@@ -61,8 +62,8 @@ public class GrowingObject : MonoBehaviour {
         if (isTriggered)
         {
             if (transform.localScale.x < endScaleX ||
-            transform.localScale.y < endScaleY ||
-            transform.localScale.z < endScaleZ)
+                transform.localScale.y < endScaleY ||
+                transform.localScale.z < endScaleZ)
                 notACoRoutine();
         }
     }
@@ -79,7 +80,12 @@ public class GrowingObject : MonoBehaviour {
         {
             growthTimeCurr = 0;
             hasPaused = false;
-            intervallScale = transform.localScale;
+
+            //intervallScale = transform.localScale;
+
+            intervallScale.x = Mathf.Round(transform.localScale.x);
+            intervallScale.y = Mathf.Round(transform.localScale.y);
+            intervallScale.z = Mathf.Round(transform.localScale.z);
         }
 
         float newScaleX = intervallScale.x;
@@ -92,6 +98,8 @@ public class GrowingObject : MonoBehaviour {
             newScaleY = Mathf.Lerp(intervallScale.y, intervallScale.x + growthSizeIntervall, growthTimeCurr / growthTimeMax);
         if(transform.localScale.z < endScaleZ)
             newScaleZ = Mathf.Lerp(intervallScale.z, intervallScale.x + growthSizeIntervall, growthTimeCurr / growthTimeMax);
+
+        Debug.Log("New scale z: " + newScaleZ);
 
         transform.localScale = new Vector3(newScaleX, newScaleY, newScaleZ);
         transform.position = startPos + new Vector3((newScaleX - 1) / 2, (newScaleY - 1) / 2, (newScaleZ - 1) / 2);

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PushingPillarStopper : MonoBehaviour {
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        MovingObject mo = collision.gameObject.GetComponent<MovingObject>();
-        if(mo != null)
+        MovingObject mo = other.gameObject.GetComponent<MovingObject>();
+        if (mo != null)
         {
             mo.enabled = false;
         }
