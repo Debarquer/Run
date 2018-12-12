@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class FallingCubeTriggerScript : MonoBehaviour {
     public GameObject[] thoseAboutToFall;
+    public bool ApplyForce;
+
 
     private void OnTriggerEnter(Collider other)
     {
-
-        foreach (var rb in thoseAboutToFall)
+        if (other.tag == "Player")
         {
-            rb.AddComponent<Rigidbody>();
+            foreach (var rb in thoseAboutToFall)
+            {
+                rb.AddComponent<Rigidbody>();
+                if (ApplyForce)
+                {
+                    rb.GetComponent<Rigidbody>().AddForce(transform.up * 650);
+                    rb.GetComponent<Rigidbody>().AddForce(transform.right * 20);
+                }
+
+            }
         }
 
     }
+
 }
