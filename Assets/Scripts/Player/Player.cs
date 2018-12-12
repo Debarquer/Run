@@ -285,7 +285,7 @@ public class Player : MonoBehaviour {
         if (collision.transform.parent != null && collision.transform.parent.name == "PushingPillar")
         {
             Debug.Log("Collided with pillar");
-            GetComponent<Rigidbody>().AddForce(collision.transform.right * 100, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(collision.transform.right * 10, ForceMode.Impulse);
         }
     }
 }
