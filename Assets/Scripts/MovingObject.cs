@@ -66,8 +66,11 @@ public class MovingObject : MonoBehaviour {
 
         StartMoving();
 
-        stopTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].stopTimerA;
-        moveTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].moveTimerMaxA;
+        if(movingObjectPatterns != null && movingObjectPatterns.Length > 0)
+        {
+            stopTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].stopTimerA;
+            moveTimer = movingObjectPatterns[currentPattern % movingObjectPatterns.Length].moveTimerMaxA;
+        }
     }
 
     private void Activate()
