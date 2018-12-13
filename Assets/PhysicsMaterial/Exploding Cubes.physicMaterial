@@ -6,8 +6,8 @@ PhysicMaterial:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Exploding Cubes
-  dynamicFriction: 0
-  staticFriction: 0
+  dynamicFriction: 2.69
+  staticFriction: 6.7
   bounciness: 1
   frictionCombine: 0
   bounceCombine: 0
