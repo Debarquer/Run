@@ -28,7 +28,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 119
   m_IsActive: 1
 --- !u!1 &1051872480214616
 GameObject:
@@ -47,7 +47,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 119
   m_IsActive: 1
 --- !u!1 &1063901458638464
 GameObject:
@@ -145,7 +145,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 127
+  m_StaticEditorFlags: 119
   m_IsActive: 1
 --- !u!1 &1647283563319920
 GameObject:
@@ -266,8 +266,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1063901458638464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.006, z: 0.28}
-  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_LocalPosition: {x: -28.580002, y: 12.7, z: 2.899994}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4982023190752550}
   - {fileID: 4467201577300582}
@@ -494,9 +494,9 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 4
-  m_Range: 90
-  m_SpotAngle: 110
+  m_Intensity: 8
+  m_Range: 45
+  m_SpotAngle: 104
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -531,9 +531,9 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 4
-  m_Range: 90
-  m_SpotAngle: 110
+  m_Intensity: 8
+  m_Range: 45
+  m_SpotAngle: 104
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -568,9 +568,9 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 4
-  m_Range: 90
-  m_SpotAngle: 110
+  m_Intensity: 8
+  m_Range: 45
+  m_SpotAngle: 104
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -605,9 +605,9 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 4
-  m_Range: 90
-  m_SpotAngle: 110
+  m_Intensity: 8
+  m_Range: 45
+  m_SpotAngle: 104
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
