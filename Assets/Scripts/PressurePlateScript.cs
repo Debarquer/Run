@@ -23,9 +23,6 @@ public class PressurePlateScript : MonoBehaviour {
     {
         int number = 0;
         number += 5;
-
-        OnEnter += Test;
-        OnEnter += Test2;
     }
 
     private void Update()
