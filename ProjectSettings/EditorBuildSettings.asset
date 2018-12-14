@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Exit Scene.unity
     guid: f17265bc38ec9ce429e0ebfb06915750
   - enabled: 0
-    path: Assets/Scenes/HeimerScene.unity
+    path: Assets/Scenes/BlueLevel.unity
     guid: cc4b537add845b34f8c947bf7d98e0f1
   - enabled: 0
     path: Assets/Scenes/RedLevel.unity

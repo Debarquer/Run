@@ -23,9 +23,6 @@ public class PressurePlateScript : MonoBehaviour {
     {
         int number = 0;
         number += 5;
-
-        OnEnter += Test;
-        OnEnter += Test2;
     }
 
     private void Update()
@@ -43,16 +40,6 @@ public class PressurePlateScript : MonoBehaviour {
         }
     }
 
-    public void Test()
-    {
-        Debug.Log("testing");
-    }
-
-    public void Test2()
-    {
-        Debug.Log("testing2");
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if(hasBeenTriggered)
@@ -62,9 +49,6 @@ public class PressurePlateScript : MonoBehaviour {
         else
         {
             hasBeenTriggered = true;
-
-            Debug.Log("Help I am triggered");
-
             transform.parent.GetComponentInChildren<MeshRenderer>().material = triggered;
 
             OnEnter();
