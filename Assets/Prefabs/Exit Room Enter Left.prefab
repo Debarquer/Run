@@ -3711,7 +3711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetRoom: {fileID: 0}
   doorModel: {fileID: 0}
-  lightEffect: {fileID: 1706180943232064}
+  lightSource: {fileID: 0}
 --- !u!114 &114107923758008574
 MonoBehaviour:
   m_ObjectHideFlags: 1
