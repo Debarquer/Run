@@ -14664,6 +14664,11 @@ Prefab:
       propertyPath: doorModel
       value: 
       objectReference: {fileID: 1516856145}
+    - target: {fileID: 114694885216452036, guid: 9651db193405d944abefaaddf0981bf4,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9651db193405d944abefaaddf0981bf4, type: 2}
   m_IsPrefabAsset: 0
