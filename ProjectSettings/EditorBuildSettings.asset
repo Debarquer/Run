@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/RedLevel.unity
     guid: 0e6261072abb0324b96194ee42b50ee3
+  - enabled: 1
+    path: Assets/Scenes/Green Level.unity
+    guid: 992beecb578001940bfba75f0ee65501
   - enabled: 0
     path: Assets/Scenes/Main.unity
     guid: 99c9720ab356a0642a771bea13969a05

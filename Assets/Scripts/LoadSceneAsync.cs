@@ -8,13 +8,16 @@ public class LoadSceneAsync : MonoBehaviour {
     public DoorwayCloser doorwayCloser;
     public string sceneName;
 
-	// Use this for initialization
-	void Start () {
-        doorwayCloser.OnDoorClosed += LoadNextLevel;
-	}
-	
-	public void LoadNextLevel()
+    // Use this for initialization
+    private void OnEnable()
     {
+        doorwayCloser.OnDoorClosed += LoadNextLevel;
+    }
+
+    public void LoadNextLevel()
+    {
+        Debug.Log("Loading level " + sceneName);
+        
         Vector3 roomStartPos = transform.parent.position;
         Camera.main.transform.position = Camera.main.transform.position - roomStartPos;
         FindObjectOfType<Player>().transform.position = FindObjectOfType<Player>().transform.position - roomStartPos;
@@ -25,7 +28,7 @@ public class LoadSceneAsync : MonoBehaviour {
 
     IEnumerator StartLoading()
     {
-        AsyncOperation asyncOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("RedLevel", LoadSceneMode.Additive);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
         asyncOperation.allowSceneActivation = false;
         while (!asyncOperation.isDone)
         {
