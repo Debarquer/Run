@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    [FMODUnity.EventRef]
+    public string JumpingSound;
+
+
+    [FMODUnity.EventRef]
+    public string DashSound;
+
     [Header("Stamina")]
     public bool isRunning = false;
 
@@ -92,6 +99,7 @@ public class Player : MonoBehaviour {
             runningVelocity = GetComponent<Rigidbody>().velocity;
             runningVelocity.y = 0;
             runningVelocity *= dashSpeedMod;
+            FMODUnity.RuntimeManager.PlayOneShot(DashSound);
         }
     }
 
@@ -179,7 +187,11 @@ public class Player : MonoBehaviour {
             Mathf.Abs(transform.position.y - hitinfoC.point.y) < 1.01f ||
             Mathf.Abs(transform.position.y - hitinfoD.point.y) < 1.01f)
         {
-            grounded = true;
+            if(grounded != true)
+            {
+                grounded = true;
+                FMODUnity.RuntimeManager.PlayOneShot(JumpingSound);
+            }
             //GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0, GetComponent<Rigidbody>().velocity.z);
         }
         else
