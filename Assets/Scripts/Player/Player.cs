@@ -38,6 +38,9 @@ public class Player : MonoBehaviour {
     MeshRenderer mr;
     TrailRenderer tr;
 
+    [SerializeField] ParticleSystem jumpEffect;
+    [SerializeField] ParticleSystem landEffect;
+ 
     [Header("Jumping")]
     public bool velocityBasedGrounded = true;
     public bool grounded = true;
@@ -171,6 +174,7 @@ public class Player : MonoBehaviour {
             {
                 //GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, 1.0f, 0.0f) * 2f, ForceMode.Impulse);
                 velocity = new Vector3(velocity.x, jumpPower, velocity.z);
+                Instantiate(jumpEffect, transform.position, Quaternion.identity);
             }
         }
 
@@ -243,6 +247,7 @@ public class Player : MonoBehaviour {
                 if (!grounded)
                 {
                     grounded = true;
+                    Instantiate(landEffect, transform.position, Quaternion.identity);
                     FMODUnity.RuntimeManager.PlayOneShot(JumpingSound);
                 }
             }

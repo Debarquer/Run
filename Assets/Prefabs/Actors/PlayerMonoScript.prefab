@@ -428,6 +428,10 @@ MonoBehaviour:
   maxStaminaColor: {r: 0.9467213, g: 1, b: 0, a: 1}
   noStaminaColor: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   runningVelocity: {x: 0, y: 0, z: 0}
+  jumpEffect: {fileID: 198019346731672628, guid: f5bf7a902656ad547b632d60d47f5cce,
+    type: 2}
+  landEffect: {fileID: 198785729224079122, guid: a338641d079d5f940a38b0ad9e5a75d8,
+    type: 2}
   velocityBasedGrounded: 1
   grounded: 1
   groundedPhysicsTimeOffsetMax: 0
