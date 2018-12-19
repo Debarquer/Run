@@ -36,6 +36,7 @@ public class Player : MonoBehaviour {
     public Vector3 runningVelocity = Vector3.zero;
 
     MeshRenderer mr;
+    TrailRenderer tr;
 
     [Header("Jumping")]
     public bool velocityBasedGrounded = true;
@@ -66,6 +67,7 @@ public class Player : MonoBehaviour {
     void Start () {
         GetComponent<Rigidbody>().useGravity = false;
         mr = GetComponent<MeshRenderer>();
+        tr = GetComponent<TrailRenderer>();
 
         lastPosition = transform.position;
         WalkingSound = FMODUnity.RuntimeManager.CreateInstance(playerMoveSound);
@@ -126,6 +128,7 @@ public class Player : MonoBehaviour {
         {
             dashing = false;
             //speed /= speedMod;
+            tr.enabled = false;
             runningVelocity = Vector3.zero;
         }
     }
@@ -139,6 +142,7 @@ public class Player : MonoBehaviour {
         if (dashing)
         {
             stamina -= staminaDecaySpeed * Time.deltaTime;
+            tr.enabled = true;
             if (stamina <= 0)
             {
                 stamina = 0;
@@ -154,6 +158,7 @@ public class Player : MonoBehaviour {
         }
 
         mr.material.color = Color.Lerp(noStaminaColor, maxStaminaColor, stamina / maxStamina);
+        tr.startColor = mr.material.color;
     }
 
     void Jump()
