@@ -20,8 +20,8 @@ public class Player : MonoBehaviour {
     FMOD.Studio.ParameterInstance stopOrGo;
 
     [Header("Stamina")]
-    public bool fixedDashY = false;
-    public bool dashGravity = false;
+    [Tooltip("Whether nor not the player will move up or down during a dash")]public bool fixedDashY = false;
+    [Tooltip("Requires fixedDashY to be false. Whether or not the player will be affected by gravity during a dash.")]public bool dashGravity = false;
     bool isRunning = false;
 
     public float maxStamina;
