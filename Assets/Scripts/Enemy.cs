@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
     [Tooltip("Default: 0.75")] public float alignSpeed;
     [Tooltip("Default: 5")] public float moveSpeed;
 
+
     GameObject model;
     NavMeshAgent agent;
     Transform target;
