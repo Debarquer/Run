@@ -20,10 +20,12 @@ public class Player : MonoBehaviour {
     FMOD.Studio.ParameterInstance stopOrGo;
 
     [Header("Stamina")]
-    public bool isRunning = false;
+    public bool fixedDashY = false;
+    public bool dashGravity = false;
+    bool isRunning = false;
 
     public float maxStamina;
-    public float stamina;
+    float stamina;
 
     public float staminaGainSpeed = 1f;
     public float staminaDecaySpeed = 1f;
@@ -79,7 +81,7 @@ public class Player : MonoBehaviour {
 
         Stamina();
 
-        if (!dashing)
+        if (!fixedDashY || !dashing)
         {
             Jump();
         }
@@ -89,9 +91,9 @@ public class Player : MonoBehaviour {
     {
         FixedMovement();
 
-        if (!dashing)
+        if ((!fixedDashY && dashGravity) || !dashing)
         {
-            FixedJump();
+            AddGravity();
         }
     }
 
@@ -273,7 +275,7 @@ public class Player : MonoBehaviour {
         GetComponent<Rigidbody>().velocity = velocity;
     }
 
-    void FixedJump()
+    void AddGravity()
     {
         GetComponent<Rigidbody>().AddForce(gravity);
     }
@@ -311,7 +313,12 @@ public class Player : MonoBehaviour {
             //Vector3 newSpeed = new Vector3(velocity.x * dashSpeedMod,
             //                               0,
             //                               velocity.z * dashSpeedMod);
-            GetComponent<Rigidbody>().velocity = runningVelocity;
+            if(!fixedDashY){
+                GetComponent<Rigidbody>().velocity = new Vector3(runningVelocity.x, GetComponent<Rigidbody>().velocity.y, runningVelocity.z);
+            }
+            else{
+                GetComponent<Rigidbody>().velocity = runningVelocity;
+            }
             return;
         }
         
