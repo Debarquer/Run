@@ -174,7 +174,8 @@ public class Player : MonoBehaviour {
             {
                 //GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, 1.0f, 0.0f) * 2f, ForceMode.Impulse);
                 velocity = new Vector3(velocity.x, jumpPower, velocity.z);
-                Instantiate(jumpEffect, transform.position, Quaternion.identity);
+                Object ps = Instantiate(jumpEffect, transform.position, Quaternion.identity);
+                Destroy(ps, 1);
             }
         }
 
