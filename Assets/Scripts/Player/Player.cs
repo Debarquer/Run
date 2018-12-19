@@ -11,11 +11,21 @@ public class Player : MonoBehaviour {
     [FMODUnity.EventRef]
     public string DashSound;
 
+
+
+    [FMODUnity.EventRef]
+    public string playerMoveSound;
+    FMOD.Studio.EventInstance WalkingSound;
+
+    FMOD.Studio.ParameterInstance stopOrGo;
+
     [Header("Stamina")]
-    public bool isRunning = false;
+    [Tooltip("Whether nor not the player will move up or down during a dash")]public bool fixedDashY = false;
+    [Tooltip("Requires fixedDashY to be false. Whether or not the player will be affected by gravity during a dash.")]public bool dashGravity = false;
+    bool isRunning = false;
 
     public float maxStamina;
-    public float stamina;
+    float stamina;
 
     public float staminaGainSpeed = 1f;
     public float staminaDecaySpeed = 1f;
@@ -28,7 +38,10 @@ public class Player : MonoBehaviour {
     MeshRenderer mr;
 
     [Header("Jumping")]
+    public bool velocityBasedGrounded = true;
     public bool grounded = true;
+    [Tooltip("The time between grounded being set to true and it being possible to be set to false again.")]public float groundedPhysicsTimeOffsetMax = 0.2f;
+    float groundedPhysicsTimeOffsetCurr = 0;
     public float jumpPower = 8;
 
     public Vector3 gravity = new Vector3(0, -9.81f * 1.5f, 0);
@@ -41,6 +54,7 @@ public class Player : MonoBehaviour {
     public float dashSpeedMod = 2f;
     public float speed = 6;
     public Vector3 velocity;
+    public Vector3 lastFrameVelocity;
     //public Vector3 scriptVelocty;
 
     [Header("On death")]
@@ -54,6 +68,9 @@ public class Player : MonoBehaviour {
         mr = GetComponent<MeshRenderer>();
 
         lastPosition = transform.position;
+        WalkingSound = FMODUnity.RuntimeManager.CreateInstance(playerMoveSound);
+        WalkingSound.getParameter("Stoporgo", out stopOrGo);
+        WalkingSound.start();
     }
 
     // Update is called once per frame
@@ -62,7 +79,7 @@ public class Player : MonoBehaviour {
 
         Stamina();
 
-        if (!dashing)
+        if (!fixedDashY || !dashing)
         {
             Jump();
         }
@@ -72,9 +89,9 @@ public class Player : MonoBehaviour {
     {
         FixedMovement();
 
-        if (!dashing)
+        if ((!fixedDashY && dashGravity) || !dashing)
         {
-            FixedJump();
+            AddGravity();
         }
     }
 
@@ -84,10 +101,10 @@ public class Player : MonoBehaviour {
         {
             StartSprint();
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            EndSprint();
-        }
+        //else if (Input.GetKeyUp(KeyCode.LeftShift))
+        //{
+        //    EndSprint();
+        //}
     }
 
     private void StartSprint()
@@ -152,51 +169,78 @@ public class Player : MonoBehaviour {
             }
         }
 
-        Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y - 0.501f, transform.position.z), Vector3.down);
-        RaycastHit hitinfo;
-        Physics.Raycast(ray, out hitinfo);
-
-        //if (hitinfo.collider == null)
-        //{
-        //    return;
-        //}
-        //if (hitinfo.collider.isTrigger)
-        //{
-        //    return;
-        //}
-
-
-        Ray rayA = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
-        RaycastHit hitinfoA;
-        Physics.Raycast(rayA, out hitinfoA);
-
-        Ray rayB = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z - 0.49f), Vector3.down);
-        RaycastHit hitinfoB;
-        Physics.Raycast(rayB, out hitinfoB);
-
-        Ray rayC = new Ray(new Vector3(transform.position.x - 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
-        RaycastHit hitinfoC;
-        Physics.Raycast(rayC, out hitinfoC);
-
-        Ray rayD = new Ray(new Vector3(transform.position.x - 0.49f, transform.position.y, transform.position.z - 0.49f), Vector3.down);
-        RaycastHit hitinfoD;
-        Physics.Raycast(rayD, out hitinfoD);
-
-        if (Mathf.Abs(transform.position.y - hitinfoA.point.y) < 1.01f ||
-            Mathf.Abs(transform.position.y - hitinfoB.point.y) < 1.01f ||
-            Mathf.Abs(transform.position.y - hitinfoC.point.y) < 1.01f ||
-            Mathf.Abs(transform.position.y - hitinfoD.point.y) < 1.01f)
+        if (!velocityBasedGrounded)
         {
-            if(grounded != true)
+            Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y - 0.501f, transform.position.z), Vector3.down);
+            RaycastHit hitinfo;
+            Physics.Raycast(ray, out hitinfo);
+
+            //if (hitinfo.collider == null)
+            //{
+            //    return;
+            //}
+            //if (hitinfo.collider.isTrigger)
+            //{
+            //    return;
+            //}
+
+
+            Ray rayA = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
+            RaycastHit hitinfoA;
+            Physics.Raycast(rayA, out hitinfoA);
+
+            Ray rayB = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z - 0.49f), Vector3.down);
+            RaycastHit hitinfoB;
+            Physics.Raycast(rayB, out hitinfoB);
+
+            Ray rayC = new Ray(new Vector3(transform.position.x - 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
+            RaycastHit hitinfoC;
+            Physics.Raycast(rayC, out hitinfoC);
+
+            Ray rayD = new Ray(new Vector3(transform.position.x - 0.49f, transform.position.y, transform.position.z - 0.49f), Vector3.down);
+            RaycastHit hitinfoD;
+            Physics.Raycast(rayD, out hitinfoD);
+
+            if (Mathf.Abs(transform.position.y - hitinfoA.point.y) < 1.01f ||
+                Mathf.Abs(transform.position.y - hitinfoB.point.y) < 1.01f ||
+                Mathf.Abs(transform.position.y - hitinfoC.point.y) < 1.01f ||
+                Mathf.Abs(transform.position.y - hitinfoD.point.y) < 1.01f)
             {
-                grounded = true;
-                FMODUnity.RuntimeManager.PlayOneShot(JumpingSound);
+                if (grounded != true)
+                {
+                    grounded = true;
+                    FMODUnity.RuntimeManager.PlayOneShot(JumpingSound);
+                }
+                //GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0, GetComponent<Rigidbody>().velocity.z);
             }
-            //GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0, GetComponent<Rigidbody>().velocity.z);
+            else
+            {
+                grounded = false;
+            }
         }
         else
         {
-            grounded = false;
+            if (velocity.y > 0)
+            {
+                groundedPhysicsTimeOffsetCurr += Time.deltaTime;
+                if (groundedPhysicsTimeOffsetCurr > groundedPhysicsTimeOffsetMax)
+                {
+                    if (grounded)
+                    {
+                        grounded = false;
+                    }
+                }
+            }
+            else if (Mathf.Abs(velocity.y) < 0.5f && lastFrameVelocity.y < 0.1f)
+            {
+                groundedPhysicsTimeOffsetCurr = 0;
+
+                if (!grounded)
+                {
+                    grounded = true;
+                    FMODUnity.RuntimeManager.PlayOneShot(JumpingSound);
+                }
+            }
         }
 
         if (velocity.x > maxVelocity.x)
@@ -229,34 +273,53 @@ public class Player : MonoBehaviour {
         GetComponent<Rigidbody>().velocity = velocity;
     }
 
-    void FixedJump()
+    void AddGravity()
     {
         GetComponent<Rigidbody>().AddForce(gravity);
     }
 
     void FixedMovement()
     {
+        AddForceMovement();
+
+        lastFrameVelocity = velocity;
+        velocity = GetComponent<Rigidbody>().velocity;
+        if ((velocity.x != 0 || velocity.z != 0) && grounded)
+        {
+            if (!isRunning)
+            {
+                isRunning = true;
+
+                Debug.Log("SPAMMING");
+                stopOrGo.setValue(1f);
+                Debug.Log(stopOrGo.ToString());
+
+            }
+        }
+        else
+        {
+            stopOrGo.setValue( 0f);
+            if (isRunning)
+            {
+                isRunning = false;
+                Debug.Log(stopOrGo.ToString());
+            }
+        }
+
         if (dashing)
         {
             //Vector3 newSpeed = new Vector3(velocity.x * dashSpeedMod,
             //                               0,
             //                               velocity.z * dashSpeedMod);
-            GetComponent<Rigidbody>().velocity = runningVelocity;
+            if(!fixedDashY){
+                GetComponent<Rigidbody>().velocity = new Vector3(runningVelocity.x, GetComponent<Rigidbody>().velocity.y, runningVelocity.z);
+            }
+            else{
+                GetComponent<Rigidbody>().velocity = runningVelocity;
+            }
             return;
         }
-
-        AddForceMovement();
-
-        velocity = GetComponent<Rigidbody>().velocity;
-        if (velocity != Vector3.zero)
-        {
-            isRunning = true;
-        }
-        else
-        {
-            isRunning = false;
-        }
-
+        
         float x = GetComponent<Rigidbody>().velocity.x;
         float z = GetComponent<Rigidbody>().velocity.z;
 

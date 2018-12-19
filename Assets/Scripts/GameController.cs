@@ -33,10 +33,12 @@ public class GameController : MonoBehaviour {
     }
 
     void Update () {
-        if (state == GameState.Menu) {
+        if (state == GameState.Menu)
+        {
             Cursor.visible = true;
         }
-        if (state == GameState.Game) {
+        if (state == GameState.Game)
+        {
             Cursor.visible = false;
         }
         if (Input.GetKeyUp(KeyCode.Escape)) {
@@ -67,22 +69,14 @@ public class GameController : MonoBehaviour {
 
     void ToggleMenu() {
         menu.gameObject.SetActive(!menu.gameObject.activeInHierarchy);
-        if (menu.gameObject.activeInHierarchy) 
+        if (menu.gameObject.activeInHierarchy)
+        {
+            state = GameState.Menu;
             Time.timeScale = 0f;
-        
-        else
+        }
+        else{
+            state = GameState.Game;
             Time.timeScale = 1f;
-
-        switch (state) {
-            case GameState.Menu:
-                state = GameState.Game;
-                break;
-            case GameState.Game:
-                state = GameState.Menu;
-                break;
-            default:
-                Debug.LogError("ToggleMenu State Switch has somehow found a new state.");
-                break;
         }
     }
 
@@ -92,6 +86,7 @@ public class GameController : MonoBehaviour {
 
     public void OnMainMenu() {
         state = GameState.Menu;
+        menu.gameObject.SetActive(false);
         SceneManager.LoadScene(0);
     }
 

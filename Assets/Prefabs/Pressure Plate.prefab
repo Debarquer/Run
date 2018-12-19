@@ -70,8 +70,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1483870958463990}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.74553, y: 7.05, z: -9.955246}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -41.1, y: -41.59346, z: -8.090839}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 4278592744296586}
@@ -208,7 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9375069305e332a4bb9e5e1f2b086704, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MultiTrigger: 1
+  PressurePlateActivateSound: event:/Pressure plate
+  MultiTrigger: 0
   triggerTimerMax: 1
   triggered: {fileID: 2100000, guid: b32c4c2125f08f541900374153417f62, type: 2}
   unTriggered: {fileID: 0}

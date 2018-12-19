@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PressurePlateScript : MonoBehaviour {
 
+    [FMODUnity.EventRef]
+    public string PressurePlateActivateSound;
+
     bool hasBeenTriggered = false;
     public bool MultiTrigger = false;
     public float triggerTimerMax = 1.0f;
@@ -50,6 +53,7 @@ public class PressurePlateScript : MonoBehaviour {
         {
             hasBeenTriggered = true;
             transform.parent.GetComponentInChildren<MeshRenderer>().material = triggered;
+            FMODUnity.RuntimeManager.PlayOneShot(PressurePlateActivateSound);
 
             OnEnter();
         }
