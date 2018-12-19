@@ -36,7 +36,10 @@ public class Player : MonoBehaviour {
     MeshRenderer mr;
 
     [Header("Jumping")]
+    public bool velocityBasedGrounded = true;
     public bool grounded = true;
+    [Tooltip("The time between grounded being set to true and it being possible to be set to false again.")]public float groundedPhysicsTimeOffsetMax = 0.2f;
+    float groundedPhysicsTimeOffsetCurr = 0;
     public float jumpPower = 8;
 
     public Vector3 gravity = new Vector3(0, -9.81f * 1.5f, 0);
@@ -49,6 +52,7 @@ public class Player : MonoBehaviour {
     public float dashSpeedMod = 2f;
     public float speed = 6;
     public Vector3 velocity;
+    public Vector3 lastFrameVelocity;
     //public Vector3 scriptVelocty;
 
     [Header("On death")]
@@ -165,51 +169,78 @@ public class Player : MonoBehaviour {
             }
         }
 
-        Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y - 0.501f, transform.position.z), Vector3.down);
-        RaycastHit hitinfo;
-        Physics.Raycast(ray, out hitinfo);
-
-        //if (hitinfo.collider == null)
-        //{
-        //    return;
-        //}
-        //if (hitinfo.collider.isTrigger)
-        //{
-        //    return;
-        //}
-
-
-        Ray rayA = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
-        RaycastHit hitinfoA;
-        Physics.Raycast(rayA, out hitinfoA);
-
-        Ray rayB = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z - 0.49f), Vector3.down);
-        RaycastHit hitinfoB;
-        Physics.Raycast(rayB, out hitinfoB);
-
-        Ray rayC = new Ray(new Vector3(transform.position.x - 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
-        RaycastHit hitinfoC;
-        Physics.Raycast(rayC, out hitinfoC);
-
-        Ray rayD = new Ray(new Vector3(transform.position.x - 0.49f, transform.position.y, transform.position.z - 0.49f), Vector3.down);
-        RaycastHit hitinfoD;
-        Physics.Raycast(rayD, out hitinfoD);
-
-        if (Mathf.Abs(transform.position.y - hitinfoA.point.y) < 1.01f ||
-            Mathf.Abs(transform.position.y - hitinfoB.point.y) < 1.01f ||
-            Mathf.Abs(transform.position.y - hitinfoC.point.y) < 1.01f ||
-            Mathf.Abs(transform.position.y - hitinfoD.point.y) < 1.01f)
+        if (!velocityBasedGrounded)
         {
-            if(grounded != true)
+            Ray ray = new Ray(new Vector3(transform.position.x, transform.position.y - 0.501f, transform.position.z), Vector3.down);
+            RaycastHit hitinfo;
+            Physics.Raycast(ray, out hitinfo);
+
+            //if (hitinfo.collider == null)
+            //{
+            //    return;
+            //}
+            //if (hitinfo.collider.isTrigger)
+            //{
+            //    return;
+            //}
+
+
+            Ray rayA = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
+            RaycastHit hitinfoA;
+            Physics.Raycast(rayA, out hitinfoA);
+
+            Ray rayB = new Ray(new Vector3(transform.position.x + 0.49f, transform.position.y, transform.position.z - 0.49f), Vector3.down);
+            RaycastHit hitinfoB;
+            Physics.Raycast(rayB, out hitinfoB);
+
+            Ray rayC = new Ray(new Vector3(transform.position.x - 0.49f, transform.position.y, transform.position.z + 0.49f), Vector3.down);
+            RaycastHit hitinfoC;
+            Physics.Raycast(rayC, out hitinfoC);
+
+            Ray rayD = new Ray(new Vector3(transform.position.x - 0.49f, transform.position.y, transform.position.z - 0.49f), Vector3.down);
+            RaycastHit hitinfoD;
+            Physics.Raycast(rayD, out hitinfoD);
+
+            if (Mathf.Abs(transform.position.y - hitinfoA.point.y) < 1.01f ||
+                Mathf.Abs(transform.position.y - hitinfoB.point.y) < 1.01f ||
+                Mathf.Abs(transform.position.y - hitinfoC.point.y) < 1.01f ||
+                Mathf.Abs(transform.position.y - hitinfoD.point.y) < 1.01f)
             {
-                grounded = true;
-                FMODUnity.RuntimeManager.PlayOneShot(JumpingSound);
+                if (grounded != true)
+                {
+                    grounded = true;
+                    FMODUnity.RuntimeManager.PlayOneShot(JumpingSound);
+                }
+                //GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0, GetComponent<Rigidbody>().velocity.z);
             }
-            //GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0, GetComponent<Rigidbody>().velocity.z);
+            else
+            {
+                grounded = false;
+            }
         }
         else
         {
-            grounded = false;
+            if (velocity.y > 0)
+            {
+                groundedPhysicsTimeOffsetCurr += Time.deltaTime;
+                if (groundedPhysicsTimeOffsetCurr > groundedPhysicsTimeOffsetMax)
+                {
+                    if (grounded)
+                    {
+                        grounded = false;
+                    }
+                }
+            }
+            else if (Mathf.Abs(velocity.y) < 0.5f && lastFrameVelocity.y < 0.1f)
+            {
+                groundedPhysicsTimeOffsetCurr = 0;
+
+                if (!grounded)
+                {
+                    grounded = true;
+                    FMODUnity.RuntimeManager.PlayOneShot(JumpingSound);
+                }
+            }
         }
 
         if (velocity.x > maxVelocity.x)
@@ -249,11 +280,9 @@ public class Player : MonoBehaviour {
 
     void FixedMovement()
     {
-
-
-
         AddForceMovement();
 
+        lastFrameVelocity = velocity;
         velocity = GetComponent<Rigidbody>().velocity;
         if ((velocity.x != 0 || velocity.z != 0) && grounded)
         {
