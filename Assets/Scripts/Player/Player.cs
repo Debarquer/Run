@@ -71,8 +71,6 @@ public class Player : MonoBehaviour {
         WalkingSound = FMODUnity.RuntimeManager.CreateInstance(playerMoveSound);
         WalkingSound.getParameter("Stoporgo", out stopOrGo);
         WalkingSound.start();
-
-
     }
 
     // Update is called once per frame
@@ -103,10 +101,10 @@ public class Player : MonoBehaviour {
         {
             StartSprint();
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            EndSprint();
-        }
+        //else if (Input.GetKeyUp(KeyCode.LeftShift))
+        //{
+        //    EndSprint();
+        //}
     }
 
     private void StartSprint()
