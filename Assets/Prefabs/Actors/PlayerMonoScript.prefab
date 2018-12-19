@@ -88,8 +88,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1683014187991138}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.07, y: 10.1, z: -2.26}
+  m_LocalRotation: {x: -0, y: 0.004866619, z: -0, w: -0.9999882}
+  m_LocalPosition: {x: -1.35, y: 2, z: -4.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4775954130222390}
@@ -217,7 +217,7 @@ BoxCollider:
   m_GameObject: {fileID: 1335262426453468}
   m_Material: {fileID: 13400000, guid: dcbb2b39bbfdcc1449bac05217558831, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -302,8 +302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d806375ced3614fa6c348a0dedec65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpingSound: event:/Player Landing
-  DashSound: event:/Player Dash
+  JumpingSound: event:/Jumping
+  DashSound: event:/Dash
   playerMoveSound: event:/Player Movement
   isRunning: 0
   maxStamina: 0.75
@@ -313,7 +313,9 @@ MonoBehaviour:
   maxStaminaColor: {r: 0.9467213, g: 1, b: 0, a: 0}
   noStaminaColor: {r: 0, g: 0, b: 0, a: 0}
   runningVelocity: {x: 0, y: 0, z: 0}
+  velocityBasedGrounded: 1
   grounded: 1
+  groundedPhysicsTimeOffsetMax: 0
   jumpPower: 12
   gravity: {x: 0, y: -30, z: 0}
   maxVelocity: {x: 10, y: 25, z: 10}
@@ -323,7 +325,8 @@ MonoBehaviour:
   dashSpeedMod: 2
   speed: 300
   velocity: {x: 0, y: 0, z: 0}
-  nextScene: Main
+  lastFrameVelocity: {x: 0, y: 0, z: 0}
+  nextScene: LevelSelect
 --- !u!119 &119111605247376802
 Projector:
   m_ObjectHideFlags: 1
