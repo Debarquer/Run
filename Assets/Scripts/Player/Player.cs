@@ -11,6 +11,14 @@ public class Player : MonoBehaviour {
     [FMODUnity.EventRef]
     public string DashSound;
 
+
+
+    [FMODUnity.EventRef]
+    public string playerMoveSound;
+    FMOD.Studio.EventInstance WalkingSound;
+
+    FMOD.Studio.ParameterInstance stopOrGo;
+
     [Header("Stamina")]
     public bool isRunning = false;
 
@@ -54,6 +62,11 @@ public class Player : MonoBehaviour {
         mr = GetComponent<MeshRenderer>();
 
         lastPosition = transform.position;
+        WalkingSound = FMODUnity.RuntimeManager.CreateInstance(playerMoveSound);
+        WalkingSound.getParameter("Stoporgo", out stopOrGo);
+        WalkingSound.start();
+
+
     }
 
     // Update is called once per frame
@@ -236,6 +249,34 @@ public class Player : MonoBehaviour {
 
     void FixedMovement()
     {
+
+
+
+        AddForceMovement();
+
+        velocity = GetComponent<Rigidbody>().velocity;
+        if ((velocity.x != 0 || velocity.z != 0) && grounded)
+        {
+            if (!isRunning)
+            {
+                isRunning = true;
+
+                Debug.Log("SPAMMING");
+                stopOrGo.setValue(1f);
+                Debug.Log(stopOrGo.ToString());
+
+            }
+        }
+        else
+        {
+            stopOrGo.setValue( 0f);
+            if (isRunning)
+            {
+                isRunning = false;
+                Debug.Log(stopOrGo.ToString());
+            }
+        }
+
         if (dashing)
         {
             //Vector3 newSpeed = new Vector3(velocity.x * dashSpeedMod,
@@ -244,19 +285,7 @@ public class Player : MonoBehaviour {
             GetComponent<Rigidbody>().velocity = runningVelocity;
             return;
         }
-
-        AddForceMovement();
-
-        velocity = GetComponent<Rigidbody>().velocity;
-        if (velocity != Vector3.zero)
-        {
-            isRunning = true;
-        }
-        else
-        {
-            isRunning = false;
-        }
-
+        
         float x = GetComponent<Rigidbody>().velocity.x;
         float z = GetComponent<Rigidbody>().velocity.z;
 
