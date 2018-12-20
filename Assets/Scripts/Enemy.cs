@@ -25,4 +25,12 @@ public class Enemy : MonoBehaviour {
         agent.destination = target.position;
         model.transform.position = new Vector3(model.transform.position.x, Mathf.Lerp(model.transform.position.y, target.position.y, alignSpeed * Time.deltaTime), model.transform.position.z);
     }
+    public void UpdateSpeed(float speed)
+    {
+        agent.speed = speed;
+    }
+    public void ResetSpeed()
+    {
+        agent.speed = moveSpeed;
+    }
 }
