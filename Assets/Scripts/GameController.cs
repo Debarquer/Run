@@ -47,6 +47,14 @@ public class GameController : MonoBehaviour {
         //GetGameProgress();
     }
 
+    private void OnEnable() {
+        Debug.Log("Reactivated!");
+    }
+
+    private void OnDisable() {
+        Debug.Log("Disabled!");
+    }
+
     void Update () {
 
         if(mode == GameMode.Timed)
@@ -69,7 +77,7 @@ public class GameController : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.Escape)) {
             if (SceneManager.GetActiveScene().buildIndex == 0)
                 OnExit();
-
+            Debug.Log(SceneManager.GetActiveScene().buildIndex);
             ToggleMenu();
         }
     }
@@ -110,6 +118,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void OnMainMenu() {
+        ToggleMenu();
         state = GameState.Menu;
         menu.gameObject.SetActive(false);
         SceneManager.LoadScene(0);

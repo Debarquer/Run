@@ -9,6 +9,7 @@ public class MainMenuController : MonoBehaviour {
     public GameObject ExtrasMenu;
     public GameObject AboutMenu;
     public GameObject ExitMenu;
+    GameObject gameController;
     MoveCamera main;
     private void Start()
     {
@@ -17,14 +18,16 @@ public class MainMenuController : MonoBehaviour {
         //AboutMenu.SetActive(false);
         //ExitMenu.SetActive(false);
         main = Camera.main.gameObject.GetComponent<MoveCamera>();
+        gameController = GameObject.Find("GameController");
+        gameController.SetActive(false);
     }
 
     public void Play()
     {
         MainMenu.SetActive(false);
+        gameController.SetActive(true);
         Debug.Log("Play");
-        SceneManager.LoadScene("Main");
-        
+        SceneManager.LoadScene("LevelSelect");
     }
     public void Options()
     {
