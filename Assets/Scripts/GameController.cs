@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour {
     public delegate void TimerIncreasedDelegate(float timer);
     public event TimerIncreasedDelegate OnTimerIncreased;
 
+    string currentLevel;
+
     public enum GameState {
         Menu,
         Game
@@ -29,6 +31,19 @@ public class GameController : MonoBehaviour {
 
     GameState state = GameState.Game;
     GameMode mode = GameMode.Timed;
+
+    public string CurrentLevel
+    {
+        get
+        {
+            return currentLevel;
+        }
+
+        set
+        {
+            currentLevel = value;
+        }
+    }
 
     void Awake() {
 
