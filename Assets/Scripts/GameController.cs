@@ -46,15 +46,7 @@ public class GameController : MonoBehaviour {
 
         //GetGameProgress();
     }
-
-    private void OnEnable() {
-        Debug.Log("Reactivated!");
-    }
-
-    private void OnDisable() {
-        Debug.Log("Disabled!");
-    }
-
+  
     void Update () {
 
         if(mode == GameMode.Timed)
