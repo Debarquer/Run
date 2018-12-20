@@ -5,19 +5,28 @@ using UnityEngine.UI;
 
 public class SubmitHighscoreScript : MonoBehaviour {
 
-    Text scoreText;
-    InputField nameField;
+    public Text scoreText;
+    public InputField nameField;
+
+    GameController gc;
 
 	// Use this for initialization
 	void Start () {
-        Cursor.visible = true;
+        gc = FindObjectOfType<GameController>();
+        gc.state = GameController.GameState.Menu;
+        gc.mode = GameController.GameMode.Story;
+
+        scoreText.text = "Your time: " + string.Format("{000:0.00}", gc.Timer); ;
     }
 
     public void Highscore()
     {
-        Cursor.visible = false;
+        gc.state = GameController.GameState.Game;
 
-        string currentLevel = FindObjectOfType<GameController>().CurrentLevel;
-        FindObjectOfType<HighscoreController>
+        string currentLevel = gc.CurrentLevel;
+        float timer = gc.Timer;
+        FindObjectOfType<HighscoreController>().RecordHighscore(currentLevel, nameField.text, timer);
+
+        gameObject.SetActive(false);
     }
 }

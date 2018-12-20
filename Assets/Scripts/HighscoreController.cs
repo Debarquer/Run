@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HighscoreController : MonoBehaviour {
+public class HighscoreController : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         //string text = "Highscores";
         //text += "\n\nRed level \n\nSimon -- 1s";
         //text += "\n\nGreen level \n\nSimon -- 1s";
@@ -14,14 +16,14 @@ public class HighscoreController : MonoBehaviour {
 
         //Debug.Log(System.IO.File.ReadAllText(@"WriteText.txt"));
     }
-	
-	public void RecordHighscore(string levelName, float time)
+
+    public void RecordHighscore(string levelName, string playerName, float time)
     {
 
         string text = System.IO.File.ReadAllText(levelName + ".txt");
         Debug.Log(text);
 
-        text += "\n\nTime: " + time;
+        text += "\n\nName: " + playerName + string.Format(" Time: {000:0.00}", time); ;
         System.IO.File.WriteAllText(levelName + ".txt", text);
     }
 
