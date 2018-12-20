@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4368477478644102}
   - component: {fileID: 198785729224079122}
   - component: {fileID: 199732364772657368}
+  - component: {fileID: 114879194644687786}
   m_Layer: 0
   m_Name: LandingParticles
   m_TagString: Untagged
@@ -41,6 +42,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114879194644687786
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1023865344168344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c65c1f0f7234af41b2d428ba76e57b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0.2
 --- !u!198 &198785729224079122
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -48,7 +61,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1023865344168344}
   serializedVersion: 5
-  lengthInSec: 0.3
+  lengthInSec: 0.2
   simulationSpeed: 1
   stopAction: 0
   looping: 0
