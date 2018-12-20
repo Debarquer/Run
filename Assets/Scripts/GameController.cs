@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour {
     public delegate void TimerIncreasedDelegate(float timer);
     public event TimerIncreasedDelegate OnTimerIncreased;
 
+    public GameObject scoreSubmitContainer;
+
     string currentLevel;
 
     public enum GameState {
@@ -153,5 +155,6 @@ public class GameController : MonoBehaviour {
         Debug.Log("Time to completion: " + Timer);
         PlayerPrefs.SetInt(scene, 1);
         //FindObjectOfType<HighscoreController>().RecordHighscore(scene, Timer);
+        scoreSubmitContainer.SetActive(true);
     }
 }

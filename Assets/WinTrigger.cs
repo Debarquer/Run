@@ -9,6 +9,6 @@ public class WinTrigger : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         FindObjectOfType<GameController>().CompleteLevel(LevelName);
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Exit Scene", UnityEngine.SceneManagement.LoadSceneMode.Single);
+        //UnityEngine.SceneManagement.SceneManager.LoadScene("Exit Scene", UnityEngine.SceneManagement.LoadSceneMode.Single);
     }
 }
