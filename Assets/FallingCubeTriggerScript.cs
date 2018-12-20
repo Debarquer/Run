@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FallingCubeTriggerScript : MonoBehaviour {
+
+    [FMODUnity.EventRef]
+    public string FallingSound;
+
+    [FMODUnity.EventRef]
+    public string ExplodingSound;
+
+
     public GameObject[] thoseAboutToFall;
     public bool ApplyForce;
     public bool TriggerOnce;
@@ -10,6 +18,7 @@ public class FallingCubeTriggerScript : MonoBehaviour {
     [SerializeField] bool sprayRight;
     [SerializeField] bool sprayLeft;
     [SerializeField] bool morePower;
+
     private void Start()
     {
         if (morePower)
@@ -25,22 +34,24 @@ public class FallingCubeTriggerScript : MonoBehaviour {
 
             if (other.tag == "Player")
             {
+                FMODUnity.RuntimeManager.PlayOneShot(FallingSound);
                 foreach (var rb in thoseAboutToFall)
                 {
                     rb.AddComponent<Rigidbody>();
+                    
 
                     if (ApplyForce)
                     {
-                        
+
                         Rigidbody rigidbody = rb.GetComponent<Rigidbody>();
                         rigidbody.AddForce(transform.up * force);
                         if (sprayRight)
                         {
-                        rigidbody.AddForce(transform.right * 100);
+                            rigidbody.AddForce(transform.right * 100);
                         }
                         if (sprayLeft)
                         {
-                        rigidbody.AddForce(transform.forward * 100);
+                            rigidbody.AddForce(transform.forward * 100);
                         }
                         rigidbody.mass = 4;
                     }
