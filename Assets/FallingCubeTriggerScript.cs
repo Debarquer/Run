@@ -5,11 +5,7 @@ using UnityEngine;
 public class FallingCubeTriggerScript : MonoBehaviour {
 
     [FMODUnity.EventRef]
-    public string FallingSound;
-
-    [FMODUnity.EventRef]
-    public string ExplodingSound;
-
+    public string BlockSound;
 
     public GameObject[] thoseAboutToFall;
     public bool ApplyForce;
@@ -34,7 +30,7 @@ public class FallingCubeTriggerScript : MonoBehaviour {
 
             if (other.tag == "Player")
             {
-                FMODUnity.RuntimeManager.PlayOneShot(FallingSound);
+                FMODUnity.RuntimeManager.PlayOneShot(BlockSound);
                 foreach (var rb in thoseAboutToFall)
                 {
                     rb.AddComponent<Rigidbody>();
