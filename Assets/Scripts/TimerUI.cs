@@ -16,6 +16,14 @@ public class TimerUI : MonoBehaviour {
 	
 	public void OnTimerIncreased(float timer)
     {
-        text.text = string.Format("Timer: {000:0.00}", timer);
+        if(text != null)
+        {
+            text.text = string.Format("Timer: {000:0.00}", timer);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        FindObjectOfType<GameController>().OnTimerIncreased -= OnTimerIncreased;
     }
 }

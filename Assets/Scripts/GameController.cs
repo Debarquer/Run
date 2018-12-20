@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
-    float timer = 0;
+    private float timer = 0;
     public delegate void TimerIncreasedDelegate(float timer);
     public event TimerIncreasedDelegate OnTimerIncreased;
 
@@ -29,8 +29,8 @@ public class GameController : MonoBehaviour {
 
     public Canvas menu;
 
-    GameState state = GameState.Game;
-    GameMode mode = GameMode.Timed;
+    public GameState state = GameState.Game;
+    public GameMode mode = GameMode.Timed;
 
     public string CurrentLevel
     {
@@ -42,6 +42,19 @@ public class GameController : MonoBehaviour {
         set
         {
             currentLevel = value;
+        }
+    }
+
+    public float Timer
+    {
+        get
+        {
+            return timer;
+        }
+
+        set
+        {
+            timer = value;
         }
     }
 
@@ -66,10 +79,10 @@ public class GameController : MonoBehaviour {
 
         if(mode == GameMode.Timed)
         {
-            timer += Time.deltaTime;
+            Timer += Time.deltaTime;
             if (OnTimerIncreased != null)
             {
-                OnTimerIncreased(timer);
+                OnTimerIncreased(Timer);
             }
         }
 
@@ -137,7 +150,8 @@ public class GameController : MonoBehaviour {
 
     public void CompleteLevel(string scene)
     {
-        Debug.Log("Time to completion: " + timer);
+        Debug.Log("Time to completion: " + Timer);
         PlayerPrefs.SetInt(scene, 1);
+        //FindObjectOfType<HighscoreController>().RecordHighscore(scene, Timer);
     }
 }

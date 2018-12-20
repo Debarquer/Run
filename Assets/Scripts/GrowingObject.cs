@@ -99,7 +99,7 @@ public class GrowingObject : MonoBehaviour {
         if(transform.localScale.z < endScaleZ)
             newScaleZ = Mathf.Lerp(intervallScale.z, intervallScale.x + growthSizeIntervall, growthTimeCurr / growthTimeMax);
 
-        Debug.Log("New scale z: " + newScaleZ);
+        //Debug.Log("New scale z: " + newScaleZ);
 
         transform.localScale = new Vector3(newScaleX, newScaleY, newScaleZ);
         transform.position = startPos + new Vector3((newScaleX - 1) / 2, (newScaleY - 1) / 2, (newScaleZ - 1) / 2);
