@@ -6,13 +6,14 @@ public class LightDimmer : MonoBehaviour {
     Light lt;
     bool dimmingActive;
     float playerDist = 20f;
-    float duration = 3.0f;
+    //float duration = 3.0f;
     public float intensityOffset = 7;
 
-    public Transform player;
+    GameObject player;
 
     void Start () {
         lt = GetComponent<Light>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 	
 	// Update is called once per frame
@@ -20,7 +21,7 @@ public class LightDimmer : MonoBehaviour {
 
         if (dimmingActive)
         {
-            playerDist = Vector3.Distance(player.position, transform.position);
+            playerDist = Vector3.Distance(player.transform.position, transform.position);
             //Debug.Log("distance = " + playerDist);
             //var amplitude = Mathf.PingPong(Time.time, duration);           
         }
