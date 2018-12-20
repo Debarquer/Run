@@ -36328,17 +36328,17 @@ Prefab:
     - target: {fileID: 114571414827932352, guid: 20cc1fa01b944f547967664c2121f2a3,
         type: 2}
       propertyPath: m_selectedFaces.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114571414827932352, guid: 20cc1fa01b944f547967664c2121f2a3,
         type: 2}
       propertyPath: m_SelectedEdges.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114571414827932352, guid: 20cc1fa01b944f547967664c2121f2a3,
         type: 2}
       propertyPath: m_selectedTriangles.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4786678643462998, guid: 20cc1fa01b944f547967664c2121f2a3, type: 2}
       propertyPath: m_LocalPosition.x

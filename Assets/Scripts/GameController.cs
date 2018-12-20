@@ -5,9 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
+    float timer = 0;
+    public delegate void TimerIncreasedDelegate(float timer);
+    public event TimerIncreasedDelegate OnTimerIncreased;
+
     public enum GameState {
         Menu,
         Game
+    }
+
+    public enum GameMode
+    {
+        Story,
+        Timed
     }
 
     Dictionary<Scene, bool> gameProgress;
@@ -18,8 +28,13 @@ public class GameController : MonoBehaviour {
     public Canvas menu;
 
     GameState state = GameState.Game;
+    GameMode mode = GameMode.Timed;
 
     void Awake() {
+
+        //For debug purposes only
+        //PlayerPrefs.DeleteAll();
+
         if (instance == null) {
             instance = this;
         }
@@ -33,6 +48,16 @@ public class GameController : MonoBehaviour {
     }
 
     void Update () {
+
+        if(mode == GameMode.Timed)
+        {
+            timer += Time.deltaTime;
+            if (OnTimerIncreased != null)
+            {
+                OnTimerIncreased(timer);
+            }
+        }
+
         if (state == GameState.Menu)
         {
             Cursor.visible = true;
@@ -92,5 +117,11 @@ public class GameController : MonoBehaviour {
 
     public void OnExit() {
         Application.Quit();
+    }
+
+    public void CompleteLevel(string scene)
+    {
+        Debug.Log("Time to completion: " + timer);
+        PlayerPrefs.SetInt(scene, 1);
     }
 }
