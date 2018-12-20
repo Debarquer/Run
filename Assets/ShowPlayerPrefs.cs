@@ -18,5 +18,5 @@ public class ShowPlayerPrefs : MonoBehaviour {
         red = PlayerPrefs.GetInt("RedLevel");
         green = PlayerPrefs.GetInt("Green Level");
         blue = PlayerPrefs.GetInt("BlueLevel");
-    }
+    }    
 }
