@@ -9,8 +9,6 @@ public class GameController : MonoBehaviour {
     public delegate void TimerIncreasedDelegate(float timer);
     public event TimerIncreasedDelegate OnTimerIncreased;
 
-    string currentLevel;
-
     public enum GameState {
         Menu,
         Game
@@ -31,19 +29,6 @@ public class GameController : MonoBehaviour {
 
     GameState state = GameState.Game;
     GameMode mode = GameMode.Timed;
-
-    public string CurrentLevel
-    {
-        get
-        {
-            return currentLevel;
-        }
-
-        set
-        {
-            currentLevel = value;
-        }
-    }
 
     void Awake() {
 
@@ -66,10 +51,10 @@ public class GameController : MonoBehaviour {
 
         if(mode == GameMode.Timed)
         {
-            timer += Time.deltaTime;
+            Timer += Time.deltaTime;
             if (OnTimerIncreased != null)
             {
-                OnTimerIncreased(timer);
+                OnTimerIncreased(Timer);
             }
         }
 
@@ -137,7 +122,8 @@ public class GameController : MonoBehaviour {
 
     public void CompleteLevel(string scene)
     {
-        Debug.Log("Time to completion: " + timer);
+        Debug.Log("Time to completion: " + Timer);
         PlayerPrefs.SetInt(scene, 1);
+        FindObjectOfType<HighscoreController>().RecordHighscore(scene, Timer);
     }
 }
