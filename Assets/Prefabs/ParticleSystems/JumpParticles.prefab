@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4010235586331698}
   - component: {fileID: 198019346731672628}
   - component: {fileID: 199540597915121304}
+  - component: {fileID: 114046738915717260}
   m_Layer: 0
   m_Name: JumpParticles
   m_TagString: Untagged
@@ -41,6 +42,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114046738915717260
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533910432974530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c65c1f0f7234af41b2d428ba76e57b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0.4
 --- !u!198 &198019346731672628
 ParticleSystem:
   m_ObjectHideFlags: 1
