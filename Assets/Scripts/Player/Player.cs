@@ -5,13 +5,14 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     [FMODUnity.EventRef]
-    public string JumpingSound;
+    public string LandingSound;
 
 
     [FMODUnity.EventRef]
     public string DashSound;
 
-
+    [FMODUnity.EventRef]
+    public string JumpingSound;
 
     [FMODUnity.EventRef]
     public string playerMoveSound;
@@ -172,6 +173,7 @@ public class Player : MonoBehaviour {
         {
             if (grounded)
             {
+                FMODUnity.RuntimeManager.PlayOneShot(JumpingSound);
                 //GetComponent<Rigidbody>().AddForce(new Vector3(0.0f, 1.0f, 0.0f) * 2f, ForceMode.Impulse);
                 velocity = new Vector3(velocity.x, jumpPower, velocity.z);
                 Object ps = Instantiate(jumpEffect, transform.position, Quaternion.identity);
@@ -219,7 +221,7 @@ public class Player : MonoBehaviour {
                 if (grounded != true)
                 {
                     grounded = true;
-                    FMODUnity.RuntimeManager.PlayOneShot(JumpingSound);
+                    FMODUnity.RuntimeManager.PlayOneShot(LandingSound);
                 }
                 //GetComponent<Rigidbody>().velocity = new Vector3(GetComponent<Rigidbody>().velocity.x, 0, GetComponent<Rigidbody>().velocity.z);
             }
@@ -249,7 +251,7 @@ public class Player : MonoBehaviour {
                 {
                     grounded = true;
                     Instantiate(landEffect, transform.position, Quaternion.identity);
-                    FMODUnity.RuntimeManager.PlayOneShot(JumpingSound);
+                    FMODUnity.RuntimeManager.PlayOneShot(LandingSound);
                 }
             }
         }
