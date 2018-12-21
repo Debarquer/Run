@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    float alpha;
-    bool endedSprint;
-    public float trailFadeRate;
+    
+    [Tooltip("Default is 0.8")] public float trailFadeRate;
 
     [FMODUnity.EventRef]
     public string LandingSound;
@@ -31,6 +30,9 @@ public class Player : MonoBehaviour {
 
     public float maxStamina;
     float stamina;
+
+    float alpha;
+    bool endedSprint;
 
     public float staminaGainSpeed = 1f;
     public float staminaDecaySpeed = 1f;
@@ -148,11 +150,9 @@ public class Player : MonoBehaviour {
     }
 
     void FadeTrail() {
-        alpha -= trailFadeRate;
+        alpha -= trailFadeRate * Time.deltaTime;
         tr.startColor = new Color(mr.material.color.r, mr.material.color.g, mr.material.color.b, alpha);
-        Debug.Log(alpha);
         if (alpha <= trailFadeRate) { 
-            Debug.Log("Disable Trail!");
             endedSprint = false;
             tr.enabled = false;
         }
