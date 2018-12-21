@@ -42,6 +42,7 @@ public class MainMenuController : MonoBehaviour {
         MainMenu.SetActive(false);
         ExtrasMenu.SetActive(true);
         main.MoveToExtras();
+        FindObjectOfType<HighscoreUI>().LoadLevelTexts();
         Debug.Log("Extras");
     }
     public void About()

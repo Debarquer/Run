@@ -1,0 +1,8 @@
+AnonyMoose,5.2
+AnonyMoose,3.2
+AnonyMoose,7.6
+AnonyMoose,9.4
+AnonyMoose,2.2
+AnonyMoose,15.5
+AnonyMoose,14.4
+AnonyMoose,17.8
