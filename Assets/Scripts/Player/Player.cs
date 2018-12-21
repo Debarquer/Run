@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    float alpha;
+    bool endedSprint;
+    public float trailFadeRate;
+
     [FMODUnity.EventRef]
     public string LandingSound;
 
@@ -85,6 +89,10 @@ public class Player : MonoBehaviour {
 
         Stamina();
 
+        if (endedSprint) {
+            FadeTrail();
+        }
+
         if (!fixedDashY || !dashing)
         {
             Jump();
@@ -118,6 +126,8 @@ public class Player : MonoBehaviour {
         if (!dashing && maxStamina - stamina < 0.1f)
         {
             dashing = true;
+            tr.enabled = true;
+            alpha = 1;
             //speed *= speedMod;
             runningVelocity = GetComponent<Rigidbody>().velocity;
             runningVelocity.y = 0;
@@ -132,8 +142,19 @@ public class Player : MonoBehaviour {
         {
             dashing = false;
             //speed /= speedMod;
-            tr.enabled = false;
+            endedSprint = true;
             runningVelocity = Vector3.zero;
+        }
+    }
+
+    void FadeTrail() {
+        alpha -= trailFadeRate;
+        tr.startColor = new Color(mr.material.color.r, mr.material.color.g, mr.material.color.b, alpha);
+        Debug.Log(alpha);
+        if (alpha <= trailFadeRate) { 
+            Debug.Log("Disable Trail!");
+            endedSprint = false;
+            tr.enabled = false;
         }
     }
 
@@ -146,7 +167,6 @@ public class Player : MonoBehaviour {
         if (dashing)
         {
             stamina -= staminaDecaySpeed * Time.deltaTime;
-            tr.enabled = true;
             if (stamina <= 0)
             {
                 stamina = 0;
