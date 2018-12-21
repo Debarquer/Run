@@ -8869,7 +8869,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1418029449390756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 12}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4120074922023986}
@@ -20469,7 +20469,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 1.5
+  m_Intensity: 1.8
   m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -23605,7 +23605,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensityOffset: 7
-  player: {fileID: 0}
 --- !u!114 &114773787042937890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -23618,7 +23617,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetRoom: {fileID: 0}
-  doorModel: {fileID: 0}
+  doorModel: {fileID: 1638739721661560}
   lightSource: {fileID: 1758157522184512}
 --- !u!114 &114789536880077298
 MonoBehaviour:
