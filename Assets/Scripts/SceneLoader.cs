@@ -8,6 +8,9 @@ public class SceneLoader : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene, UnityEngine.SceneManagement.LoadSceneMode.Single);
+        if (other.tag == "Player")
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene, UnityEngine.SceneManagement.LoadSceneMode.Single);
+        }
     }
 }
