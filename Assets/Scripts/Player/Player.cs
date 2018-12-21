@@ -270,6 +270,7 @@ public class Player : MonoBehaviour {
                 if (!grounded)
                 {
                     grounded = true;
+                    Debug.Log("Hit th ground");
                     Instantiate(landEffect, transform.position, Quaternion.identity);
                     FMODUnity.RuntimeManager.PlayOneShot(LandingSound);
                 }

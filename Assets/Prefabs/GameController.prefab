@@ -90,6 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4659083497563684}
   - component: {fileID: 114546939215623202}
+  - component: {fileID: 114366335494408750}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -355,7 +356,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1370387255743144}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 563cfec7f81a2394f81df9f6604f343c, type: 3}
   m_Name: 
@@ -387,6 +388,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114366335494408750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1571791761159484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 936556096dbc50842bee85c6ec2d2226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114381082636238214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -452,7 +464,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bcf27f47137c6040961303a3d3cfcac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreSubmitContainer: {fileID: 1565350020423532, guid: eec112b8aa3e146488d69c2defacdef8,
+    type: 2}
   menu: {fileID: 223378838193096088}
+  state: 1
+  mode: 1
 --- !u!114 &114555241053906416
 MonoBehaviour:
   m_ObjectHideFlags: 1
