@@ -10,18 +10,19 @@ public class Player : MonoBehaviour {
     [FMODUnity.EventRef]
     public string LandingSound;
 
-
     [FMODUnity.EventRef]
     public string DashSound;
 
     [FMODUnity.EventRef]
     public string JumpingSound;
 
-    [FMODUnity.EventRef]
-    public string playerMoveSound;
-    FMOD.Studio.EventInstance WalkingSound;
+    //[FMODUnity.EventRef]
+    //public string playerMoveSound;
+    //FMOD.Studio.EventInstance WalkingSound;
 
     FMOD.Studio.ParameterInstance stopOrGo;
+
+
 
     [Header("Stamina")]
     [Tooltip("Whether nor not the player will move up or down during a dash")]public bool fixedDashY = false;
@@ -80,9 +81,9 @@ public class Player : MonoBehaviour {
         tr = GetComponent<TrailRenderer>();
 
         lastPosition = transform.position;
-        WalkingSound = FMODUnity.RuntimeManager.CreateInstance(playerMoveSound);
-        WalkingSound.getParameter("Stoporgo", out stopOrGo);
-        WalkingSound.start();
+        //WalkingSound = FMODUnity.RuntimeManager.CreateInstance(playerMoveSound);
+        //WalkingSound.getParameter("Stoporgo", out stopOrGo);
+        //WalkingSound.start();
     }
 
     // Update is called once per frame
