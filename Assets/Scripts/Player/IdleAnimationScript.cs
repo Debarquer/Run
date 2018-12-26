@@ -6,6 +6,10 @@ public class IdleAnimationScript : MonoBehaviour {
     public Animator anim;
     public float tick;
     float nextTick = 0;
+
+    [FMODUnity.EventRef]
+    public string idlesound;
+
     // Use this for initialization
     void Start () {
         anim = GetComponent<Animator>();
@@ -19,6 +23,7 @@ public class IdleAnimationScript : MonoBehaviour {
             {
                 nextTick -= tick;
                 anim.Play("Idle Anim");
+                FMODUnity.RuntimeManager.PlayOneShot(idlesound);
 
             }
 

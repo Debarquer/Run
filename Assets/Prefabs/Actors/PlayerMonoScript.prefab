@@ -393,6 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 95431578509266204}
   tick: 4
+  idlesound: event:/Idle
 --- !u!114 &114905948975306092
 MonoBehaviour:
   m_ObjectHideFlags: 1
