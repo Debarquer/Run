@@ -7,13 +7,44 @@
 [LOG] OutputWASAPI::init                       : Output buffer size: 4096 samples, latency: 0.00ms, period: 10.00ms, DSP buffer: 1024 * 4
 [LOG] Thread::initThread                       : Init FMOD stream thread. Priority: 2, Stack Size: 65536, Semaphore: No, Sleep Time: 10, Looping: Yes.
 [LOG] Thread::initThread                       : Init FMOD mixer thread. Priority: 3, Stack Size: 49152, Semaphore: No, Sleep Time: 0, Looping: Yes.
-[LOG] AsyncManager::init                       : manager 000000007C25A2D8 isAsync 0 updatePeriod 0.02
+[LOG] AsyncManager::init                       : manager 000000004FDE4028 isAsync 0 updatePeriod 0.02
 [LOG] AsyncManager::init                       : done
 [LOG] PlaybackSystem::init                     : 
 [LOG] Thread::initThread                       : Init FMOD Studio sample load thread. Priority: 0, Stack Size: 65536, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] PlaybackSystem::init                     : done
 [LOG] Thread::initThread                       : Init FMOD Studio bank load thread. Priority: 0, Stack Size: 65536, Semaphore: No, Sleep Time: 1, Looping: No.
 [LOG] Manager::init                            : done.
+[LOG] Manager::readBank                        : fileversion = 103, compatVersion = 99 (oldest = 44, newest = 103)
+[LOG] Manager::readBank                        : fileversion = 103, compatVersion = 99 (oldest = 44, newest = 103)
+[LOG] SoundI::release                          : RUN_V1_DeckardLowMid (000000004FBDD928)
+[LOG] SoundI::release                          :     RUN_V1_DeckardLowMid (000000004D30D2F8)
+[LOG] SoundI::release                          :     RUN_V1_DeckardLowMid (000000004FBDF5D8)
+[LOG] SoundI::release                          : RUN_V1_CavernousStrings (000000004FBDE4F8)
+[LOG] SoundI::release                          :     RUN_V1_CavernousStrings (000000004D30D158)
+[LOG] SoundI::release                          :     RUN_V1_CavernousStrings (000000004FBDEBB8)
+[LOG] SoundI::release                          : RUN_V1_DeckardLow (000000004FBDED68)
+[LOG] SoundI::release                          :     RUN_V1_DeckardLow (000000004D30C938)
+[LOG] SoundI::release                          :     RUN_V1_DeckardLow (000000004FBDDC88)
+[LOG] SoundI::release                          : RUN_V1_CrystalizedEchoes (0000000047E88778)
+[LOG] SoundI::release                          :     RUN_V1_CrystalizedEchoes (000000004D30C118)
+[LOG] SoundI::release                          :     RUN_V1_CrystalizedEchoes (000000004FBDE858)
+[LOG] SoundI::release                          :  (000000008C396F08)
+[LOG] SoundI::release                          :     Player GroundScrape (000000004D30CAD8)
+[LOG] SoundI::release                          :  (000000008C397358)
+[LOG] SoundI::release                          :     RUN_V1_ShadowBeatShort (000000004D30B8F8)
+[LOG] SoundI::release                          :  (000000008C396D98)
+[LOG] SoundI::release                          :     RUN_V1_MiniBeat_Short (000000004D30BDD8)
+[LOG] Thread::callback                         : FMOD Studio update thread finished.
+[LOG] Thread::callback                         : FMOD Studio bank load thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] Thread::callback                         : FMOD Studio sample load thread finished.
+[LOG] LiveUpdate::release                      : 
+[LOG] LiveUpdate::reset                        : Reset connection (reason Disconnected)
+[LOG] Thread::callback                         : FMOD stream thread finished.
+[LOG] Thread::callback                         : FMOD mixer thread finished.
+[LOG] Profile::disconnectAll                   : Profiler disconnecting all clients
+[LOG] SystemI::close                           : Closed.
+[LOG] Manager::readBank                        : fileversion = 103, compatVersion = 99 (oldest = 44, newest = 103)
 [LOG] Manager::readBank                        : fileversion = 103, compatVersion = 99 (oldest = 44, newest = 103)
 [LOG] Manager::readBank                        : fileversion = 103, compatVersion = 99 (oldest = 44, newest = 103)
 [LOG] Manager::readBank                        : fileversion = 103, compatVersion = 99 (oldest = 44, newest = 103)

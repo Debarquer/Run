@@ -20,7 +20,7 @@ public class Player : MonoBehaviour {
     //public string playerMoveSound;
     //FMOD.Studio.EventInstance WalkingSound;
 
-    FMOD.Studio.ParameterInstance stopOrGo;
+    //FMOD.Studio.ParameterInstance stopOrGo;
 
 
 
@@ -325,19 +325,19 @@ public class Player : MonoBehaviour {
             {
                 isRunning = true;
 
-                Debug.Log("SPAMMING");
-                stopOrGo.setValue(1f);
-                Debug.Log(stopOrGo.ToString());
+                //Debug.Log("SPAMMING");
+                //stopOrGo.setValue(1f);
+                //Debug.Log(stopOrGo.ToString());
 
             }
         }
         else
         {
-            stopOrGo.setValue( 0f);
+            //stopOrGo.setValue( 0f);
             if (isRunning)
             {
                 isRunning = false;
-                Debug.Log(stopOrGo.ToString());
+                //Debug.Log(stopOrGo.ToString());
             }
         }
 
