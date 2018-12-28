@@ -7,6 +7,8 @@ public class ExitController : MonoBehaviour {
     public GameObject MainMenu;
     public GameObject ExitMenu;
 
+    public GameObject firstSelectedMain;
+
     public void Yes()
     {
         Application.Quit();
@@ -15,5 +17,7 @@ public class ExitController : MonoBehaviour {
     {
         MainMenu.SetActive(true);
         ExitMenu.SetActive(false);
+        FindObjectOfType<UnityEngine.EventSystems.EventSystem>().firstSelectedGameObject = firstSelectedMain;
+        FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(firstSelectedMain);
     }
 }

@@ -117,7 +117,7 @@ public class HighscoreUI : MonoBehaviour {
             }
 
             GameObject go = Instantiate(highscoreTextPrefab, textContainer.transform);
-            go.GetComponent<Text>().text = string.Format("{0,-20} {1,-5} \n", stringA, stringB);
+            go.GetComponent<Text>().text = string.Format("{0,-20} {1,-6} \n", stringA, stringB);
         }
 
         transform.position = new Vector3(transform.position.x, 80, transform.position.z);
