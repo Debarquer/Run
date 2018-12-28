@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ScrapingSoundScript : MonoBehaviour {
 
@@ -8,6 +6,9 @@ public class ScrapingSoundScript : MonoBehaviour {
     public string scraping;
     FMOD.Studio.EventInstance ScrapingSound;
     FMOD.Studio.ParameterInstance SoundorNot;
+    float xvel;
+    float zvel;
+    private Rigidbody rb;
 
 
 
@@ -17,6 +18,7 @@ public class ScrapingSoundScript : MonoBehaviour {
         ScrapingSound = FMODUnity.RuntimeManager.CreateInstance(scraping);
         ScrapingSound.getParameter("Stoporgo", out SoundorNot);
         ScrapingSound.start();
+        rb = GetComponent<Rigidbody>();
         
 	}
 
@@ -24,17 +26,27 @@ public class ScrapingSoundScript : MonoBehaviour {
     void Update()
         
     {
-        Debug.Log(GetComponent<Rigidbody>().velocity);
-        if (GetComponent<Rigidbody>().velocity == Vector3.zero)
+        xvel = Mathf.Min (6, Mathf.Abs(rb.velocity.x));
+        zvel = Mathf.Min (6, Mathf.Abs(rb.velocity.z));
+
+        Debug.Log(xvel + ":" + zvel);
+
+
+        if (xvel > 0f)
         {
-            SoundorNot.setValue(0f);
-            //Debug.Log("noSound");
+            SoundorNot.setValue(xvel);
+        }
+        else if (zvel > 0f)
+        {
+            SoundorNot.setValue(zvel);
         }
         else
         {
-            SoundorNot.setValue(6f);
-            //Debug.Log("Sound");
+            SoundorNot.setValue(0);
         }
+        
+
+
     }
 
 }
