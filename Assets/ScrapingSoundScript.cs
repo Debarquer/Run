@@ -29,7 +29,7 @@ public class ScrapingSoundScript : MonoBehaviour {
         xvel = Mathf.Min (6, Mathf.Abs(rb.velocity.x));
         zvel = Mathf.Min (6, Mathf.Abs(rb.velocity.z));
 
-        Debug.Log(xvel + ":" + zvel);
+       
 
 
         if (xvel > 0f)
