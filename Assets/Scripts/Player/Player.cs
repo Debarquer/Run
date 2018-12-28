@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
     [FMODUnity.EventRef]
     public string JumpingSound;
 
+    public bool canMove;
+
     //[FMODUnity.EventRef]
     //public string playerMoveSound;
     //FMOD.Studio.EventInstance WalkingSound;
@@ -104,7 +106,15 @@ public class Player : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        FixedMovement();
+        if (canMove)
+        {
+            FixedMovement();
+        }
+        else
+        {
+            Vector3 previousVelocity = GetComponent<Rigidbody>().velocity;
+            GetComponent<Rigidbody>().velocity = new Vector3(0, previousVelocity.y, 0);
+        }
 
         if ((!fixedDashY && dashGravity) || !dashing)
         {

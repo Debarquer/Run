@@ -23,7 +23,8 @@ public class LoadSceneAsync : MonoBehaviour {
         FindObjectOfType<Player>().transform.position = FindObjectOfType<Player>().transform.position - roomStartPos;
         this.transform.parent.position -= roomStartPos;
 
-        StartCoroutine(StartLoading());
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        //StartCoroutine(StartLoading());
     }
 
     IEnumerator StartLoading()
