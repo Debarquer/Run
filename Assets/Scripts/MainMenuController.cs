@@ -11,6 +11,13 @@ public class MainMenuController : MonoBehaviour {
     public GameObject ExitMenu;
     GameObject gameController;
     MoveCamera main;
+
+    public GameObject optionsFirstSelected;
+    public GameObject extrasFirstSelected;
+    public GameObject aboutFirstSelected;
+    public GameObject exitFirstSelected;
+
+
     private void Start()
     {
         //ExtrasMenu.SetActive(false);
@@ -35,6 +42,9 @@ public class MainMenuController : MonoBehaviour {
         OptionsMenu.SetActive(true);
         main.MoveToOptions();
 
+        FindObjectOfType<UnityEngine.EventSystems.EventSystem>().firstSelectedGameObject = optionsFirstSelected;
+        FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(optionsFirstSelected);
+
         Debug.Log("Options");
     }
     public void Extras()
@@ -43,6 +53,10 @@ public class MainMenuController : MonoBehaviour {
         ExtrasMenu.SetActive(true);
         main.MoveToExtras();
         FindObjectOfType<HighscoreUI>().LoadLevelTexts();
+
+        FindObjectOfType<UnityEngine.EventSystems.EventSystem>().firstSelectedGameObject = extrasFirstSelected;
+        FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(extrasFirstSelected);
+
         Debug.Log("Extras");
     }
     public void About()
@@ -50,12 +64,20 @@ public class MainMenuController : MonoBehaviour {
         MainMenu.SetActive(false);
         AboutMenu.SetActive(true);
         main.MoveToAbout();
+
+        FindObjectOfType<UnityEngine.EventSystems.EventSystem>().firstSelectedGameObject = aboutFirstSelected;
+        FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(aboutFirstSelected);
+
         Debug.Log("About");
     }
     public void Exit()
     {
         MainMenu.SetActive(false);
         ExitMenu.SetActive(true);
+
+        FindObjectOfType<UnityEngine.EventSystems.EventSystem>().firstSelectedGameObject = exitFirstSelected;
+        FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(exitFirstSelected);
+
         Debug.Log("Exit");
     }
     //public void Back()

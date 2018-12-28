@@ -12,6 +12,9 @@ public class OptionsController : MonoBehaviour {
     public Image speedModeCheckmark;
 
     MoveCamera main;
+
+    public GameObject firstSelectedMain;
+
     private void Start()
     {
         main = Camera.main.gameObject.GetComponent<MoveCamera>();
@@ -34,8 +37,9 @@ public class OptionsController : MonoBehaviour {
     {
         MainMenu.SetActive(true);
         OptionsMenu.SetActive(false);
+        FindObjectOfType<UnityEngine.EventSystems.EventSystem>().firstSelectedGameObject = firstSelectedMain;
+        FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(firstSelectedMain);
         main.MoveToMainMenu();
-        
     }
 
     public void ToggleCheckmarkColor(Image checkmark, int value) {
