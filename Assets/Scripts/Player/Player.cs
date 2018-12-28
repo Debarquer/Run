@@ -75,6 +75,7 @@ public class Player : MonoBehaviour {
     public string nextScene;
 
     Vector3 lastPosition;
+    internal static object isGrounded;
 
     // Use this for initialization
     void Start () {
