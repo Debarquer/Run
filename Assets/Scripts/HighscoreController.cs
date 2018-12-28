@@ -24,7 +24,7 @@ public class HighscoreController : MonoBehaviour
         string text = System.IO.File.ReadAllText(levelName + ".txt");
         Debug.Log(text);
 
-        text += "\n" + playerName + string.Format(" {000:0.00}", time); ;
+        text += "\n" + playerName + string.Format(",{000:0.00}", time); ;
         System.IO.File.WriteAllText(levelName + ".txt", text);
         
         //SceneManager.LoadScene("LevelSelect");
