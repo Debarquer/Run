@@ -65,3 +65,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelName: Green Level
+  scoreSubmitCanvas: {fileID: 0}
