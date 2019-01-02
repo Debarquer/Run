@@ -105,6 +105,13 @@ public class GameController : MonoBehaviour {
             Debug.Log(SceneManager.GetActiveScene().buildIndex);
             ToggleMenu();
         }
+        if (Input.GetButtonUp("Fire2"))
+        {
+            if (menu.gameObject.activeInHierarchy)
+            {
+                ToggleMenu();
+            }
+        }
     }
 
     void GetGameProgress() {
