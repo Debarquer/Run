@@ -531,13 +531,12 @@ MonoBehaviour:
   PositionA: {fileID: 4971818645247132}
   PositionB: {fileID: 4674308906346668}
   reverseDirection: 0
-  moveTimerMaxA: 4
-  moveTimerMaxB: 0.5
   moveTimer: 5
   moveCurr: 0
-  stopTimer: 2
-  stopCurr: 0
-  speed: 0
+  RepeatOption: 0
+  isActive: 0
+  pressureplateScript: {fileID: 0}
+  movingObjectPatterns: []
 --- !u!114 &114889851097913526
 MonoBehaviour:
   m_ObjectHideFlags: 1

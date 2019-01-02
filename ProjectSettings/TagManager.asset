@@ -9,6 +9,7 @@ TagManager:
   - Music
   - Plate
   - NavPlane
+  - Pillar
   layers:
   - Default
   - TransparentFX
