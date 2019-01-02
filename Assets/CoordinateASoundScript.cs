@@ -8,7 +8,13 @@ public class CoordinateASoundScript : MonoBehaviour {
 
     [FMODUnity.EventRef]
     public string exit;
-  
+    public GameObject triggerSetActive;
+
+    private void Start()
+    {
+        triggerSetActive.SetActive(false);
+    }
+
 
 
 
@@ -17,6 +23,7 @@ public class CoordinateASoundScript : MonoBehaviour {
        if (other.tag == "Pillar")
        {
             FMODUnity.RuntimeManager.PlayOneShotAttached(enter, this.gameObject);
+            triggerSetActive.SetActive(true);
             
        }
     }
