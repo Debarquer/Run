@@ -7,3 +7,6 @@ AnonyMoose,15.5
 AnonyMoose,14.4
 AnonyMoose,17.8
 testblhye,71.28
+blue,73.59
+bleuh,73.62
+nooooooo,73.07
