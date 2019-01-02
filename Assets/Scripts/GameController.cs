@@ -68,6 +68,14 @@ public class GameController : MonoBehaviour {
         //For debug purposes only
         //PlayerPrefs.DeleteAll();
 
+        if (!PlayerPrefs.HasKey("firstTime")) {
+            PlayerPrefs.SetInt("fullscreen", Screen.fullScreen ? 1 : 0);
+            PlayerPrefs.SetInt("firstTime", 1);
+        }
+
+        Screen.fullScreen = PlayerPrefs.GetInt("fullscreen") == 1 ? true : false;
+        
+
         if (instance == null) {
             instance = this;
         }

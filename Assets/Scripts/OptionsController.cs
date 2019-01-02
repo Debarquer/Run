@@ -18,18 +18,25 @@ public class OptionsController : MonoBehaviour {
     private void Start()
     {
         main = Camera.main.gameObject.GetComponent<MoveCamera>();
-        //ToggleCheckmarkColor(fullScreenCheckmark, PlayerPrefs.GetInt("fullscreen")); 
-        ToggleCheckmarkColor(fullScreenCheckmark, 1);
+        UpdateCheckmarkColor(fullScreenCheckmark, PlayerPrefs.GetInt("fullscreen"));
     }
     public void ToggleFullscreen()
     {
-        ToggleCheckmarkColor(fullScreenCheckmark, 0);
+        int value = PlayerPrefs.GetInt("fullscreen");
+        UpdateCheckmarkColor(fullScreenCheckmark, value == 1 ? 0 : 1);
+        PlayerPrefs.SetInt("fullscreen",  value == 1 ? 0 : 1);
+        Screen.fullScreen = value == 1 ? true : false;
+
     }
-    public void Button2()
+    public void ToggleMusic()
     {
 
     }
-    public void Button3()
+    public void ToggleSound()
+    {
+
+    }
+    public void ToggleMode()
     {
 
     }
@@ -42,7 +49,7 @@ public class OptionsController : MonoBehaviour {
         main.MoveToMainMenu();
     }
 
-    public void ToggleCheckmarkColor(Image checkmark, int value) {
+    public void UpdateCheckmarkColor(Image checkmark, int value) {
         if (value == 1)
             checkmark.color = Color.green;
         if (value == 0)
