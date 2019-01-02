@@ -11,6 +11,9 @@ public class GameController : MonoBehaviour {
 
     public GameObject scoreSubmitContainer;
 
+    public GameObject firstSelected;
+    public UnityEngine.EventSystems.EventSystem eventsystem;
+
     string currentLevel;
 
     public enum GameState {
@@ -96,11 +99,18 @@ public class GameController : MonoBehaviour {
         {
             Cursor.visible = false;
         }
-        if (Input.GetKeyUp(KeyCode.Escape)) {
+        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetButtonUp("GamepadStart")) {
             if (SceneManager.GetActiveScene().buildIndex == 0)
                 OnExit();
             Debug.Log(SceneManager.GetActiveScene().buildIndex);
             ToggleMenu();
+        }
+        if (Input.GetButtonUp("Fire2"))
+        {
+            if (menu.gameObject.activeInHierarchy)
+            {
+                ToggleMenu();
+            }
         }
     }
 
@@ -128,6 +138,9 @@ public class GameController : MonoBehaviour {
         {
             state = GameState.Menu;
             Time.timeScale = 0f;
+
+            eventsystem.firstSelectedGameObject = firstSelected;
+            eventsystem.SetSelectedGameObject(firstSelected);
         }
         else{
             state = GameState.Game;
