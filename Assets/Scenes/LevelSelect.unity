@@ -12262,6 +12262,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114223816803867798, guid: 6ee22c826035ed146a0be0b66aa34ce6,
+        type: 2}
+      propertyPath: Params.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4659083497563684, guid: 6ee22c826035ed146a0be0b66aa34ce6, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -12293,6 +12298,16 @@ Prefab:
     - target: {fileID: 4659083497563684, guid: 6ee22c826035ed146a0be0b66aa34ce6, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114223816803867798, guid: 6ee22c826035ed146a0be0b66aa34ce6,
+        type: 2}
+      propertyPath: Params.Array.data[0].Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114223816803867798, guid: 6ee22c826035ed146a0be0b66aa34ce6,
+        type: 2}
+      propertyPath: Params.Array.data[0].Name
+      value: AmbientMode
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ee22c826035ed146a0be0b66aa34ce6, type: 2}
