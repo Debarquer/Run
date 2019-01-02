@@ -12309,6 +12309,16 @@ Prefab:
       propertyPath: Params.Array.data[0].Name
       value: AmbientMode
       objectReference: {fileID: 0}
+    - target: {fileID: 114546939215623202, guid: 6ee22c826035ed146a0be0b66aa34ce6,
+        type: 2}
+      propertyPath: firstSelected
+      value: 
+      objectReference: {fileID: 2096876411}
+    - target: {fileID: 114546939215623202, guid: 6ee22c826035ed146a0be0b66aa34ce6,
+        type: 2}
+      propertyPath: eventsystem
+      value: 
+      objectReference: {fileID: 1393198167}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ee22c826035ed146a0be0b66aa34ce6, type: 2}
   m_IsPrefabAsset: 0
@@ -30721,6 +30731,12 @@ MonoBehaviour:
   emissiveMaterial: {fileID: 2100000, guid: a992872e83a12ce4b89780a99e042d97, type: 2}
   nonEmissiveMaterial: {fileID: 2100000, guid: b82c0db03cf52df408c678958647adeb, type: 2}
   levelName: RedLevel
+--- !u!114 &1393198167 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114315159910330936, guid: 6ee22c826035ed146a0be0b66aa34ce6,
+    type: 2}
+  m_PrefabInternal: {fileID: 524602639}
+  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1396989088
 GameObject:
   m_ObjectHideFlags: 0
@@ -45876,6 +45892,11 @@ Mesh:
   m_MeshMetrics[0]: 1
   m_MeshMetrics[1]: 1
   m_MeshOptimized: 0
+--- !u!1 &2096876411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1785363275281912, guid: 6ee22c826035ed146a0be0b66aa34ce6,
+    type: 2}
+  m_PrefabInternal: {fileID: 524602639}
 --- !u!1 &2098112533 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1051305449674468, guid: bb7137be4c56f2842a9ac381e8f73ffe,
