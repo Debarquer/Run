@@ -24,7 +24,7 @@ public class ExtrasController : MonoBehaviour {
     public void Back()
     {
         MainMenu.SetActive(true);
-        Extras.SetActive(false);
+        //Extras.SetActive(false);
         FindObjectOfType<UnityEngine.EventSystems.EventSystem>().firstSelectedGameObject = firstSelectedMain;
         FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(firstSelectedMain);
         main.MoveToMainMenu();
