@@ -19,6 +19,7 @@ public class OptionsController : MonoBehaviour {
     {
         main = Camera.main.gameObject.GetComponent<MoveCamera>();
         UpdateCheckmarkColor(fullScreenCheckmark, PlayerPrefs.GetInt("fullscreen"));
+        UpdateCheckmarkColor(muteAudioCheckmark, PlayerPrefs.GetInt("muteAudio"));
     }
     public void ToggleFullscreen()
     {
@@ -28,15 +29,12 @@ public class OptionsController : MonoBehaviour {
         Screen.fullScreen = value == 1 ? true : false;
 
     }
-    public void ToggleMusic()
+    public void ToggleAudio()
     {
-        int value = PlayerPrefs.GetInt("muteAudio");
+        int value = PlayerPrefs.GetInt("muteAudio") == 1 ? 0 : 1;
+        PlayerPrefs.SetInt("muteAudio", value);
         UpdateCheckmarkColor(muteAudioCheckmark, value);
-        FMODUnity.RuntimeManager.MuteAllEvents(PlayerPrefs.GetInt("muteAudio") == 1 ? true : false);
-    }
-    public void ToggleSound()
-    {
-
+        FMODUnity.RuntimeManager.MuteAllEvents(value == 1 ? true : false);
     }
     public void ToggleMode()
     {
