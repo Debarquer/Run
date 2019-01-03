@@ -22,15 +22,17 @@ public class OptionsController : MonoBehaviour {
     }
     public void ToggleFullscreen()
     {
-        int value = PlayerPrefs.GetInt("fullscreen");
-        UpdateCheckmarkColor(fullScreenCheckmark, value == 1 ? 0 : 1);
-        PlayerPrefs.SetInt("fullscreen",  value == 1 ? 0 : 1);
+        int value = PlayerPrefs.GetInt("fullscreen") == 1 ? 0 : 1;
+        PlayerPrefs.SetInt("fullscreen",  value);
+        UpdateCheckmarkColor(fullScreenCheckmark, value);
         Screen.fullScreen = value == 1 ? true : false;
 
     }
     public void ToggleMusic()
     {
-
+        int value = PlayerPrefs.GetInt("muteAudio");
+        UpdateCheckmarkColor(muteAudioCheckmark, value);
+        FMODUnity.RuntimeManager.MuteAllEvents(PlayerPrefs.GetInt("muteAudio") == 1 ? true : false);
     }
     public void ToggleSound()
     {
@@ -53,6 +55,6 @@ public class OptionsController : MonoBehaviour {
         if (value == 1)
             checkmark.color = Color.green;
         if (value == 0)
-            checkmark.color = Color.red;
+            checkmark.color = Color.black;
     }
 }
