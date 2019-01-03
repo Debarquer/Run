@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4057197718866990}
   - component: {fileID: 119111605247376802}
   - component: {fileID: 114035170104078686}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Projector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 33106228552461166}
   - component: {fileID: 23945769621142180}
   - component: {fileID: 65091837692453038}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bouncer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 114905948975306092}
   - component: {fileID: 114091324309045272}
   - component: {fileID: 96890129471759508}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerMonoScript
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1683014187991138}
   m_LocalRotation: {x: -0, y: 0.004866619, z: -0, w: -0.9999882}
-  m_LocalPosition: {x: -11.795665, y: 7.505, z: 25.88571}
+  m_LocalPosition: {x: 13.5, y: 2, z: -20.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4775954130222390}
@@ -409,7 +409,7 @@ MonoBehaviour:
   LandingSound: event:/Player Landing
   DashSound: event:/Player Dash
   JumpingSound: event:/Player Jump
-  playerMoveSound: event:/Player Movement
+  canMove: 1
   fixedDashY: 0
   dashGravity: 1
   maxStamina: 0.75
@@ -453,4 +453,4 @@ Projector:
   m_Material: {fileID: 2100000, guid: e30ff3588e719f34bbf0c66f22d97487, type: 2}
   m_IgnoreLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512

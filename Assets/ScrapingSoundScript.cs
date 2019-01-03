@@ -8,6 +8,7 @@ public class ScrapingSoundScript : MonoBehaviour {
     FMOD.Studio.ParameterInstance SoundorNot;
     float xvel;
     float zvel;
+    float yvel;
     private Rigidbody rb;
 
 
@@ -28,22 +29,27 @@ public class ScrapingSoundScript : MonoBehaviour {
     {
         xvel = Mathf.Min (6, Mathf.Abs(rb.velocity.x));
         zvel = Mathf.Min (6, Mathf.Abs(rb.velocity.z));
+        yvel = Mathf.Min(6, Mathf.Abs(rb.velocity.y));
 
-       
 
 
-        if (xvel > 0f)
+        if (yvel < 1f)
         {
-            SoundorNot.setValue(xvel);
+            if (xvel > 0f)
+            {
+                SoundorNot.setValue(xvel);
+            }
+            if (zvel > 0f)
+            {
+                SoundorNot.setValue(zvel);
+            }
+            else if (xvel <= 0 && zvel <= 0)
+            {
+                SoundorNot.setValue(0);
+            }
         }
-        else if (zvel > 0f)
-        {
-            SoundorNot.setValue(zvel);
-        }
-        else
-        {
-            SoundorNot.setValue(0);
-        }
+
+
         
 
 
