@@ -70,11 +70,12 @@ public class GameController : MonoBehaviour {
 
         if (!PlayerPrefs.HasKey("firstTime")) {
             PlayerPrefs.SetInt("fullscreen", Screen.fullScreen ? 1 : 0);
+            PlayerPrefs.SetInt("muteAudio", 0);
             PlayerPrefs.SetInt("firstTime", 1);
         }
 
         Screen.fullScreen = PlayerPrefs.GetInt("fullscreen") == 1 ? true : false;
-        
+        FMODUnity.RuntimeManager.MuteAllEvents(PlayerPrefs.GetInt("muteAudio") == 1 ? true : false);
 
         if (instance == null) {
             instance = this;

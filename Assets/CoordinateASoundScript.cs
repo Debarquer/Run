@@ -12,7 +12,10 @@ public class CoordinateASoundScript : MonoBehaviour {
 
     private void Start()
     {
-        triggerSetActive.SetActive(false);
+        if(triggerSetActive != null)
+        {
+            triggerSetActive.SetActive(false);
+        }
     }
 
 
@@ -23,9 +26,17 @@ public class CoordinateASoundScript : MonoBehaviour {
        if (other.tag == "Pillar")
        {
             FMODUnity.RuntimeManager.PlayOneShotAttached(enter, this.gameObject);
-            triggerSetActive.SetActive(true);
-            
-       }
+
+            if(triggerSetActive != null)
+            {
+                triggerSetActive.SetActive(true);
+            }
+            else
+            {
+                //sDebug.Log("CoordinateASoundScript triggerSetActive is null", this);
+            }
+
+        }
     }
     private void OnTriggerExit(Collider other)
     {
