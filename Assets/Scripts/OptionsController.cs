@@ -9,7 +9,7 @@ public class OptionsController : MonoBehaviour {
     public GameObject OptionsMenu;
     public Image fullScreenCheckmark;
     public Image muteAudioCheckmark;
-    public Image speedModeCheckmark;
+    public Image gameModeCheckmark;
 
     MoveCamera main;
 
@@ -20,6 +20,7 @@ public class OptionsController : MonoBehaviour {
         main = Camera.main.gameObject.GetComponent<MoveCamera>();
         UpdateCheckmarkColor(fullScreenCheckmark, PlayerPrefs.GetInt("fullscreen"));
         UpdateCheckmarkColor(muteAudioCheckmark, PlayerPrefs.GetInt("muteAudio"));
+        UpdateCheckmarkColor(gameModeCheckmark, PlayerPrefs.GetInt("gameMode"));
     }
     public void ToggleFullscreen()
     {
@@ -38,7 +39,10 @@ public class OptionsController : MonoBehaviour {
     }
     public void ToggleMode()
     {
-
+        int value = PlayerPrefs.GetInt("gameMode") == 1 ? 0 : 1;
+        PlayerPrefs.SetInt("gameMode", value);
+        UpdateCheckmarkColor(gameModeCheckmark, value);
+        GameController.instance.mode = PlayerPrefs.GetInt("gameMode") == 1 ? GameController.GameMode.Timed : GameController.GameMode.Story;
     }
     public void Back()
     {
