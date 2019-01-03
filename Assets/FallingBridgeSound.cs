@@ -6,14 +6,18 @@ public class FallingBridgeSound : MonoBehaviour {
 
     [FMODUnity.EventRef]
     public string boomSound;
-
     bool hasFallen = false;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (hasFallen == false)
+        if (other.tag == "BridgeFloor")
         {
-            FMODUnity.RuntimeManager.PlayOneShot(boomSound);
-            hasFallen = true;
+            if (hasFallen == false)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot(boomSound);
+                hasFallen = true;
+                Debug.Log("Checkiftriggered");
+            }
         }
     }
 }
