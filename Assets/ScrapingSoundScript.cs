@@ -29,18 +29,18 @@ public class ScrapingSoundScript : MonoBehaviour {
         xvel = Mathf.Min (6, Mathf.Abs(rb.velocity.x));
         zvel = Mathf.Min (6, Mathf.Abs(rb.velocity.z));
 
-       
 
 
+        Debug.Log(zvel);
         if (xvel > 0f)
         {
             SoundorNot.setValue(xvel);
         }
-        else if (zvel > 0f)
+        if (zvel > 0f)
         {
             SoundorNot.setValue(zvel);
         }
-        else
+        else if (xvel <= 0 && zvel <= 0)
         {
             SoundorNot.setValue(0);
         }
