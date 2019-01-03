@@ -9,7 +9,7 @@ public class ActivateObject : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
-            target.SetActive(true);
+            target.SetActive(false);
         }
     }
 }
