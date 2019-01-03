@@ -36,4 +36,12 @@ public class IdleAnimationScript : MonoBehaviour {
             nextTick = 0;
         }
     }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.Equals("WinAnimBox"))
+    //    {
+    //        anim.Play("WinAnimation");
+    //    }
+
+    //}
 }
