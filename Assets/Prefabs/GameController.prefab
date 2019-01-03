@@ -253,7 +253,7 @@ MonoBehaviour:
   Preload: 0
   Params:
   - Name: AmbientMode
-    Value: 0
+    Value: 1
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
@@ -491,6 +491,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreSubmitContainer: {fileID: 1565350020423532, guid: eec112b8aa3e146488d69c2defacdef8,
     type: 2}
+  firstSelected: {fileID: 1785363275281912}
+  eventsystem: {fileID: 114315159910330936}
   menu: {fileID: 223378838193096088}
   state: 1
   mode: 1
