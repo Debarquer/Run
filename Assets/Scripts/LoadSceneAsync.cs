@@ -11,7 +11,10 @@ public class LoadSceneAsync : MonoBehaviour {
     // Use this for initialization
     private void OnEnable()
     {
-        doorwayCloser.OnDoorClosed += LoadNextLevel;
+        if(doorwayCloser != null)
+        {
+            doorwayCloser.OnDoorClosed += LoadNextLevel;
+        }
     }
 
     public void LoadNextLevel()
