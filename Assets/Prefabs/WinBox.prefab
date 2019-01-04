@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23332038482124388}
   - component: {fileID: 65017480814621868}
   - component: {fileID: 114428120406081026}
+  - component: {fileID: 114636659810506046}
   m_Layer: 0
   m_Name: WinBox
   m_TagString: Untagged
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1088345881148920}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -73.98, y: 15.66, z: 253.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,7 +96,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8, y: 8, z: 1}
+  m_Size: {x: 24, y: 24, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114428120406081026
 MonoBehaviour:
@@ -109,3 +110,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelName: Green Level
+--- !u!114 &114636659810506046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1088345881148920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe9e3105c71576d459b9c59175932420, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerImpersonator: {fileID: 1096875732620466, guid: b789170b2d74bcd4b8e2a4085efdfb19,
+    type: 2}
+  impersonatorPos: {fileID: 0}
+  winSound: event:/Win

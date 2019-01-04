@@ -5,14 +5,19 @@ using UnityEngine;
 public class TriggerWinAnim : MonoBehaviour {
     public GameObject playerImpersonator;
     public Transform impersonatorPos;
+    Transform playerPos;
     GameObject player;
     Player freeze;
     IdleAnimationScript idle;
     MeshRenderer mr;
     bool triggered;
-    float tick;
+    bool hasWon = false;
+    float tick = 0;
     float nextTick;
     float currTick;
+    [FMODUnity.EventRef]
+    public string winSound;
+   // private Transform animPos;
 
     private void Start()
     {
@@ -20,6 +25,7 @@ public class TriggerWinAnim : MonoBehaviour {
         freeze = player.GetComponent<Player>();
         idle = player.GetComponent<IdleAnimationScript>();
         mr = player.GetComponent<MeshRenderer>();
+        playerPos = player.GetComponent<Transform>();
        
     }
 
@@ -27,30 +33,42 @@ public class TriggerWinAnim : MonoBehaviour {
     private void Update()
     {
         tick += Time.deltaTime;
-        if (tick >= nextTick)
+        //Debug.Log(tick);
+        if (hasWon == true)
         {
-            Debug.Log("PlayerEnabled");
-            EnablePlayer();
+            if (tick >= nextTick)
+            {
+
+                Debug.Log("PlayerEnabled");
+                EnablePlayer();
+                hasWon = false;
+            }
         }
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (triggered == false)
+        if (other.tag == "Player")
         {
-            nextTick = tick + 3;
-            DisablePlayer();
-            Debug.Log("Disabled player");
-            triggered = true;
+            if (triggered == false)
+            {
+                nextTick = tick + 2f;
+                DisablePlayer();
+                Debug.Log("Disabled player");
+                FMODUnity.RuntimeManager.PlayOneShot(winSound);
+                triggered = true;
+                hasWon = true;
 
+            }
         }
-
 
     }
 
     void DisablePlayer()
     {
-        Instantiate<GameObject>(playerImpersonator, impersonatorPos.position, impersonatorPos.rotation);
+        Instantiate<GameObject>(playerImpersonator, player.transform.position, Quaternion.identity);
+        //animPos.transform.position = player.transform.position;
         freeze.canMove = false;
         idle.enabled = false;  
         mr.enabled = false;
@@ -61,6 +79,9 @@ public class TriggerWinAnim : MonoBehaviour {
         freeze.canMove = true;
         idle.enabled = true;
         mr.enabled = true;
-        Destroy(GameObject.Find ("PlayerImpersonator"));
+        //playerPos.transform.position = animPos.transform.position;
+
+        Destroy (GameObject.FindGameObjectWithTag("Imp"));
+        
     }
 }
