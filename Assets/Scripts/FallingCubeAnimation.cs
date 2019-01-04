@@ -8,7 +8,7 @@ public class FallingCubeAnimation : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided with " + collision.transform.name);
+        //Debug.Log("Collided with " + collision.transform.name);
 
         if(collision.transform.tag == "Player")
         {

@@ -15,7 +15,7 @@ public class SceneLoader : MonoBehaviour {
         else
         {
             Destroy(other.gameObject);
-            Debug.Log("This isn't a player");
+            //Debug.Log("This isn't a player");
         }
     }
 }

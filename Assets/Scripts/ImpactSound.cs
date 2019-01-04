@@ -14,7 +14,7 @@ public class ImpactSound : MonoBehaviour {
             if (hasBeenTriggered == false)
             {
                 FMODUnity.RuntimeManager.PlayOneShot(collisionSound);
-                Debug.Log("PlaySound");
+                //Debug.Log("PlaySound");
                 hasBeenTriggered = true;
             }
             
