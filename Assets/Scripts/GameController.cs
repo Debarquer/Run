@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
@@ -33,6 +34,10 @@ public class GameController : MonoBehaviour {
     public static GameController instance = null;
 
     public Canvas menu;
+    public GameObject menuPanel;
+    public GameObject optionsPanel;
+    public Image fullScreenCheckmark;
+    public Image muteAudioCheckmark;
 
     public GameState state = GameState.Game;
     public GameMode mode = GameMode.Timed;
@@ -150,6 +155,8 @@ public class GameController : MonoBehaviour {
             state = GameState.Menu;
             Time.timeScale = 0f;
 
+            menuPanel.SetActive(true);
+            optionsPanel.SetActive(false);
             eventsystem.firstSelectedGameObject = firstSelected;
             eventsystem.SetSelectedGameObject(firstSelected);
         }
@@ -163,6 +170,13 @@ public class GameController : MonoBehaviour {
         ToggleMenu();
     }
 
+    public void OnOptions() {
+        menuPanel.SetActive(false);
+        optionsPanel.SetActive(true);
+        UpdateCheckmarkColor(fullScreenCheckmark, PlayerPrefs.GetInt("fullscreen"));
+        UpdateCheckmarkColor(muteAudioCheckmark, PlayerPrefs.GetInt("muteAudio"));
+    }
+
     public void OnMainMenu() {
         ToggleMenu();
         state = GameState.Menu;
@@ -174,11 +188,37 @@ public class GameController : MonoBehaviour {
         Application.Quit();
     }
 
+    public void OnFullscreen() {
+        int value = PlayerPrefs.GetInt("fullscreen") == 1 ? 0 : 1;
+        PlayerPrefs.SetInt("fullscreen", value);
+        UpdateCheckmarkColor(fullScreenCheckmark, value);
+        Screen.fullScreen = value == 1 ? true : false;
+    }
+
+    public void OnMuteaudio() {
+        int value = PlayerPrefs.GetInt("muteAudio") == 1 ? 0 : 1;
+        PlayerPrefs.SetInt("muteAudio", value);
+        UpdateCheckmarkColor(muteAudioCheckmark, value);
+        FMODUnity.RuntimeManager.MuteAllEvents(value == 1 ? true : false);
+    }
+
+    public void OnBack() {
+        optionsPanel.SetActive(false);
+        menuPanel.SetActive(true);
+    }
+
     public void CompleteLevel(string scene)
     {
         Debug.Log("Time to completion: " + Timer);
         PlayerPrefs.SetInt(scene, 1);
         //FindObjectOfType<HighscoreController>().RecordHighscore(scene, Timer);
         scoreSubmitContainer.SetActive(true);
+    }
+
+    public void UpdateCheckmarkColor(Image checkmark, int value) {
+        if (value == 1)
+            checkmark.color = Color.green;
+        if (value == 0)
+            checkmark.color = Color.black;
     }
 }
