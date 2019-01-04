@@ -12,5 +12,10 @@ public class SceneLoader : MonoBehaviour {
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene, UnityEngine.SceneManagement.LoadSceneMode.Single);
         }
+        else
+        {
+            Destroy(other.gameObject);
+            Debug.Log("This isn't a player");
+        }
     }
 }
