@@ -14,3 +14,5 @@ abcdefghijk,109
 wow,97.00
 ok,66.65
 liter,69.31
+v,74.32
+u,68.09
