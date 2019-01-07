@@ -77,11 +77,14 @@ public class Player : MonoBehaviour {
     Vector3 lastPosition;
     internal static object isGrounded;
 
+    GameController gc;
+
     // Use this for initialization
     void Start () {
         GetComponent<Rigidbody>().useGravity = false;
         mr = GetComponent<MeshRenderer>();
         tr = GetComponent<TrailRenderer>();
+        gc = FindObjectOfType<GameController>();
 
         lastPosition = transform.position;
         //WalkingSound = FMODUnity.RuntimeManager.CreateInstance(playerMoveSound);
@@ -326,6 +329,11 @@ public class Player : MonoBehaviour {
 
     void FixedMovement()
     {
+        if(gc.state != GameController.GameState.Game)
+        {
+            return;
+        }
+
         AddForceMovement();
 
         lastFrameVelocity = velocity;
