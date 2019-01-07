@@ -21,8 +21,6 @@ public class SubmitHighscoreScript : MonoBehaviour {
 
     public void SubmitHighscore()
     {
-        highscoreUI.LoadLevelTexts();
-
         gc.state = GameController.GameState.Game;
 
         string currentLevel = gc.CurrentLevel;
