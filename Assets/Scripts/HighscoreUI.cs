@@ -9,7 +9,7 @@ public class HighscoreUI : MonoBehaviour {
     public GameObject textContainer;
     public float height = 0;
 
-    string level = "RedLevel";
+    public string level = "RedLevel";
 
 	// Use this for initialization
 	void Start () {

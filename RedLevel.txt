@@ -22,3 +22,7 @@ WeWillWe,141.06
 dddddwasw,66.77
 ear,79.49
 wow,86.16
+bc,72.32
+asdfas,4.17
+sdfads,3.33
+zsdfds,1.85
