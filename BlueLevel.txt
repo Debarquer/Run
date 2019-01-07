@@ -13,3 +13,5 @@ nooooooo,73.07
 YONAMEHERE,114.47
 me,76.18
 Oww,60.03
+FiveTwo,52.32
+howelse,57.24
