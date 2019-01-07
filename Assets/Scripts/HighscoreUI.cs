@@ -78,7 +78,6 @@ public class HighscoreUI : MonoBehaviour {
                 break;
             case "Green Level":
                 levelName = "Green Level";
-
                 break;
             case "BlueLevel":
                 levelName = "Blue Level";
@@ -89,9 +88,13 @@ public class HighscoreUI : MonoBehaviour {
         }
 
         GameObject a = Instantiate(highscoreTextPrefab, textContainer.transform);
-        a.GetComponent<Text>().text = string.Format("<b>{0}</b> \n\n", levelName);
+        a.GetComponent<Text>().text = string.Format("<b>{0}</b>", levelName);
+        GameObject aa = Instantiate(highscoreTextPrefab, textContainer.transform);
+        aa.GetComponent<Text>().text = string.Format("");
         GameObject b = Instantiate(highscoreTextPrefab, textContainer.transform);
-        b.GetComponent<Text>().text = string.Format("{0,-20} {1,-5} \n\n", "Name", "Time");
+        b.GetComponent<Text>().text = string.Format("{0,-25}", "Name");
+        GameObject c = Instantiate(highscoreTextPrefab, textContainer.transform);
+        c.GetComponent<Text>().text = string.Format("{0,-25}", "Time");
 
         foreach (string s in texts)
         {
@@ -116,8 +119,10 @@ public class HighscoreUI : MonoBehaviour {
                 }
             }
 
-            GameObject go = Instantiate(highscoreTextPrefab, textContainer.transform);
-            go.GetComponent<Text>().text = string.Format("{0,-20} {1,-6} \n", stringA, stringB);
+            GameObject namego = Instantiate(highscoreTextPrefab, textContainer.transform);
+            GameObject scorego = Instantiate(highscoreTextPrefab, textContainer.transform);
+            namego.GetComponent<Text>().text = string.Format("{0,-25}", stringA);
+            scorego.GetComponent<Text>().text = string.Format("{0,-25}", stringB);
         }
 
         transform.position = new Vector3(transform.position.x, 80, transform.position.z);
