@@ -22,7 +22,7 @@ public class Catapult : MonoBehaviour {
 
         for (float i = 0; i < 1; i += Time.deltaTime/2)
         {
-            Debug.Log("Looping");
+
 
             t.position = Vector3.Lerp(startPos, endPos, i);
 
