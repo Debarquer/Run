@@ -29,7 +29,7 @@ public class FadeFromBlack : MonoBehaviour {
         {
             if (alph > 0)
             {
-                alph -= Time.deltaTime * .2f;
+                alph -= Time.deltaTime * .4f;
                 if (alph < 0) { alph = 0f; }
                 blk.SetPixel(0, 0, new Color(0, 0, 0, alph));
                 blk.Apply();
@@ -39,7 +39,7 @@ public class FadeFromBlack : MonoBehaviour {
         {
             if (alph < 1)
             {
-                alph += Time.deltaTime * .2f;
+                alph += Time.deltaTime * .4f;
                 if (alph > 1) { alph = 1f; }
                 blk.SetPixel(0, 0, new Color(0, 0, 0, alph));
                 blk.Apply();
