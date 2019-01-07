@@ -14,12 +14,12 @@ public class SubmitHighscoreScript : MonoBehaviour {
 	void Start () {
         gc = FindObjectOfType<GameController>();
         gc.state = GameController.GameState.Menu;
-        gc.mode = GameController.GameMode.Story;
+        //gc.mode = GameController.GameMode.Story;
 
         scoreText.text = "Your time: " + string.Format("{000:0.00}", gc.Timer); ;
     }
 
-    public void Highscore()
+    public void SubmitHighscore()
     {
         gc.state = GameController.GameState.Game;
 
