@@ -10,18 +10,26 @@ public class SetCanMoveAndCameraSpeed : MonoBehaviour {
 
     bool hasBeenTriggered = false;
 
+    GameController gc;
+
     private void OnTriggerEnter(Collider other)
     {
         if (canMove)
         {
             if (other.tag == "Player")
             {
+                if(gc == null)
+                {
+                    gc = FindObjectOfType<GameController>();
+                }
+
                 FindObjectOfType<Player>().canMove = canMove;
                 Camera.main.GetComponent<CameraFollow>().speed = moveSpeed;
 
-                if (FindObjectOfType<GameController>().mode == GameController.GameMode.Timed)
+                if (gc.mode == GameController.GameMode.Timed)
                 {
-                    FindObjectOfType<GameController>().Timer = 0;
+                    gc.stopTimer = false;
+                    gc.Timer = 0;
                     timerCanvas.SetActive(true);
                 }
             }
@@ -34,12 +42,17 @@ public class SetCanMoveAndCameraSpeed : MonoBehaviour {
         {
             if (other.tag == "Player")
             {
+                if (gc == null)
+                {
+                    gc = FindObjectOfType<GameController>();
+                }
+
                 FindObjectOfType<Player>().canMove = canMove;
                 Camera.main.GetComponent<CameraFollow>().speed = moveSpeed;
 
-                if (FindObjectOfType<GameController>().mode == GameController.GameMode.Timed)
+                if (gc.mode == GameController.GameMode.Timed)
                 {
-                    FindObjectOfType<GameController>().Timer = 0;
+                    gc.Timer = 0;
                     timerCanvas.SetActive(true);
                 }
             }

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     private float timer = 0;
+    [System.NonSerialized]public bool stopTimer = false;
     public delegate void TimerIncreasedDelegate(float timer);
     public event TimerIncreasedDelegate OnTimerIncreased;
 
@@ -100,10 +101,13 @@ public class GameController : MonoBehaviour {
 
         if(mode == GameMode.Timed)
         {
-            Timer += Time.deltaTime;
-            if (OnTimerIncreased != null)
+            if (!stopTimer)
             {
-                OnTimerIncreased(Timer);
+                Timer += Time.deltaTime;
+                if (OnTimerIncreased != null)
+                {
+                    OnTimerIncreased(Timer);
+                }
             }
         }
 
@@ -211,6 +215,7 @@ public class GameController : MonoBehaviour {
     {
         Debug.Log("Time to completion: " + Timer);
         PlayerPrefs.SetInt(scene, 1);
+        stopTimer = true;
         //FindObjectOfType<HighscoreController>().RecordHighscore(scene, Timer);
         Invoke("EnableScoreSubmitContainer", 2f);
     }
