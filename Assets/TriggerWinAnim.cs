@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TriggerWinAnim : MonoBehaviour {
     public GameObject playerImpersonator;
@@ -17,11 +15,13 @@ public class TriggerWinAnim : MonoBehaviour {
     float currTick;
     [FMODUnity.EventRef]
     public string winSound;
-   // private Transform animPos;
+    // private Transform animPos;
+
+    private bool hasPassedTrigger = false;
 
     private void Start()
     {
-        player = GameObject.Find ("PlayerMonoScript");
+        player = GameObject.FindObjectOfType<Player>().gameObject;
         freeze = player.GetComponent<Player>();
         idle = player.GetComponent<IdleAnimationScript>();
         mr = player.GetComponent<MeshRenderer>();
@@ -33,6 +33,19 @@ public class TriggerWinAnim : MonoBehaviour {
     private void Update()
     {
         tick += Time.deltaTime;
+
+        if (hasPassedTrigger && freeze.grounded)
+        {
+            nextTick = tick + 2f;
+            DisablePlayer();
+            Debug.Log("Disabled player");
+            FMODUnity.RuntimeManager.PlayOneShot(winSound);
+            triggered = true;
+            hasWon = true;
+
+            hasPassedTrigger = false;
+        }
+
         //Debug.Log(tick);
         if (hasWon == true)
         {
@@ -53,13 +66,7 @@ public class TriggerWinAnim : MonoBehaviour {
         {
             if (triggered == false)
             {
-                nextTick = tick + 2f;
-                DisablePlayer();
-                Debug.Log("Disabled player");
-                FMODUnity.RuntimeManager.PlayOneShot(winSound);
-                triggered = true;
-                hasWon = true;
-
+                hasPassedTrigger = true;
             }
         }
 
