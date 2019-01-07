@@ -11,3 +11,5 @@ abcdefghij,137
 abcdefghijk,109
 87point18,87.18
 122,122.05
+wow,97.00
+ok,66.65

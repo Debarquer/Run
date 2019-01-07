@@ -212,6 +212,11 @@ public class GameController : MonoBehaviour {
         Debug.Log("Time to completion: " + Timer);
         PlayerPrefs.SetInt(scene, 1);
         //FindObjectOfType<HighscoreController>().RecordHighscore(scene, Timer);
+        Invoke("EnableScoreSubmitContainer", 2f);
+    }
+
+    public void EnableScoreSubmitContainer()
+    {
         scoreSubmitContainer.SetActive(true);
     }
 
