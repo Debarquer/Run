@@ -45,17 +45,20 @@ public class PressurePlateScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(hasBeenTriggered)
+        if (other.tag == "Player" || other.tag == "PillarActivate")
         {
-            return;
-        }
-        else
-        {
-            hasBeenTriggered = true;
-            transform.parent.GetComponentInChildren<MeshRenderer>().material = triggered;
-            FMODUnity.RuntimeManager.PlayOneShot(PressurePlateActivateSound);
+            if (hasBeenTriggered)
+            {
+                return;
+            }
+            else
+            {
+                hasBeenTriggered = true;
+                transform.parent.GetComponentInChildren<MeshRenderer>().material = triggered;
+                FMODUnity.RuntimeManager.PlayOneShot(PressurePlateActivateSound);
 
-            OnEnter();
+                OnEnter();
+            }
         }
     }
     private void OnTriggerExit(Collider other)
