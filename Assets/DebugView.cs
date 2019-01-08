@@ -5,16 +5,25 @@ using UnityEngine;
 using UnityEngine.UI;
 public class DebugView : MonoBehaviour {
 
+    public static DebugView instance = null;
+
     public Text debugText;
     public GameObject debugView;
     public string output = "";
     public string stack = "";
 
     void OnEnable() {
-        debugText.text = "";
-        Application.logMessageReceived += HandleLog;
+        if (instance == null) {
+            instance = this;
+        }
+
+        else if (instance != this)
+            Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
+
+        debugText.text = "";
+        Application.logMessageReceived += HandleLog;
     }
 
     void OnDisable() {
