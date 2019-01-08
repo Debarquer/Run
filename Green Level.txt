@@ -1,3 +1,6 @@
 
 RECORDBO,79.58
 Noah,99.66
+graph,94.38
+sf,83.48
+me,77.36
