@@ -5829,7 +5829,7 @@ Prefab:
     - target: {fileID: 114387607574307264, guid: 71d4577ff91c91342b79cae250c8f3bc,
         type: 2}
       propertyPath: m_CellSize.x
-      value: 600
+      value: 500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71d4577ff91c91342b79cae250c8f3bc, type: 2}
