@@ -12,6 +12,7 @@ TagManager:
   - Pillar
   - BridgeFloor
   - Imp
+  - PillarActivate
   layers:
   - Default
   - TransparentFX
