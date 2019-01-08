@@ -94,6 +94,11 @@ public class Player : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        if(transform.position.y < -15)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(gc.CurrentLevel, UnityEngine.SceneManagement.LoadSceneMode.Single);
+        }
+
         CheckPlayerInput();
 
         Stamina();
