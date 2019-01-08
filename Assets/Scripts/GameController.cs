@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     private float timer = 0;
+    FMODUnity.StudioEventEmitter musicEmitter;
     [System.NonSerialized]public bool stopTimer = false;
     public delegate void TimerIncreasedDelegate(float timer);
     public event TimerIncreasedDelegate OnTimerIncreased;
@@ -90,6 +91,9 @@ public class GameController : MonoBehaviour {
         Screen.fullScreen = PlayerPrefs.GetInt("fullscreen") == 1 ? true : false;
         FMODUnity.RuntimeManager.MuteAllEvents(PlayerPrefs.GetInt("muteAudio") == 1 ? true : false);
         mode = PlayerPrefs.GetInt("gameMode") == 1 ? GameMode.Timed : GameMode.Story;
+        // Finding GameController with music emitter
+        GameObject GameobjectTarget = GameObject.Find("GameController");
+        musicEmitter = GameobjectTarget.GetComponent<FMODUnity.StudioEventEmitter>();
         //GetGameProgress();
     }
   
@@ -182,6 +186,7 @@ public class GameController : MonoBehaviour {
         state = GameState.Menu;
         menu.gameObject.SetActive(false);
         SceneManager.LoadScene(0);
+        musicEmitter.SetParameter("AmbientMode", 1);
     }
 
     public void OnExit() {
