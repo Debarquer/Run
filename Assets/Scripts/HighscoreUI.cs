@@ -2,6 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+
+public class Highscore
+{
+    string name;
+    float score;
+
+    public string Name
+    {
+        get
+        {
+            return name;
+        }
+
+        set
+        {
+            name = value;
+        }
+    }
+
+    public float Score
+    {
+        get
+        {
+            return score;
+        }
+
+        set
+        {
+            score = value;
+        }
+    }
+
+    public Highscore(string name, float score)
+    {
+        this.name = name;
+        this.score = score;
+    }
+}
 
 public class HighscoreUI : MonoBehaviour {
 
@@ -10,6 +49,7 @@ public class HighscoreUI : MonoBehaviour {
     public float height = 0;
 
     public string level = "RedLevel";
+
 
 	// Use this for initialization
 	void Start () {
@@ -96,9 +136,10 @@ public class HighscoreUI : MonoBehaviour {
         GameObject c = Instantiate(highscoreTextPrefab, textContainer.transform);
         c.GetComponent<Text>().text = string.Format("{0,-25}", "Time");
 
+        List<Highscore> unsortedHighscores = new List<Highscore>();
+
         foreach (string s in texts)
         {
-
             string stringA = "";
             string stringB = "";
 
@@ -119,12 +160,27 @@ public class HighscoreUI : MonoBehaviour {
                 }
             }
 
+            float score;
+            float.TryParse(stringB, out score);
+            unsortedHighscores.Add(new Highscore(stringA, score));
+        }
+
+        Debug.Log(unsortedHighscores.Count);
+
+        Highscore[] sortedHighscores = SortHighscore(unsortedHighscores);
+        foreach(Highscore h in sortedHighscores)
+        {
             GameObject namego = Instantiate(highscoreTextPrefab, textContainer.transform);
             GameObject scorego = Instantiate(highscoreTextPrefab, textContainer.transform);
-            namego.GetComponent<Text>().text = string.Format("{0,-25}", stringA);
-            scorego.GetComponent<Text>().text = string.Format("{0,-25}", stringB);
+            namego.GetComponent<Text>().text = string.Format("{0,-25}", h.Name);
+            scorego.GetComponent<Text>().text = string.Format("{0,-25}", h.Score.ToString());
         }
 
         transform.position = new Vector3(transform.position.x, 80, transform.position.z);
+    }
+
+    public Highscore[] SortHighscore(List<Highscore> unsorted)
+    {
+        return unsorted.OrderBy(o => o.Score).ToArray();
     }
 }
