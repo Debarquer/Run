@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using System;
+using System.IO;
 
 public class Highscore
 {
@@ -42,7 +44,8 @@ public class Highscore
     }
 }
 
-public class HighscoreUI : MonoBehaviour {
+public class HighscoreUI : MonoBehaviour
+{
 
     public GameObject highscoreTextPrefab;
     public GameObject textContainer;
@@ -50,10 +53,123 @@ public class HighscoreUI : MonoBehaviour {
 
     public string level = "RedLevel";
 
+    string hashA = "t¤#e%#¤54.3%#¤45.5h65&35654¤6g%¤6.sr45&.456345.45t6¤%345&45h6.¤%6g3345&6445.&w%6y45&45.dfg33&.4455%¤%54h5rea*";
+    string hashB = "*t¤#e%#¤543%34#.¤5h65&354566¤6.g%¤6sr4345.5&45645t6¤%.&45h.6¤%6g3&6.445345&w%6y45&45.3&4455%¤%54h5rea";
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         //LoadLevelTexts();
+        //TestSaveAsBinary();
+        //TestLoadBinary();
+    }
+
+    void TestSaveAsBinary()
+    {
+        string[] texts = File.ReadAllLines("RedLevel.txt");
+        using (FileStream fs = new FileStream("Test.dat", (FileMode.CreateNew)))
+        {
+            using (BinaryWriter w = new BinaryWriter(fs))
+            {
+                List<string> data = new List<string>();
+                foreach (string s in texts)
+                {
+                    if (s.Length == 0)
+                    {
+                        continue;
+                    }
+
+                    string stringA = hashA;
+                    string stringB = hashA;
+
+                    //bool done = false;
+                    for (int i = 0; i < s.Length; i++)
+                    {
+                        if (s[i] == ',')
+                        {
+                            for (int y = i + 1; y < s.Length; y++)
+                            {
+                                stringB += s[y];
+                            }
+                            //done = true;
+                            break;
+                        }
+                        else
+                        {
+                            stringA += s[i];
+                        }
+                    }
+
+                    string dataString = "\n" + stringA + "," + stringB;
+                    data.Add(dataString);
+                }
+
+                foreach (string s in data)
+                {
+                    w.Write(s);
+                }
+            }
+        }
+
+        File.SetAttributes("Test.dat", File.GetAttributes("Test.dat") | FileAttributes.Hidden);
+    }
+
+    void TestLoadBinary()
+    {
+        try
+        {   // Open the text file using a stream reader.
+            using (StreamReader sr = new StreamReader("Test.dat"))
+            {
+                // Read the stream to a string, and write the string to the console.
+                string line = sr.ReadToEnd();
+
+                Debug.Log(line);
+
+                string[] lines = line.Split('\n');
+
+                foreach (string s in lines)
+                {
+                    if (s.Length == 0)
+                    {
+                        continue;
+                    }
+
+                    string stringA = "";
+                    string stringB = "";
+
+                    bool done = false;
+                    for (int i = 0; i < s.Length && !done; i++)
+                    {
+                        if (s[i] == '*')
+                        {
+                            for (int j = i + 1; j < s.Length; j++)
+                            {
+                                if (s[j] == ',')
+                                {
+                                    for (int k = j + 1; s[k] != '*'; k++)
+                                    {
+                                        stringB += s[k];
+                                    }
+                                    done = true;
+                                }
+                                else
+                                {
+                                    stringA += s[j];
+                                }
+                            }
+                        }
+                    }
+
+                    string dataString = "\n" + stringA + "," + stringB;
+                    Debug.Log(stringA + "," + stringB);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log("The file could not be read:");
+            Debug.Log(e.Message);
+        }
     }
 
     void Update()
@@ -62,7 +178,7 @@ public class HighscoreUI : MonoBehaviour {
 
         //Debug.Log(transform.localPosition.y + ":" + height);
 
-        if(transform.localPosition.y > height)
+        if (transform.localPosition.y > height)
         {
             //Debug.Log("Restarting");
             transform.localPosition = new Vector3(transform.localPosition.x, 80f, transform.localPosition.z);
@@ -97,15 +213,25 @@ public class HighscoreUI : MonoBehaviour {
     {
 
         Text[] OldTexts = GetComponentsInChildren<Text>();
-        if(OldTexts != null)
+        if (OldTexts != null)
         {
-            foreach(Text text in OldTexts)
+            foreach (Text text in OldTexts)
             {
                 Destroy(text.gameObject);
             }
         }
 
-        string[] texts = System.IO.File.ReadAllLines(level+".txt");
+        string[] texts;
+        try
+        {
+            texts = System.IO.File.ReadAllLines(level + ".txt");
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogWarning(e.Message + ": unable to open " + level + ".txt");
+            return;
+        }
+
         height = (texts.Length * 90) + 1050;
 
         //GetComponent<RectTransform>().sizeDelta = new Vector2(900, height);
@@ -140,19 +266,25 @@ public class HighscoreUI : MonoBehaviour {
 
         foreach (string s in texts)
         {
+            if (s.Length == 0)
+            {
+                continue;
+            }
+
             string stringA = "";
             string stringB = "";
 
-            bool done = false;
-            for (int i = 0; !done; i++)
+            //bool done = false;
+            for (int i = 0; i < s.Length; i++)
             {
-                if(s[i] == ',')
+                if (s[i] == ',')
                 {
                     for (int y = i + 1; y < s.Length; y++)
                     {
                         stringB += s[y];
                     }
-                    done = true;
+                    //done = true;
+                    break;
                 }
                 else
                 {
@@ -168,7 +300,7 @@ public class HighscoreUI : MonoBehaviour {
         Debug.Log(unsortedHighscores.Count);
 
         Highscore[] sortedHighscores = SortHighscore(unsortedHighscores);
-        foreach(Highscore h in sortedHighscores)
+        foreach (Highscore h in sortedHighscores)
         {
             GameObject namego = Instantiate(highscoreTextPrefab, textContainer.transform);
             GameObject scorego = Instantiate(highscoreTextPrefab, textContainer.transform);
