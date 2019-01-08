@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DebugView : MonoBehaviour {
 
     public Text debugText;
+    public GameObject debugView;
     public string output = "";
     public string stack = "";
 
@@ -21,8 +22,9 @@ public class DebugView : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyUp("f"))
-            debugText.enabled = !debugText.enabled;
+        if (Input.GetKeyUp("f")) { 
+            debugView.SetActive(!debugView.activeInHierarchy);
+        }
     }
 
     void HandleLog(string logString, string stackTrace, LogType type) {

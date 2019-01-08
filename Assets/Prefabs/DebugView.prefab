@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 114302162803793042}
   - component: {fileID: 114585606697030912}
   m_Layer: 0
-  m_Name: Scrollbar Vertical
+  m_Name: ScrollBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugText: {fileID: 114130276800578824}
+  debugView: {fileID: 1176802567152694}
   output: 
   stack: 
 --- !u!114 &114638090418194876
@@ -611,11 +612,11 @@ RectTransform:
   m_Father: {fileID: 224298295168979306}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -343.7, y: 274.6}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 567.8, y: 97}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!224 &224896490524135726
 RectTransform:
   m_ObjectHideFlags: 1
