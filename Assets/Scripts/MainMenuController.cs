@@ -33,6 +33,7 @@ public class MainMenuController : MonoBehaviour {
     {
         MainMenu.SetActive(false);
         gameController.SetActive(true);
+        gameController.GetComponent<GameController>().state = GameController.GameState.Game;
         Debug.Log("Play");
         SceneManager.LoadScene("LevelSelect");
     }
