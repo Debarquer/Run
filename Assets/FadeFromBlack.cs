@@ -22,7 +22,7 @@ public class FadeFromBlack : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown("space")) { fade = !fade; }
+        //if (Input.GetKeyDown("space")) { fade = !fade; }
 
 
         if (!fade)

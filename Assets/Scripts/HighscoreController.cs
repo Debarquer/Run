@@ -29,9 +29,4 @@ public class HighscoreController : MonoBehaviour
         
         //SceneManager.LoadScene("LevelSelect");
     }
-
-    public void SortHighscore(string levelName)
-    {
-
-    }
 }
