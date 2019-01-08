@@ -9,6 +9,7 @@ abcdefgh,112
 abcdefghi,131
 abcdefghij,137
 abcdefghijk,109
+abcdefghijkl,109
 87point18,87.18
 122,122.05
 wow,97.00
@@ -26,3 +27,5 @@ bc,72.32
 asdfas,4.17
 sdfads,3.33
 zsdfds,1.85
+Moo,80.16
+edge,78.18
