@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
 
 public class HighscoreController : MonoBehaviour
 {
@@ -20,12 +22,36 @@ public class HighscoreController : MonoBehaviour
 
     public void RecordHighscore(string levelName, string playerName, float time)
     {
+        string text = "";
+        try
+        {
+            text = File.ReadAllText(levelName + ".txt");
+            Debug.Log(text);
+        }
+        catch (ArgumentNullException e)
+        {
+            Debug.LogWarning(e.Message + ": " + levelName + ".txt does not exist");
+        }
+        catch (ArgumentException e)
+        {
+            Debug.LogWarning(e.Message + ": " + levelName + ".txt is empty or corrupt");
+        }
+        catch(Exception e)
+        {
+            Debug.LogWarning(e.Message + ": " + levelName + ".txt is empty or corrupt");
+        }
 
-        string text = System.IO.File.ReadAllText(levelName + ".txt");
-        Debug.Log(text);
+        text += "\n" + playerName + string.Format(",{000:0.00}", time);
 
-        text += "\n" + playerName + string.Format(",{000:0.00}", time); ;
-        System.IO.File.WriteAllText(levelName + ".txt", text);
+        try
+        {
+            File.WriteAllText(levelName + ".txt", text);
+        }
+        catch(Exception e){
+            Debug.Log(e.Message + ": " + levelName + " does not exist");
+            File.Create(levelName + ".txt");
+            File.WriteAllText(levelName + ".txt", text);
+        }
         
         //SceneManager.LoadScene("LevelSelect");
     }
