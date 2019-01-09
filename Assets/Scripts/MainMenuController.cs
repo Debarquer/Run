@@ -20,10 +20,10 @@ public class MainMenuController : MonoBehaviour {
 
     private void Start()
     {
-        //ExtrasMenu.SetActive(false);
-        //OptionsMenu.SetActive(false);
-        //AboutMenu.SetActive(false);
-        //ExitMenu.SetActive(false);
+        ExtrasMenu.SetActive(false);
+        OptionsMenu.SetActive(false);
+        AboutMenu.SetActive(false);
+        ExitMenu.SetActive(false);
         main = Camera.main.gameObject.GetComponent<MoveCamera>();
         gameController = GameObject.Find("GameController");
         gameController.SetActive(false);
@@ -51,7 +51,7 @@ public class MainMenuController : MonoBehaviour {
     public void Extras()
     {
         MainMenu.SetActive(false);
-        ExtrasMenu.SetActive(true);
+        Invoke("InvokeSetActive", 0.55f);
         main.MoveToExtras();
         FindObjectOfType<HighscoreUI>().LoadLevelTexts();
 
@@ -80,6 +80,11 @@ public class MainMenuController : MonoBehaviour {
         FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(exitFirstSelected);
 
         Debug.Log("Exit");
+    }
+
+    void InvokeSetActive()
+    {
+        ExtrasMenu.SetActive(true);
     }
     //public void Back()
     //{

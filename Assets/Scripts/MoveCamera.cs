@@ -7,6 +7,8 @@ public class MoveCamera : MonoBehaviour {
 
    public Transform[] destinations;
 
+   //public GameObject highscoreCanvas;
+
     private void Start()
     {
         transform.position = destinations[0].transform.position;
@@ -49,7 +51,14 @@ public class MoveCamera : MonoBehaviour {
         {
             transform.position = Vector3.Lerp(startPos, destinations[index].transform.position, i);
             transform.rotation = Quaternion.Lerp(startRot, destinations[index].transform.rotation, i);
-
+            //if (i > 0.9)
+            //{
+            //    highscoreCanvas.SetActive(true);
+            //}
+            //else
+            //{
+            //    highscoreCanvas.SetActive(false);
+            //}
             yield return null;
         }
     }
