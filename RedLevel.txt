@@ -30,3 +30,4 @@ zsdfds,1.85
 Moo,80.16
 edge,78.18
 ,167.82
+WasntATriumf,55.52
