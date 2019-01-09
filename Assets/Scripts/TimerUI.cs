@@ -18,7 +18,7 @@ public class TimerUI : MonoBehaviour {
     {
         if(text != null)
         {
-            text.text = string.Format("Timer: {0:0.00}", timer);
+            text.text = string.Format("TIMER: {0:0.00}", timer);
         }
     }
 
