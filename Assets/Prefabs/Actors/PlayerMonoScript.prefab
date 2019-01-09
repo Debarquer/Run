@@ -410,7 +410,7 @@ MonoBehaviour:
   trailFadeRate: 0.8
   LandingSound: event:/Player Landing
   DashSound: event:/Player Dash
-  JumpingSound: event:/Player Jump
+  JumpingSound: event:/Player Jumping
   canMove: 1
   fixedDashY: 0
   dashGravity: 1
