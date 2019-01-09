@@ -1106,46 +1106,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
-    - target: {fileID: 23757882524950984, guid: 6061a9eccffbc874182d0085c5ee6ac9,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 924f1e12c36d1fa46a0cbe8f18c5f133, type: 2}
-    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
-        type: 2}
-      propertyPath: maxStamina
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
-        type: 2}
-      propertyPath: isRunning
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
-        type: 2}
-      propertyPath: speedMod
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
-        type: 2}
-      propertyPath: dashSpeedMod
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
-        type: 2}
-      propertyPath: LandingSound
-      value: event:/Player Landing
-      objectReference: {fileID: 0}
-    - target: {fileID: 114905948975306092, guid: 6061a9eccffbc874182d0085c5ee6ac9,
-        type: 2}
-      propertyPath: JumpingSound
-      value: event:/Player Jump
-      objectReference: {fileID: 0}
-    - target: {fileID: 23945769621142180, guid: 6061a9eccffbc874182d0085c5ee6ac9,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6061a9eccffbc874182d0085c5ee6ac9, type: 2}
   m_IsPrefabAsset: 0
