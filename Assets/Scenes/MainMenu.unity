@@ -20167,7 +20167,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &981486647
@@ -28351,6 +28351,7 @@ MonoBehaviour:
   extrasFirstSelected: {fileID: 1882465231}
   aboutFirstSelected: {fileID: 1852329962}
   exitFirstSelected: {fileID: 774619808}
+  highscoreUI: {fileID: 162949172}
 --- !u!4 &1330883092
 Transform:
   m_ObjectHideFlags: 0

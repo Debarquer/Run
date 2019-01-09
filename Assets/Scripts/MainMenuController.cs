@@ -17,6 +17,8 @@ public class MainMenuController : MonoBehaviour {
     public GameObject aboutFirstSelected;
     public GameObject exitFirstSelected;
 
+    public HighscoreUI highscoreUI;
+
 
     private void Start()
     {
@@ -53,7 +55,7 @@ public class MainMenuController : MonoBehaviour {
         MainMenu.SetActive(false);
         Invoke("InvokeSetActive", 0.55f);
         main.MoveToExtras();
-        FindObjectOfType<HighscoreUI>().LoadLevelTexts();
+        highscoreUI.LoadLevelTexts();
 
         FindObjectOfType<UnityEngine.EventSystems.EventSystem>().firstSelectedGameObject = extrasFirstSelected;
         FindObjectOfType<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(extrasFirstSelected);
