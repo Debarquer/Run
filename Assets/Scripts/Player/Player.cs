@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
     public Vector3 runningVelocity = Vector3.zero;
 
     MeshRenderer mr;
-    TrailRenderer tr;
+    ParticleSystem ps;
 
     [SerializeField] ParticleSystem jumpEffect;
     [SerializeField] ParticleSystem landEffect;
@@ -83,10 +83,11 @@ public class Player : MonoBehaviour {
     void Start () {
         GetComponent<Rigidbody>().useGravity = false;
         mr = GetComponent<MeshRenderer>();
-        tr = GetComponent<TrailRenderer>();
+        ps = GetComponent<ParticleSystem>();
         gc = FindObjectOfType<GameController>();
 
         lastPosition = transform.position;
+        ps.Stop();
         //WalkingSound = FMODUnity.RuntimeManager.CreateInstance(playerMoveSound);
         //WalkingSound.getParameter("Stoporgo", out stopOrGo);
         //WalkingSound.start();
@@ -104,7 +105,7 @@ public class Player : MonoBehaviour {
         Stamina();
 
         if (endedSprint) {
-            FadeTrail();
+            //FadeTrail();
         }
 
         if (!fixedDashY || !dashing)
@@ -148,7 +149,7 @@ public class Player : MonoBehaviour {
         if (!dashing && maxStamina - stamina < 0.1f)
         {
             dashing = true;
-            tr.enabled = true;
+            ps.Play();
             alpha = 1;
             //speed *= speedMod;
             runningVelocity = GetComponent<Rigidbody>().velocity;
@@ -163,20 +164,21 @@ public class Player : MonoBehaviour {
         if (dashing)
         {
             dashing = false;
+            ps.Stop();
             //speed /= speedMod;
             endedSprint = true;
             runningVelocity = Vector3.zero;
         }
     }
 
-    void FadeTrail() {
-        alpha -= trailFadeRate * Time.deltaTime;
-        tr.startColor = new Color(mr.material.color.r, mr.material.color.g, mr.material.color.b, alpha);
-        if (alpha <= trailFadeRate) { 
-            endedSprint = false;
-            tr.enabled = false;
-        }
-    }
+    //void FadeTrail() {
+    //    alpha -= trailFadeRate * Time.deltaTime;
+    //    tr.startColor = new Color(mr.material.color.r, mr.material.color.g, mr.material.color.b, alpha);
+    //    if (alpha <= trailFadeRate) { 
+    //        endedSprint = false;
+    //        tr.enabled = false;
+    //    }
+    //}
 
     void Stamina()
     {
@@ -202,7 +204,7 @@ public class Player : MonoBehaviour {
         }
 
         mr.material.color = Color.Lerp(noStaminaColor, maxStaminaColor, stamina / maxStamina);
-        tr.startColor = mr.material.color;
+        //tr.startColor = mr.material.color;
     }
 
     void Jump()
