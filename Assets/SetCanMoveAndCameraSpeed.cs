@@ -12,6 +12,13 @@ public class SetCanMoveAndCameraSpeed : MonoBehaviour {
 
     GameController gc;
 
+    Player player;
+
+    private void Start()
+    {
+        player = FindObjectOfType<Player>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (canMove)
@@ -23,7 +30,8 @@ public class SetCanMoveAndCameraSpeed : MonoBehaviour {
                     gc = FindObjectOfType<GameController>();
                 }
 
-                FindObjectOfType<Player>().canMove = canMove;
+                player.canMove = canMove;
+                player.GetComponent<TrailRenderer>().enabled = true;
                 Camera.main.GetComponent<CameraFollow>().speed = moveSpeed;
 
                 if (gc.mode == GameController.GameMode.Timed)
@@ -47,7 +55,8 @@ public class SetCanMoveAndCameraSpeed : MonoBehaviour {
                     gc = FindObjectOfType<GameController>();
                 }
 
-                FindObjectOfType<Player>().canMove = canMove;
+                player.canMove = canMove;
+                player.GetComponent<TrailRenderer>().enabled = false;
                 Camera.main.GetComponent<CameraFollow>().speed = moveSpeed;
 
                 if (gc.mode == GameController.GameMode.Timed)
