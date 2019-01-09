@@ -92,7 +92,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1683014187991138}
   m_LocalRotation: {x: -0, y: 0.004866619, z: -0, w: -0.9999882}
-  m_LocalPosition: {x: 9.5, y: 3.26, z: -0.43}
+  m_LocalPosition: {x: 9.89, y: 50.36, z: 17.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4775954130222390}
@@ -290,7 +290,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.75
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 1
@@ -410,8 +410,8 @@ MonoBehaviour:
   trailFadeRate: 0.8
   LandingSound: event:/Player Landing
   DashSound: event:/Player Dash
-  JumpingSound: event:/Player Jump
-  canMove: 1
+  JumpingSound: event:/Player Jumping
+  canMove: 0
   fixedDashY: 0
   dashGravity: 1
   maxStamina: 0.75
@@ -437,7 +437,7 @@ MonoBehaviour:
   speed: 300
   velocity: {x: 0, y: 0, z: 0}
   lastFrameVelocity: {x: 0, y: 0, z: 0}
-  nextScene: LevelSelect
+  nextScene: BlueLevel
 --- !u!119 &119111605247376802
 Projector:
   m_ObjectHideFlags: 1
@@ -1224,7 +1224,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
