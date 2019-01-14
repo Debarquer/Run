@@ -7,24 +7,18 @@ using UnityEngine;
 public class FireworksAudio : MonoBehaviour {
 
     ParticleSystem ps;
-    AudioSource aso;
-
-     //public AudioClip OnBirthSound;
-     public AudioClip OnDeathSound;
+    [FMODUnity.EventRef]
+    public string fireWorkSound;
  
      private int _numberOfParticles = 0;
 
     private void Start()
     {
         ps = GetComponent<ParticleSystem>();
-        aso = GetComponent<AudioSource>();
-
-        aso.clip = OnDeathSound;
     }
 
     void Update()
     {
-        if (!OnDeathSound) { return; }
         var count = ps.particleCount;
         if (count < _numberOfParticles)
         { //particle has died
@@ -32,11 +26,8 @@ public class FireworksAudio : MonoBehaviour {
             //{
             //    aso.Play();
             //}
-            aso.Play();
-        }
-        else if (count > _numberOfParticles)
-        { //particle has been born
-            //SoundManager.Play(audio, OnBirthSound);
+            //aso.Play();
+            FMODUnity.RuntimeManager.PlayOneShot(fireWorkSound);
         }
         _numberOfParticles = count;
     }
