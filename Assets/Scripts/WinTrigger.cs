@@ -14,12 +14,13 @@ public class WinTrigger : MonoBehaviour {
     {
         gc = FindObjectOfType<GameController>();
 
-        fireworks.gameObject.SetActive(false);
+        //fireworks.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        fireworks.gameObject.SetActive(true);
+        //fireworks.gameObject.SetActive(true);
+        fireworks.Play();
 
         if (gc.mode == GameController.GameMode.Timed)
         {
