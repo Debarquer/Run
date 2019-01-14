@@ -9,8 +9,8 @@ public class FireworksAudio : MonoBehaviour {
     ParticleSystem ps;
     [FMODUnity.EventRef]
     public string fireWorkSound;
- 
-     private int _numberOfParticles = 0;
+
+    public int _numberOfParticles = 0;
 
     private void Start()
     {
