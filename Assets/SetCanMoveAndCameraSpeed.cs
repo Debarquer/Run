@@ -31,7 +31,7 @@ public class SetCanMoveAndCameraSpeed : MonoBehaviour {
                 }
 
                 player.canMove = canMove;
-                player.GetComponent<TrailRenderer>().enabled = true;
+                //player.GetComponent<TrailRenderer>().enabled = true;
                 Camera.main.GetComponent<CameraFollow>().speed = moveSpeed;
 
                 if (gc.mode == GameController.GameMode.Timed)
