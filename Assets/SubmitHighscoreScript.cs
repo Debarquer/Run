@@ -16,7 +16,7 @@ public class SubmitHighscoreScript : MonoBehaviour {
         gc.state = GameController.GameState.Menu;
         //gc.mode = GameController.GameMode.Story;
 
-        scoreText.text = "Your time: " + string.Format("{000:0.00}", gc.Timer); ;
+        scoreText.text = "YOUR TIME: " + string.Format("{000:0.00}", gc.Timer); ;
     }
 
     public void SubmitHighscore()
