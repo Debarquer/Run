@@ -11,7 +11,7 @@ public class TextScroller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(0, 0.005f, 0);
+        transform.Translate(0, 0.01f, 0);
         if(transform.localPosition.y > 800)
         {
             transform.localPosition = new Vector3(transform.localPosition.x, -220f, transform.localPosition.z);
