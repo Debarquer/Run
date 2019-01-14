@@ -8,14 +8,20 @@ public class WinTrigger : MonoBehaviour {
 
     GameController gc;
 
+    public ParticleSystem fireworks;
+
     private void Start()
     {
         gc = FindObjectOfType<GameController>();
+
+        fireworks.Stop();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(gc.mode == GameController.GameMode.Timed)
+        fireworks.Play();
+
+        if (gc.mode == GameController.GameMode.Timed)
         {
             FindObjectOfType<GameController>().CompleteLevel(LevelName);
         }
